@@ -6,7 +6,6 @@ import {deleteBankExpense, getBankExpensePage} from "../../../../server/config/d
 
 const RasxodBank = () => {
     const [data, setData] = useState([]);
-    // const [branch, setBranch] = useState([]);
     const [currentPage, setCurrentPage] = useState(0);
     const [total, setTotal] = useState(null);
     const [pageSize, setPageSize] = useState(10);

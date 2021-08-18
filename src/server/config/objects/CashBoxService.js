@@ -2,6 +2,14 @@ import {HttpRequestHub} from "../../HttpRequestHub";
 
 const BASE_URL = '/api/v1/cashBox';
 
+export const getCashBoxList = ()=>{
+    const config = {
+        method: 'GET',
+        url: `${BASE_URL}/list`,
+    };
+    return HttpRequestHub(config);
+};
+
 export const getCashBoxPage = (page=0, size=10) => {
     const config = {
         method: 'GET',
