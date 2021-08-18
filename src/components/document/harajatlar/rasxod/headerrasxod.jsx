@@ -56,21 +56,30 @@ const HeaderRasxod = () => {
               <a href="#">RaschedCRabochimi</a>
             </div>
             <div>
-              <Button className="Btn">Запусать и закрыть</Button>
-              <Button className="Btn">Запусать</Button>
-              <Button className="Btn">Провести</Button>
-              <Button className="Eshyo">Еще</Button>
+              <Row>
+                <Col span={3} >
+                  <Button type='primary' >Запусать и закрыть</Button>
+                </Col>
+                <Col span={2}>
+                  <Button >Запусать</Button>
+                </Col >
+                <Col span={2}>
+                  <Button >Провести</Button>
+                </Col>
+                <Col span={3} offset={14} >
+                  <Button type='primary' >Еще</Button>
+                </Col>
+              </Row>
             </div>
-
-            <Form
-              {...layout}
-              name="nest-messages"
-              onFinish={onFinishCreate}
-              // validateMessages={validateMessages}
-            >
-              <div className="Webber">
-                <div className="content">
-                  <div className="content1">
+            <div className='ModalDiv'>
+              <Row>
+                <Col span={10}>
+                  <Form
+                    {...layout}
+                    name="nest-messages"
+                    onFinish={onFinishCreate}
+                  // validateMessages={validateMessages}
+                  >
                     <Form.Item
                       name={["document", "data"]}
                       label="Data"
@@ -129,32 +138,53 @@ const HeaderRasxod = () => {
                     >
                       <Input />
                     </Form.Item>
-                  </div>
-                  <div className="component2">
-                    <Col>
-                      <Space className="ModalSpace">
+                    <Form.Item
+                      name={["document", "izox"]}
+                      label="Izox"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <textarea
+                        style={{ minHeight: "10vh", width: "53vh" }}
+                      />
+                    </Form.Item>
+                    <Button type='primary' >Submit</Button>
+                  </Form>
+                </Col>
+                <Col span={13} offset={1} >
+                  <div style={{ width: '100%' }}>
+                    <Row>
+                      <Col span={3}>
                         <Button type="primary">Dabavit</Button>
+                      </Col>
+                      <Col span={7} offset={11}>
                         <Search
                           placeholder="Search"
                           onSearch={onSearch}
                           enterButton
-                          className="ModalSearch"
                         />
-                        <Button className="EshyoModal">Еще</Button>
-                      </Space>
-                    </Col>
+                      </Col>
+                      <Col span={3} >
+                        <Button >Еще</Button>
+                      </Col>
+                    </Row>
+                    <div className='Mt' >
 
-                    <div className="ModalTable1">
+
+
                       <Table
-                        className="Jadval"
+
                         columns={columnss}
-                        scroll={{ x: 700, y: 400 }}
+                        scroll={{ x: 800, y: 400 }}
                         dataSource={dataa}
                       />
                     </div>
-                    <div className="ModalTable2">
+                    <div>
                       <Table
-                        className="Jadval"
+
                         columns={columnsss}
                         scroll={{ x: 500, y: 400 }}
                         dataSource={dataaa}
@@ -162,23 +192,12 @@ const HeaderRasxod = () => {
                       />
                     </div>
                   </div>
-                </div>
-                <Form.Item
-                  name={["document", "izox"]}
-                  label="Izox"
-                  rules={[
-                    {
-                      type: "string",
-                    },
-                  ]}
-                >
-                  <textarea
-                    className="Textarea"
-                    style={{ minHeight: "10vh", minWidth: "70vh" }}
-                  />
-                </Form.Item>
-              </div>
-            </Form>
+                </Col>
+
+
+              </Row>
+            </div>
+
           </Modal>
         </Space>
       </Col>

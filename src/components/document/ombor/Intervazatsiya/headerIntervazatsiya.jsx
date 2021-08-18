@@ -57,145 +57,178 @@ const HeaderInter = () => {
               <a href="#">РасчетСРобочими</a>
               <a href="#">ТаварыНаСкладах</a>
             </div>
-            <div className="ButtonTop">
-              <Button className="Btn" type="primary">
-                Провести и закрыть
-              </Button>
-              <Button className="Btn">Записать</Button>
-              <Button className="Btn">Провести</Button>
-              <Button className="Eshyo" type="primary">
-                Еще
-              </Button>
+            <div>
+              <Row>
+                <Col span={3} >
+                  <Button type='primary' >Запусать и закрыть</Button>
+                </Col>
+                <Col span={2}>
+                  <Button >Запусать</Button>
+                </Col >
+                <Col span={2}>
+                  <Button >Провести</Button>
+                </Col>
+                <Col span={3} offset={14} >
+                  <Button type='primary' >Еще</Button>
+                </Col>
+              </Row>
             </div>
+            <div className='ModalDiv'>
+              <Row style={{borderBottom:'1px solid #333'}} >
+                <Col span={7} offset={1}>
+                  <Form
+                    {...layout}
+                    name="nest-messages"
+                    onFinish={onFinishCreate}
+                  // validateMessages={validateMessages}
+                  >
+                    <Form.Item
+                      name={["document", "data"]}
+                      label="Data"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <InputNumber />
+                    </Form.Item>
 
-            <Form {...layout} name="nest-messages" onFinish={onFinishCreate}>
-              <div className="Webber">
-                <div className="content">
-                  <div className="content1">
-                    <div className="contetnTable1">
-                      <Form.Item
-                        name={["document", "data"]}
-                        label="Data"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <InputNumber />
-                      </Form.Item>
+                    <Form.Item
+                      name={["document", "ombor"]}
+                      label="Ombor :"
+                      rules={[
+                        {
+                          required: true,
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
 
-                      <Form.Item
-                        name={["document", "ombor"]}
-                        label="Ombor :"
-                        rules={[
-                          {
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
+                    <Form.Item
+                      name={["document", "organizatsiya"]}
+                      label="Организация:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
 
-                      <Form.Item
-                        name={["document", "organizatsiya"]}
-                        label="Организация:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                    </div>
-                    <div className="contetnTable2">
-                      <Form.Item
-                        name={["document", "otvetstvenniy "]}
-                        label="Ответственный:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "Ovalyuta "]}
-                        label="Оснавной Валюта:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>{" "}
-                      <Form.Item
-                        name={["document", "rasxod "]}
-                        label="Расход:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                    </div>
-                    <div className="contetnTable3">
-                      <Form.Item
-                        name={["document", "daromadsumma "]}
-                        label="Даромад суммаси:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "jamisumma "]}
-                        label="Jami Summa:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                    </div>
-                  </div>
-                  <div className="component2">
-                    <div className="ModalTable1">
-                      <Row>
-                        <Button type="primary"> Добавит</Button>
+                  </Form>
+                </Col>
+                <Col span={7} offset={1}>
+                  <Form
+                    {...layout}
+                    name="nest-messages"
+                    onFinish={onFinishCreate}
+                  // validateMessages={validateMessages}
+                  >
+                    <Form.Item
+                      name={["document", "otvetstvenniy "]}
+                      label="Ответственный:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "Ovalyuta "]}
+                      label="Оснавной Валюта:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>{" "}
+                    <Form.Item
+                      name={["document", "rasxod "]}
+                      label="Расход:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                  </Form>
+                </Col>
+                <Col span={7} offset={1}>
+                  <Form
+                    {...layout}
+                    name="nest-messages"
+                    onFinish={onFinishCreate}
+                  // validateMessages={validateMessages}
+                  >
+                    <Form.Item
+                      name={["document", "daromadsumma "]}
+                      label="Даромад суммаси:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "jamisumma "]}
+                      label="Jami Summa:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Button type='primary'>Submit</Button>
+                  </Form>
+                </Col>
+              </Row  >
+              <Row style={{marginTop:'2%'}} >
+              <Col span={22} offset={1}>
+                  <div Mt></div>
+                  <div style={{ width: '100%' }}>
+                    <Row>
+                      <Col span={3}>
+                        <Button type='primary'  >Dabavit</Button>
 
-                        <Col span={8} offset={13} className="search">
-                          <Space>
-                            <Search
-                              placeholder="input search text"
-                              onSearch={onSearch}
-                              enterButton
-                            />
-                            <Button type="primary">More actions</Button>
-                          </Space>
-                        </Col>
-                      </Row>
+                      </Col>
+                      <Col span={7} offset={12}>
+                        <Search
+                          placeholder="Search"
+                          onSearch={onSearch}
+                          enterButton
+                        />
+                      </Col>
+                      <Col span={1} >
+                        <Button type='primary' >Еще</Button>
+                      </Col>
+                    </Row>
+                    <div className='Mt-1' >
                       <Table
-                        className="Table"
                         columns={columnss}
-                        scroll={{ x: 900, y: 400 }}
+                        scroll={{ x: 1200, y: 400 }}
                         dataSource={dataa}
                       />
                     </div>
+
                   </div>
-                </div>
-              </div>
-            </Form>
+                </Col>
+              </Row>
+            </div>
+
+
           </Modal>
         </Space>
       </Col>
@@ -209,7 +242,20 @@ const HeaderInter = () => {
           <Button type="primary">More actions</Button>
         </Space>
       </Col>
-    </Row>
+    </Row >
   );
 };
 export default HeaderInter;
+
+
+
+
+
+
+
+
+
+
+
+
+

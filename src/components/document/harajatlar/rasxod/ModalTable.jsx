@@ -2,7 +2,7 @@ export const columnss = [
   { title: "N", dataIndex: "n", key: "n", width: "5%" },
   { title: "Sotrudnik ", dataIndex: "sotrudnik", key: "sotrudnik" },
   { title: "Valyuta", dataIndex: "valyuta", key: "valyuta" },
-  { title: "Summa", dataIndex: "summa", key: "summa", width: "10%" },
+  { title: "Summa", dataIndex: "summa", key: "summa",  },
   { title: "Izox", dataIndex: "izox", key: "izox" },
 ];
 
@@ -33,3 +33,8 @@ export const dataaa = [
     summa: "summadalog",
   },
 ];
+
+
+
+  
+

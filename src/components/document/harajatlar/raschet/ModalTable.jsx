@@ -1,26 +1,17 @@
 export const columnss = [
-  { title: "N", dataIndex: "n", key: "n", width: "5%" },
+  { title: "N", dataIndex: "n", key: "n",  },
   { title: "Otvetstvenniy ", dataIndex: "otvetstvenniy", key: "otvetstvenniy" },
-  {
-    title: "Podrazdeleniya",
-    dataIndex: "podrazdeleniya",
-    key: "podrazdeleniya",
-  },
-  {
-    title: "Organizatsiya",
-    dataIndex: "organizatsiya",
-    key: "organizatsiya",
-    width: "10%",
-  },
-];
+  { title: "Podrazdeleniya", dataIndex: "podrazdeleniya", key: "podrazdeleniya" },
+  { title: "Organizatsiya", dataIndex: "organizatsiya", key: "organizatsiya" },
+  ];
 
 export const dataa = [
   {
     key: 1,
     n: "N",
-    sotrudnik: "",
-    valyuta: "UZS",
-    summa: "summa",
+    otvetstvenniy: "",
+    podrazdeleniya: "UZS",
+    organizatsiya: "summa",
     izox: "...",
   },
 ];

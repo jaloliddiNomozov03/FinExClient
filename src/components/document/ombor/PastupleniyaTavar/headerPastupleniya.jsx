@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Row, Col, Space, Input, Modal, Form, InputNumber } from "antd";
+import { Button, Row, Col, Space, Input, Modal, Form, InputNumber, } from "antd";
 import { Table } from "antd";
 import "./pastupleniya.css";
 import { dataa } from "./ModalTable";
@@ -58,178 +58,192 @@ const HeaderPastypleniya = () => {
               <a href="#">РасчетСРобочими</a>
               <a href="#">ТаварыНаСкладах</a>
             </div>
-            <div className="ButtonTop">
-              <Button className="Btn" type="primary">
-                Провести и закрыть
-              </Button>
-              <Button className="Btn">Записать</Button>
-              <Button className="Btn">Провести</Button>
-              <Button className="Eshyo" type="primary">
-                Еще
-              </Button>
+            <div>
+              <Row>
+                <Col span={3} >
+                  <Button type='primary' >Запусать и закрыть</Button>
+                </Col>
+                <Col span={2}>
+                  <Button >Запусать</Button>
+                </Col >
+                <Col span={2}>
+                  <Button >Провести</Button>
+                </Col  >
+                <Col span={3} >  <Button type='primary' >Kontragent tarixi</Button> </Col>
+                <Col span={3} offset={11} >
+                  <Button type='primary' >Еще</Button>
+                </Col>
+              </Row>
             </div>
 
             <Form {...layout} name="nest-messages" onFinish={onFinishCreate}>
-              <div className="Webber">
-                <div className="content">
-                  <div className="content1">
-                    <div className="contetnTable1">
-                      <Form.Item
-                        name={["document", "numer"]}
-                        label="Numer"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <InputNumber />
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "data"]}
-                        label="Data"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <InputNumber />
-                      </Form.Item>
+              <div className='ModalDiv'>
+                <Row style={{ borderBottom: '1px solid #333' }} >
 
-                      <Form.Item
-                        name={["document", "ombor"]}
-                        label="Ombor :"
-                        rules={[
-                          {
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
+                  <Col span={7} offset={1}>
+                    <Form.Item
+                      name={["document", "numer"]}
+                      label="Numer"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "data"]}
+                      label="Data"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
 
-                      <Form.Item
-                        name={["document", "organizatsiya"]}
-                        label="Организация:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                    </div>
-                    <div className="contetnTable2">
-                      <Form.Item
-                        name={["document", "otvetstvenniy "]}
-                        label="Ответственный:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "kontragent "]}
-                        label="Kontragent:"
-                        className="InputFrom"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "kurs "]}
-                        label="Kurs:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                    </div>
-                    <div className="contetnTable3">
-                      <Form.Item
-                        name={["document", "valyuta "]}
-                        label="Valyuta:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "summadocument "]}
-                        label="Summa Dacument:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "tulovmuddati "]}
-                        label="Tulov Muddati:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
+                    <Form.Item
+                      name={["document", "ombor"]}
+                      label="Ombor :"
+                      rules={[
+                        {
+                          required: true,
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Button type='primary'  >Submit</Button>
+                  </Col>
 
-                      <Form.Item
-                        name={["document", "obshiydolg "]}
-                        label="ОбщийДолг:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                    </div>
-                  </div>
-                  <div className="component2">
-                    <div className="ModalTable1">
-                      <Row>
-                        <Button type="primary"> СписанияДолга</Button>
 
-                        <Col span={8} offset={13} className="search">
-                          <Space>
-                            <Search
-                              placeholder="input search text"
-                              onSearch={onSearch}
-                              enterButton
-                            />
-                            <Button type="primary">More actions</Button>
-                          </Space>
-                        </Col>
-                      </Row>
+
+
+                  <Col span={7} offset={1}>
+                    <Form.Item
+                      name={["document", "organizatsiya"]}
+                      label="Организация:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "otvetstvenniy "]}
+                      label="Ответственный:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "kontragent "]}
+                      label="Kontragent:"
+                      className="InputFrom"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "kurs "]}
+                      label="Kurs:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                  </Col>
+                  <Col span={7} offset={1}>
+                    <Form.Item
+                      name={["document", "valyuta "]}
+                      label="Valyuta:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "summadocument "]}
+                      label="Summa Dacument:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "tulovmuddati "]}
+                      label="Tulov Muddati:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+
+                    <Form.Item
+                      name={["document", "obshiydolg "]}
+                      label="ОбщийДолг:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                  </Col>
+                </Row>
+                <Row style={{ marginTop: '4%' }} >
+                  <div className='Mt'></div>
+                  <div style={{ width: '100%' }}>
+                    <Row>
+                      <Col span={3}> <Button type='primary' >СписанияДолга </Button> </Col>
+                      <Col span={5} offset={14}>
+                        <Search
+                          placeholder="Search"
+                          onSearch={onSearch}
+                          enterButton
+                        />
+                      </Col>
+                      <Col span={2} >
+                        <Button type='primary' >Еще</Button>
+                      </Col>
+                    </Row>
+                    <div className='Mt-1' >
                       <Table
-                        className="Table"
+
                         columns={columnss}
                         scroll={{ x: 1600, y: 400 }}
                         dataSource={dataa}
                       />
                     </div>
                   </div>
-                  <div className="component3">
+                </Row>
+                <Row style={{ marginBottom:'3%'}} >
+                  <Col span={20} offset={4} >
                     <Form.Item
                       name={["document", "izox "]}
                       label="Izox:"
@@ -240,15 +254,15 @@ const HeaderPastypleniya = () => {
                         },
                       ]}
                     >
-                      <TextArea className="Text" />
+                      <TextArea  />
                     </Form.Item>
-                  </div>
-                </div>
+                  </Col>
+                </Row>
               </div>
             </Form>
           </Modal>
-        </Space>
-      </Col>
+        </Space >
+      </Col >
       <Col span={8} offset={12} className="search">
         <Space>
           <Search
@@ -259,7 +273,7 @@ const HeaderPastypleniya = () => {
           <Button type="primary">More actions</Button>
         </Space>
       </Col>
-    </Row>
+    </Row >
   );
 };
 export default HeaderPastypleniya;

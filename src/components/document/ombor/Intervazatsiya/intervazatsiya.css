@@ -15,76 +15,19 @@
   padding-left: 12px;
   margin: 15px 5px;
 }
-.Webber {
+.ModalDiv{
+  border: 2px solid #555;
   width: 100%;
-}
-.content {
-  width: 100%;
-  overflow-y: scroll;
-  height: 60vh;
-  margin-top: 30px;
-  white-space: nowrap;
   box-sizing: border-box;
-  box-shadow: 0px 0px 12px 0px rgba(0, 0, 0, 0.5);
+  padding-right: 1%;
+  padding-top: 2%;
+  margin-top: 1%;
+  height: 60vh;
+  overflow-y: scroll;
 }
-.content1 {
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  margin-top: 2%;
-  padding-right: 3%;
-  /* border-right: 2px solid #555; */
-  display: flex;
-  margin: auto;
+.Mt{
+  margin-top: 4%;
 }
-.componet2 {
-  width: 45%;
-  margin: auto;
-  margin-top: 40px;
-}
-.ModalTable1 {
-  /* width: 92%; */
-  margin: 1% 2%;
-  padding: 2%;
-  white-space: nowrap;
-}
-
-.contetnTable1 {
-  margin-left: 2%;
-  margin-top: 2%;
-}
-.contetnTable2 {
-  margin-left: 4%;
-  margin-top: 2%;
-}
-.contetnTable3 {
-  margin-left: 4%;
-  margin-top: 2%;
-}
-.Textarea {
-  margin-top: 3%;
-  width: 90%;
-  height: 10vh;
-  margin-left: -30%;
-}
-.Btn {
-  margin-right: 20px;
-}
-.Eshyo {
-  margin-left: 64%;
-}
-
-.ModalSpace {
-  margin-top: 20px;
-  padding: 20px;
-}
-.EshyoModal {
-  margin-left: 350%;
-}
-.ButtonTop {
+.Mt-1{
   margin-top: 5px;
-  margin-bottom: 5px;
-}
-.Table {
-  margin-top: 20px;
 }

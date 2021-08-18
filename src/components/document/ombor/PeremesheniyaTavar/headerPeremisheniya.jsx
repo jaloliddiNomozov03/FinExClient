@@ -54,109 +54,107 @@ const HeaderPeremisheniya = () => {
               <Button type="primary">Основное</Button>
               <a href="#">ТаварыНаСкладах</a>
             </div>
-            <div className="ButtonTop">
-              <Button className="Btn" type="primary">
-                Провести и закрыть
-              </Button>
-              <Button className="Btn">Записать</Button>
-              <Button className="Btn">Провести</Button>
-              <Button className="Eshyo" type="primary">
-                Еще
-              </Button>
+            <div>
+              <Row>
+                <Col span={3} >
+                  <Button type='primary' >Запусать и закрыть</Button>
+                </Col>
+                <Col span={2}>
+                  <Button >Запусать</Button>
+                </Col >
+                <Col span={2}>
+                  <Button >Провести</Button>
+                </Col>
+                <Col span={3} offset={14} >
+                  <Button type='primary' >Еще</Button>
+                </Col>
+              </Row>
             </div>
 
             <Form {...layout} name="nest-messages" onFinish={onFinishCreate}>
-              <div className="Webber">
-                <div className="content">
-                  <div className="content1">
-                    <div className="contetnTable1">
-                      <Form.Item
-                        name={["document", "data"]}
-                        label="Data"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <InputNumber />
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "otpravleniya "]}
-                        label="СкладОтправителя:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                    </div>
+              <div className='ModalDiv'>
+                <Row>
+                  <Col span={8} style={{ borderRight: '1px solid #333', padding: '1%' }} >
+                    <Form.Item
+                      name={["document", "data"]}
+                      label="Data"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <InputNumber />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "otpravleniya "]}
+                      label="СкладОтправителя:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "organizatsiya "]}
+                      label="Организация:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "otvetstvenniy "]}
+                      label="Ответственный:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "skladpoluchatel "]}
+                      label="СкладПолучатель:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Button type='primary' >Submit</Button>
+                  </Col>
+                  <Col span={16} style={{padding:'1%'}} >
+                    <Row>
+                      <Button type="primary"> Добавить</Button>
 
-                    <div className="contetnTable2">
-                      <Form.Item
-                        name={["document", "organizatsiya "]}
-                        label="Организация:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "otvetstvenniy "]}
-                        label="Ответственный:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                    </div>
-                    <div className="contetnTable3">
-                      <Form.Item
-                        name={["document", "skladpoluchatel "]}
-                        label="СкладПолучатель:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                    </div>
-                  </div>
-                  <div className="component2">
-                    <div className="ModalTable1">
-                      <Row>
-                        <Button type="primary"> Добавить</Button>
-
-                        <Col span={8} offset={13} className="search">
-                          <Space>
-                            <Search
-                              placeholder="input search text"
-                              onSearch={onSearch}
-                              enterButton
-                            />
-                            <Button type="primary">More actions</Button>
-                          </Space>
-                        </Col>
-                      </Row>
-                      <Table
-                        className="Table"
-                        columns={columnss}
-                        scroll={{ x: 1600, y: 400 }}
-                        dataSource={dataa}
-                      />
-                    </div>
-                  </div>
-                </div>
+                      <Col span={9} offset={12} className="search">
+                        <Space>
+                          <Search
+                            placeholder="input search text"
+                            onSearch={onSearch}
+                            enterButton
+                          />
+                          <Button type="primary">More actions</Button>
+                        </Space>
+                      </Col>
+                    </Row>
+                    <Table
+                      className="Table"
+                      columns={columnss}
+                      scroll={{ x: 1600, y: 400 }}
+                      dataSource={dataa}
+                    />
+                  </Col>
+                </Row>
               </div>
             </Form>
           </Modal>
@@ -176,3 +174,10 @@ const HeaderPeremisheniya = () => {
   );
 };
 export default HeaderPeremisheniya;
+
+
+
+
+
+
+{/* */ }
