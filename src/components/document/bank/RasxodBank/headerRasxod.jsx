@@ -240,30 +240,30 @@ const HeaderRasxod = (props) => {
                         width='100%'
                         height='100vh'
                     >
-                        {/*<div className="linktop">*/}
-                        {/*    <Button type='primary' >*/}
-                        {/*        Основное*/}
-                        {/*    </Button>*/}
-                        {/*    <a href="#" >Банк</a>*/}
-                        {/*    <a href="#">Взаиморасчети</a>*/}
-                        {/*    <a href="#">ДатаПогашение</a>*/}
-                        {/*    <a href="#">Даходы</a>*/}
-                        {/*    <a href="#">Расходы</a>*/}
-                        {/*</div>*/}
-                        {/*<div className='ButtonTop'>*/}
-                        {/*    <Button className="Btn" type='primary' >*/}
-                        {/*        Провести и закрыть*/}
-                        {/*    </Button>*/}
-                        {/*    <Button className="Btn" >*/}
-                        {/*        Записать*/}
-                        {/*    </Button>*/}
-                        {/*    <Button className="Btn" >*/}
-                        {/*        Провести*/}
-                        {/*    </Button>*/}
-                        {/*    <Button className="Eshyo" >*/}
-                        {/*        Еще*/}
-                        {/*    </Button>*/}
-                        {/*</div>*/}
+                        <div className="linktop">
+                            <Button type='primary' >
+                                Основное
+                            </Button>
+                            <a href="#" >Банк</a>
+                            <a href="#">Взаиморасчети</a>
+                            <a href="#">ДатаПогашение</a>
+                            <a href="#">Даходы</a>
+                            <a href="#">Расходы</a>
+                        </div>
+                        <div className='ButtonTop'>
+                            <Button className="Btn" type='primary' >
+                                Провести и закрыть
+                            </Button>
+                            <Button className="Btn" >
+                                Записать
+                            </Button>
+                            <Button className="Btn" >
+                                Провести
+                            </Button>
+                            <Button className="Eshyo" >
+                                Еще
+                            </Button>
+                        </div>
 
                         <Form
                             {...layout}
@@ -401,30 +401,6 @@ const HeaderRasxod = (props) => {
                                                     }
                                                 </Select>
                                             </Form.Item>
-
-                                            {/*<Form.Item*/}
-                                            {/*    name={["document", "kursperechisleniye"]}*/}
-                                            {/*    label="Kurs Perechisleniyesi:"*/}
-                                            {/*    rules={[*/}
-                                            {/*        {*/}
-                                            {/*            type: "number",*/}
-                                            {/*        },*/}
-                                            {/*    ]}*/}
-                                            {/*>*/}
-                                            {/*    <Input />*/}
-                                            {/*</Form.Item>*/}
-
-                                            {/*<Form.Item*/}
-                                            {/*    name={["document", "podrazdelyeniya "]}*/}
-                                            {/*    label="Podrazdelyeniya:"*/}
-                                            {/*    rules={[*/}
-                                            {/*        {*/}
-                                            {/*            type: "string",*/}
-                                            {/*        },*/}
-                                            {/*    ]}*/}
-                                            {/*>*/}
-                                            {/*    <Input />*/}
-                                            {/*</Form.Item>*/}
 
                                             {/*sections*/}
                                             <Form.Item
@@ -680,35 +656,35 @@ const HeaderRasxod = (props) => {
                                         </div>
 
                                     </div>
-                                    {/*<div className="component2">*/}
-                                    {/*    <Col>*/}
-                                    {/*        <Space className='ModalSpace'>*/}
-                                    {/*            */}
-                                    {/*           */}
-                                    {/*            /!* <Button className='EshyoModal' >Еще</Button> *!/*/}
-                                    {/*        </Space>*/}
-                                    {/*    </Col>*/}
+                                    <div className="component2">
+                                        <Col>
+                                            <Space className='ModalSpace'>
 
-                                    {/*    <div className='ModalTable1'>*/}
 
-                                    {/*        <Table className='Jadval'*/}
-                                    {/*            columns={columnss}*/}
-                                    {/*            // scroll={{ x: 700, y: 400 }}*/}
-                                    {/*            dataSource={dataa}*/}
-                                    {/*        // height='2%'*/}
+                                                 <Button className='EshyoModal' >Еще</Button>
+                                            </Space>
+                                        </Col>
 
-                                    {/*        />*/}
-                                    {/*    </div>*/}
-                                    {/*    <div className='ModalTable2' >*/}
-                                    {/*        <Table className='Jadval'*/}
-                                    {/*            columns={columnsss}*/}
-                                    {/*            scroll={{ x: 700, y: 400 }}*/}
-                                    {/*            dataSource={dataaa}*/}
-                                    {/*            height='2%'*/}
+                                        <div className='ModalTable1'>
 
-                                    {/*        />*/}
-                                    {/*    </div>*/}
-                                    {/*</div>*/}
+                                            <Table className='Jadval'
+                                                columns={columnss}
+                                                // scroll={{ x: 700, y: 400 }}
+                                                dataSource={dataa}
+                                            // height='2%'
+
+                                            />
+                                        </div>
+                                        <div className='ModalTable2' >
+                                            <Table className='Jadval'
+                                                columns={columnsss}
+                                                scroll={{ x: 700, y: 400 }}
+                                                dataSource={dataaa}
+                                                height='2%'
+
+                                            />
+                                        </div>
+                                    </div>
 
                                 </div>
 

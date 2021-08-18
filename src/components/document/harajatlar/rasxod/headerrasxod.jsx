@@ -1,9 +1,14 @@
-import React, { useState } from "react";
-import { Button, Row, Col, Space, Input, Modal, Form, InputNumber } from "antd";
+import React, { useState, useEffect } from "react";
+import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, Select} from "antd";
 import { Table } from "antd";
 import "./rasxod.css";
 import { dataa, dataaa, columnss, columnsss } from "./ModalTable";
-
+import {getCashBoxList} from "../../../../server/config/objects/CashBoxService";
+import {getStaffList} from "../../../../server/config/objects/StaffService";
+import {getBranchesList} from "../../../../server/config/objects/BranchService";
+import {getSectionsList} from "../../../../server/config/objects/SectionsService";
+import Text from "antd/es/typography/Text";
+const { Option } = Select;
 const { Search } = Input;
 const onSearch = (value) => console.log(value);
 const layout = {
@@ -14,8 +19,23 @@ const layout = {
     span: 16,
   },
 };
-const HeaderRasxod = () => {
+const HeaderRasxod = (props) => {
+  const [cashBoxId, setCashBoxId] = useState(null);
+
+
+  const [cashBox, setCashBox]=useState([]);
+  const [branch, setBranch]=useState([]);
+  const [staff, setStaff]=useState([]);
+  const [sections, setSections]=useState([]);
+
   const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
+
+  useEffect(()=>{
+    getCashBoxes();
+    getStaff();
+    getBranches();
+    getSections();
+  },[]);
 
   const showCreateModal = () => {
     setIsCreateModalVisible(true);
@@ -32,6 +52,48 @@ const HeaderRasxod = () => {
   const onFinishCreate = (values) => {
     console.log(values);
   };
+  const getCashBoxes = ()=>{
+    getCashBoxList().then(value => {
+      if (value && value.data){
+        setCashBox(value.data);
+      }
+    })
+  };
+  const getStaff = ()=>{
+    getStaffList().then(value => {
+      if (value && value.data){
+        setStaff(value.data);
+      }
+    })
+  };
+  const getBranches = ()=>{
+    getBranchesList().then(value => {
+      if (value && value.data){
+        setBranch(value.data);
+      }
+    })
+  };
+  const getSections = ()=>{
+    getSectionsList().then(value => {
+      if (value && value.data){
+        setSections(value.data);
+      }
+    })
+  };
+
+  // select functions
+  function onChangeCashBox(value) {
+    setCashBoxId(value);
+  }
+  function onChangeStaff(value) {
+
+  }
+  function onChangeBranch(value) {
+
+  }
+  function onChangeSections(value) {
+
+  }
 
   return (
     <Row>
@@ -84,51 +146,130 @@ const HeaderRasxod = () => {
                     </Form.Item>
 
                     <Form.Item
-                      name={["document", "kassa"]}
-                      label="Kassa:"
-                      rules={[
-                        {
-                          required: true,
-                        },
-                      ]}
+                        name={["document", "cashBox"]}
+                        label="Kassalar"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
                     >
-                      <Input />
+                      <Select
+                          style={{ width: 300 }}
+                          placeholder=" "
+                          optionFilterProp="children"
+                          onChange={onChangeCashBox}
+                          className='Select'
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {
+                          Array.isArray(cashBox)?cashBox.map((item)=>(
+                              <Option value={item.id}>{item.name}</Option>
+                          )):""
+                        }
+                      </Select>
                     </Form.Item>
 
                     <Form.Item
-                      name={["document", "otvet"]}
-                      label="Otvetstvenniy:"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
+                        name={["document", "responsible"]}
+                        label="Responsible"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
                     >
-                      <Input />
+                      <Select
+                          style={{ width: 300 }}
+                          placeholder=" "
+                          optionFilterProp="children"
+                          onChange={onChangeStaff}
+                          className='Select'
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {
+                          Array.isArray(staff)?staff.map((item)=>(
+                              <Option value={item.id}>{item.name}</Option>
+                          )):""
+                        }
+                      </Select>
                     </Form.Item>
 
                     <Form.Item
-                      name={["document", "organizatsiya"]}
-                      label="Organizatsiya:"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
+                        name={["document", "Podrazdeleniya "]}
+                        label="Uchyet:"
+                        rules={[
+                          {
+                            type: "string",
+                          },
+                        ]}
                     >
-                      <Input />
+                      <Text />
                     </Form.Item>
+
                     <Form.Item
-                      name={["document", "Podrazdeleniya "]}
-                      label="Uchyet:"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
+                        name={["document", "branch"]}
+                        label="Organizatsiya"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
                     >
-                      <Input />
+                      <Select
+                          style={{ width: 300 }}
+                          placeholder=" "
+                          optionFilterProp="children"
+                          onChange={onChangeBranch}
+                          className='Select'
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {
+                          Array.isArray(branch)?branch.map((item)=>(
+                              <Option value={item.id}>{item.name}</Option>
+                          )):""
+                        }
+                      </Select>
                     </Form.Item>
+
+                    <Form.Item
+                        name={["document", "sections"]}
+                        label="Bulimlar"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
+                    >
+                      <Select
+                          style={{ width: 300 }}
+                          placeholder=" "
+                          optionFilterProp="children"
+                          onChange={onChangeSections}
+                          className='Select'
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {
+                          Array.isArray(sections)?sections.map((item)=>(
+                              <Option value={item.id}>{item.name}</Option>
+                          )):""
+                        }
+                      </Select>
+                    </Form.Item>
+
+
                   </div>
                   <div className="component2">
                     <Col>

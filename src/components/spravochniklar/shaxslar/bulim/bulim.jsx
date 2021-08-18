@@ -75,7 +75,7 @@ const Bulim = () => {
     ];
   return (
       <>
-        <HeaderBulim/>
+        <HeaderBulim getSection={getSection}/>
         <Table className="table"
                columns={columns}
                dataSource={data}
