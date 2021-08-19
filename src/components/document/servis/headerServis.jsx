@@ -45,16 +45,24 @@ const HeaderServis = () => {
             onOk={handleCreateOk}
             onCancel={handleCreateCancel}
             className="Modal"
+            width='100vh'
           >
-            <Button>Запусать и закрыть</Button>
-            <Button>Запусать</Button>
-            <Button>Еще</Button>
-
+            <Row>
+              <Col span={7}>
+                <Button type='primary' >Запусать и закрыть</Button>
+              </Col>
+              <Col spna={3}>
+                <Button>Запусать</Button>
+              </Col>
+              <Col  span={3} offset={10} >
+                <Button type='primary'>Еще</Button>
+              </Col>
+            </Row>
             <Form
               {...layout}
               name="nest-messages"
               onFinish={onFinishCreate}
-              // validateMessages={validateMessages}
+            // validateMessages={validateMessages}
             ></Form>
           </Modal>
         </Space>

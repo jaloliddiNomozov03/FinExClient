@@ -54,17 +54,25 @@ const HeaderYukberuvchi = () => {
           >
             <div className="linktop">
               <Button>Основное</Button>
-              <a href="#">Бонусы</a>
               <a href="#">Взаиморасчеты</a>
               <a href="#">ДатаПогашение</a>
-              <a href="#">Продажи</a>
               <a href="#">ТавариНаСкладах</a>
             </div>
             <div>
-              <Button className="Btn">Запусать и закрыть</Button>
-              <Button className="Btn">Запусать</Button>
-              <Button className="Btn">Провести</Button>
-              <Button className="Eshyo">Еще</Button>
+              <Row>
+                <Col span={3} >
+                  <Button type='primary' >Запусать и закрыть</Button>
+                </Col>
+                <Col span={2}>
+                  <Button >Запусать</Button>
+                </Col >
+                <Col span={2}>
+                  <Button >Провести</Button>
+                </Col>
+                <Col span={3} offset={14} >
+                  <Button type='primary' >Еще</Button>
+                </Col>
+              </Row>
             </div>
 
             <Form
@@ -73,215 +81,215 @@ const HeaderYukberuvchi = () => {
               onFinish={onFinishCreate}
               // validateMessages={validateMessages}
             >
-              <div className="content">
-                <div className="content1">
-                  <h4 style={{ color: "blue", textAlign: "center" }}>
-                    Malumotlar
-                  </h4>
-                  <Form.Item
-                    name={["document", "number"]}
-                    label="Nomer:"
-                    rules={[
-                      {
-                        required: true,
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    name={["document", "data"]}
-                    label="Data"
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <InputNumber />
-                  </Form.Item>
-                  <Form.Item
-                    name={["document", "otvet"]}
-                    label="Otvetstvenniy:"
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    name={["document", "uchyet"]}
-                    label="Uchyet:"
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    name={["document", "narxturi"]}
-                    label="Narx turi:"
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    name={["document", "ombor"]}
-                    label="Ombor:"
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    name={["document", "organizatsiya"]}
-                    label="Organizatsiya:"
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    name={["document", "kontragent"]}
-                    label="Kontragent:"
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    name={["document", "bonus"]}
-                    label="ProtsentBonusPoProdaji:"
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    name={["document", "kurs"]}
-                    label="Kurs:"
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <h4 style={{ color: "blue", textAlign: "center" }}>
-                    Tulov muddati
-                  </h4>
+              <div className="ModalDiv">
+                <Row>
+                  <Col span={8} style={{ padding: '1%' }} >
+                    <h4 style={{ color: "blue", textAlign: "center" }}>
+                      Malumotlar
+                    </h4>
+                    <Form.Item
+                      name={["document", "number"]}
+                      label="Nomer:"
+                      rules={[
+                        {
+                          required: true,
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "data"]}
+                      label="Data"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <InputNumber style={{ width: '39vh' }} />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "otvet"]}
+                      label="Otvetstvenniy:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "uchyet"]}
+                      label="Uchyet:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "ombor"]}
+                      label="Ombor:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "organizatsiya"]}
+                      label="Organizatsiya:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "kontragent"]}
+                      label="Kontragent:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "bonus"]}
+                      label="ProtsentBonusPoProdaji:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "kurs"]}
+                      label="Kurs:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <h4 style={{ color: "blue", textAlign: "center" }}>
+                      Tulov muddati
+                    </h4>
 
-                  <Form.Item
-                    name={["document", "valyuta"]}
-                    label="Valyuta:"
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    name={["document", "summadoc"]}
-                    label="SummaDocument:"
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    name={["document", "tulov"]}
-                    label="TulovMuddati:"
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    name={["document", "obshiydalog"]}
-                    label="ObshiyDalog:"
-                    // style={{padding:"0", margin: '0'}}
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <Input />
-                  </Form.Item>
-                  <Form.Item
-                    name={["document", "izox"]}
-                    label="Izox"
-                    className="Textarea"
-                    rules={[
-                      {
-                        type: "string",
-                      },
-                    ]}
-                  >
-                    <textarea style={{ minHeight: "10vh", minWidth: "70vh" }} />
-                  </Form.Item>
-                </div>
-                <div className="component2">
-                  <Col>
-                    <Space className="ModalSpace">
-                      <Button type="primary">СписанияДолга</Button>
-                      <Search
-                        placeholder="Search"
-                        onSearch={onSearch}
-                        enterButton
-                        className="ModalSearch"
-                      />
-                      <Button className="EshyoModal">Еще</Button>
-                    </Space>
+                    <Form.Item
+                      name={["document", "valyuta"]}
+                      label="Valyuta:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "summadoc"]}
+                      label="SummaDocument:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "tulov"]}
+                      label="TulovMuddati:"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "obshiydalog"]}
+                      label="ObshiyDalog:"
+                      // style={{padding:"0", margin: '0'}}
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
+                    >
+                      <Input />
+                    </Form.Item>
+
                   </Col>
 
-                  <div className="ModalTable1">
-                    <Table
-                      className="Jadval"
-                      columns={columnss}
-                      scroll={{ x: 700, y: 400 }}
-                      dataSource={dataa}
-                    />
-                  </div>
-                  <div className="ModalTable2">
-                    <Table
-                      className="Jadval"
-                      columns={columnsss}
-                      scroll={{ x: 700, y: 400 }}
-                      dataSource={dataaa}
-                      height="2%"
-                    />
-                  </div>
-                </div>
+                  <Col span={16} style={{ padding: '1%', borderLeft:'1px solid #555' }} >
+                    <Row>
+                      <Col span={2} >
+                        <Button type="primary"> СписанияДолга</Button>
+                      </Col>
+                      <Col span={7} offset={11} className="search">
+                        <Space>
+                          <Search
+                            placeholder="input search text"
+                            onSearch={onSearch}
+                            enterButton
+                          />
+                        </Space>
+                      </Col>
+                      <Col span={1} >
+                        <Button type="primary">More actions</Button>
+                      </Col>
+                    </Row>
+                    <div className='Mt-1' >
+                      <Row  >
+                        <Table
+                          columns={columnss}
+                          scroll={{ x: 1000, y: 400 }}
+                          dataSource={dataa}
+                        />
+                      </Row>
+                    </div>
+                    <div className='Mt' >
+                      <Row  >
+                        <Table
+                          columns={columnsss}
+                          scroll={{ x: 700, y: 400 }}
+                          dataSource={dataaa}
+                        />
+                      </Row>
+                    </div>
+                    <div className='Mt' >
+                      <Form.Item
+                        name={["document", "izox"]}
+                        label="Izox"
+                        className="Textarea"
+                        rules={[
+                          {
+                            type: "string",
+                          },
+                        ]}
+                      >
+                        <textarea style={{ minHeight: "15vh", minWidth: "100vh" }} />
+                      </Form.Item>
+                    </div>
+                  </Col>
+                </Row>
               </div>
             </Form>
           </Modal>

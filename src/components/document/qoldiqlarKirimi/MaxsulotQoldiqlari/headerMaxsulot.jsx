@@ -43,15 +43,28 @@ const HeaderMaxsulot = () => {
             onCancel={handleCreateCancel}
             className="Modal"
           >
-            <Button>Запусать и закрыть</Button>
-            <Button>Запусать</Button>
-            <Button>Еще</Button>
+            <div>
+              <Row>
+                <Col span={3} >
+                  <Button type='primary' >Запусать и закрыть</Button>
+                </Col>
+                <Col span={2}>
+                  <Button >Запусать</Button>
+                </Col >
+                <Col span={2}>
+                  <Button >Провести</Button>
+                </Col>
+                <Col span={3} offset={14} >
+                  <Button type='primary' >Еще</Button>
+                </Col>
+              </Row>
+            </div>
 
             <Form
               {...layout}
               name="nest-messages"
               onFinish={onFinishCreate}
-              // validateMessages={validateMessages}
+            // validateMessages={validateMessages}
             >
               <Form.Item
                 name={["document", "data"]}

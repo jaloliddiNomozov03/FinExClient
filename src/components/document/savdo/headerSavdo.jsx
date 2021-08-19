@@ -56,16 +56,26 @@ const HeaderSavdo = () => {
               <a href="#">ТавариНаСкладах</a>
             </div>
             <div>
-              <Button className="Btn">Запусать и закрыть</Button>
-              <Button className="Btn">Запусать</Button>
-              <Button className="Btn">Провести</Button>
-              <Button className="Eshyo">Еще</Button>
+              <Row>
+                <Col span={3} >
+                  <Button type='primary' >Запусать и закрыть</Button>
+                </Col>
+                <Col span={2}>
+                  <Button >Запусать</Button>
+                </Col >
+                <Col span={2}>
+                  <Button >Провести</Button>
+                </Col>
+                <Col span={3} offset={14} >
+                  <Button type='primary' >Еще</Button>
+                </Col>
+              </Row>
             </div>
 
             <Form {...layout} name="nest-messages" onFinish={onFinishCreate}>
-              <div className="Webber">
-                <div className="content">
-                  <div className="content1">
+              <div className="ModalDiv">
+                <Row>
+                  <Col span={11} >
                     <Form.Item
                       name={["document", "data"]}
                       label="Data"
@@ -75,7 +85,7 @@ const HeaderSavdo = () => {
                         },
                       ]}
                     >
-                      <InputNumber />
+                      <InputNumber style={{ width: '50vh' }} />
                     </Form.Item>
                     <Form.Item
                       name={["document", "ombor"]}
@@ -132,8 +142,8 @@ const HeaderSavdo = () => {
                     >
                       <Input />
                     </Form.Item>
-                  </div>
-                  <div className="content2">
+                  </Col>
+                  <Col span={11} offset={1} >
                     <Form.Item
                       name={["document", "kontragent"]}
                       label="Kontragent:"
@@ -203,20 +213,23 @@ const HeaderSavdo = () => {
                     >
                       <Input />
                     </Form.Item>
-                  </div>
-                </div>
-
-                <Form.Item
-                  name={["document", "izox"]}
-                  label="Izox"
-                  rules={[
-                    {
-                      type: "string",
-                    },
-                  ]}
-                >
-                  <textarea className="Textarea" />
-                </Form.Item>
+                  </Col>
+                  <Row  >
+                    <Col span={20} >
+                      <Form.Item
+                        name={["document", "izox"]}
+                        label="Izox"
+                        rules={[
+                          {
+                            type: "string",
+                          },
+                        ]}
+                      >
+                        <textarea style={{width:'100vh', height:'10vh'}} />
+                      </Form.Item>
+                    </Col>
+                  </Row>
+                </Row>
               </div>
             </Form>
           </Modal>
