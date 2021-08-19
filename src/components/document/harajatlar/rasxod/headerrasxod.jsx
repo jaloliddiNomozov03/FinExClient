@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, Select} from "antd";
+import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, Select, notification} from "antd";
 import { Table } from "antd";
 import "./rasxod.css";
 import { dataa, dataaa, columnss, columnsss } from "./ModalTable";
@@ -8,6 +8,7 @@ import {getStaffList} from "../../../../server/config/objects/StaffService";
 import {getBranchesList} from "../../../../server/config/objects/BranchService";
 import {getSectionsList} from "../../../../server/config/objects/SectionsService";
 import Text from "antd/es/typography/Text";
+import {saveCosts} from "../../../../server/config/document/CostsService";
 const { Option } = Select;
 const { Search } = Input;
 const onSearch = (value) => console.log(value);
@@ -20,8 +21,6 @@ const layout = {
   },
 };
 const HeaderRasxod = (props) => {
-  const [cashBoxId, setCashBoxId] = useState(null);
-
 
   const [cashBox, setCashBox]=useState([]);
   const [branch, setBranch]=useState([]);
@@ -51,6 +50,28 @@ const HeaderRasxod = (props) => {
 
   const onFinishCreate = (values) => {
     console.log(values);
+    let rasxod = {
+      sum: values.document.sum,
+      responsibleId: values.document.responsible,
+      cashBoxId: values.document.cashBox,
+      branchId: values.document.branch,
+      sectionsId: values.document.sections,
+      comment: values.document.comment,
+    };
+    if (rasxod.sum && rasxod.responsibleId&&rasxod.cashBoxId&&rasxod.branchId&&rasxod.sectionsId){
+      saveCosts(rasxod).then(value => {
+        if (value && value.data.success){
+          props.getCosts();
+          notification['success']({
+            message:'Data success saved!',
+          });
+        }else {
+          notification['error']({
+            message:'Data not saved!',
+          });
+        }
+      })
+    }
   };
   const getCashBoxes = ()=>{
     getCashBoxList().then(value => {
@@ -83,7 +104,7 @@ const HeaderRasxod = (props) => {
 
   // select functions
   function onChangeCashBox(value) {
-    setCashBoxId(value);
+
   }
   function onChangeStaff(value) {
 
@@ -142,17 +163,7 @@ const HeaderRasxod = (props) => {
                     onFinish={onFinishCreate}
                   // validateMessages={validateMessages}
                   >
-                    <Form.Item
-                      name={["document", "data"]}
-                      label="Data"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
-                    >
-                      <InputNumber />
-                    </Form.Item>
+
 
                     <Form.Item
                         name={["document", "cashBox"]}
@@ -181,7 +192,18 @@ const HeaderRasxod = (props) => {
                         }
                       </Select>
                     </Form.Item>
-
+                    <Form.Item
+                        name={["document", "sum"]}
+                        label="Sum"
+                        rules={[
+                          {
+                            type: "number",
+                            required: true,
+                          },
+                        ]}
+                    >
+                      <InputNumber />
+                    </Form.Item>
                     <Form.Item
                         name={["document", "responsible"]}
                         label="Responsible"
@@ -208,18 +230,6 @@ const HeaderRasxod = (props) => {
                           )):""
                         }
                       </Select>
-                    </Form.Item>
-
-                    <Form.Item
-                        name={["document", "Podrazdeleniya "]}
-                        label="Uchyet:"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                    >
-                      <Text />
                     </Form.Item>
 
                     <Form.Item
@@ -278,7 +288,7 @@ const HeaderRasxod = (props) => {
                       </Select>
                     </Form.Item>
                     <Form.Item
-                      name={["document", "izox"]}
+                      name={["document", "comment"]}
                       label="Izox"
                       rules={[
                         {
@@ -290,7 +300,11 @@ const HeaderRasxod = (props) => {
                         style={{ minHeight: "10vh", width: "53vh" }}
                       />
                     </Form.Item>
-                    <Button type='primary' >Submit</Button>
+                    <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                      <Button type="primary" htmlType="submit">
+                        Submit
+                      </Button>
+                    </Form.Item>
                   </Form>
                 </Col>
                 <Col span={13} offset={1} >

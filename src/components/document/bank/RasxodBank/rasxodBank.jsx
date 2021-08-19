@@ -18,7 +18,7 @@ const RasxodBank = () => {
                 getBankExpenses();
                 notification['success']({
                     message:'Data success deleted!',
-                    description: `${record.name} deleted!`
+                    description: `${record.code} deleted!`
                 });
             }else if (record.id){
                 notification['error']({

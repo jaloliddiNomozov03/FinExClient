@@ -1,15 +1,16 @@
 import {HttpRequestHub} from "../../HttpRequestHub";
 
-const BASE_URL = '/api/v1/bankArrival';
+const BASE_URL = '/api/v1/cashRegisterExpense';
 
-export const getBankArrivalList=()=>{
+export const getCashRegisterExpenseList=()=>{
     const config = {
         method: 'GET',
         url: `${BASE_URL}/list`,
     };
+
     return HttpRequestHub(config);
 };
-export const getBankArrivalPage = (page=0, size=10) => {
+export const getCashRegisterExpensePage = (page=0, size=10) => {
     const config = {
         method: 'GET',
         url: `${BASE_URL}/getPage?page=${page}&size=${size}`
@@ -17,18 +18,18 @@ export const getBankArrivalPage = (page=0, size=10) => {
     return HttpRequestHub(config);
 };
 
-export const saveBankArrival =(bankArrival)=>{
+export const saveCashRegisterExpense =(cashRegisterExpense)=>{
     const config = {
         method: 'POST',
-        data: bankArrival,
+        data: cashRegisterExpense,
         url: `${BASE_URL}/save`
     };
     return HttpRequestHub(config);
 };
-export const deleteBankArrival = (id) => {
+export const deleteCashRegisterExpense = (id) => {
     const config = {
         method: 'DELETE',
-        url: `${BASE_URL}/delete/${id}`
+        url: `${BASE_URL}/${id}`
     };
     return HttpRequestHub(config);
 };
