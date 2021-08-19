@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-import { Button, Row, Col, Space, Input, Modal, Form } from "antd";
+import React, { useState, useEffect } from "react";
+import {Button, Row, Col, Space, Input, Modal, Form, Select, DatePicker, notification} from "antd";
 import "./NaxtPulChiqimi.css";
+import {getStaffList} from "../../../../server/config/objects/StaffService";
+import {saveCashRegisterExpense} from "../../../../server/config/document/CashRegisterExpenseService";
 const { Search } = Input;
+const { Option } = Select;
 const onSearch = (value) => console.log(value);
 const layout = {
   labelCol: {
@@ -11,25 +14,65 @@ const layout = {
     span: 16,
   },
 };
-const HeaderChiqim = () => {
+const HeaderChiqim = (props) => {
+  const [date, setDate] = useState("");
+  const [staff, setStaff] = useState([]);
+  const [staffId, setStaffId] = useState(null);
   const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
 
   const showCreateModal = () => {
     setIsCreateModalVisible(true);
   };
-
+  useEffect(()=>{
+    getStaff();
+  },[]);
   const handleCreateOk = () => {
     setIsCreateModalVisible(false);
   };
-
+  const getStaff = () => {
+    getStaffList().then((value) => {
+      if (value && value.data) {
+        setStaff(value.data);
+      }
+    });
+  };
   const handleCreateCancel = () => {
     setIsCreateModalVisible(false);
   };
 
   const onFinishCreate = (values) => {
-    console.log(values);
+    let cashRegisterExpense = {
+      comment: values.document.comment,
+      date: date,
+      responsibleId: staffId
+    };
+    if (cashRegisterExpense.responsibleId && cashRegisterExpense.date){
+      saveCashRegisterExpense(cashRegisterExpense).then(value => {
+        if (value && value.data.success){
+          props.getCashRegisterExpenses();
+          notification["success"]({
+            message: "Data success save!",
+          });
+        }else {
+          notification["error"]({
+            message: "Data do not save!",
+          });
+        }
+      })
+    }
   };
+  function onChangeStaff(value) {
+    setStaffId(value);
+  }
+  function onChange(value, dateString) {
+    // console.log('Selected Time: ', value);
+    setDate(dateString);
+  }
 
+
+  function onOk(value) {
+    console.log("onOk: ", value);
+  }
   return (
     <Row>
       <Col span={4}>
@@ -76,37 +119,65 @@ const HeaderChiqim = () => {
                 // validateMessages={validateMessages}
               >
                 <Form.Item
-                  name={["document", "data"]}
-                  label="Data"
-                  rules={[
-                    {
-                      required: true,
-                    },
-                  ]}
+                    name={["document", "responsible"]}
+                    label="Staff"
+                    rules={[
+                      {
+                        required: true,
+                      },
+                    ]}
                 >
-                  <Input />
+                  <Select
+                      // showSearch
+
+                      style={{ width: 300 }}
+                      placeholder=" "
+                      optionFilterProp="children"
+                      onChange={onChangeStaff}
+                      className="Select"
+                      onSearch={onSearch}
+                      filterOption={(input, option) =>
+                          option.children
+                              .toLowerCase()
+                              .indexOf(input.toLowerCase()) >= 0
+                      }
+                  >
+                    {Array.isArray(staff)
+                        ? staff.map((item) => (
+                            <Option value={item.id}>{item.name}</Option>
+                        ))
+                        : ""}
+                  </Select>
                 </Form.Item>
                 <Form.Item
-                  name={["document", "otvet"]}
-                  label="Otvetstvenniy"
-                  rules={[
-                    {
-                      type: "integer",
-                    },
-                  ]}
+                    name={["document", "date"]}
+                    label="Time"
                 >
-                  <Input />
+                  <Space direction="vertical" size={12}>
+                    <DatePicker
+                        showTime
+                        onChange={onChange}
+                        onOk={onOk}
+                    />
+                  </Space>
                 </Form.Item>
                 <Form.Item
-                  name={["document", "izox"]}
-                  label="Izox"
+                  name={["document", "comment"]}
+                  label="Comment"
                   rules={[
                     {
-                      type: "integer",
+                      type: "string",
                     },
                   ]}
                 >
-                  <textarea className="Textarea" />
+                  <textarea />
+                </Form.Item>
+                <Form.Item
+                    wrapperCol={{ ...layout.wrapperCol, offset: 8 }}
+                >
+                  <Button type="primary" htmlType="submit">
+                    Submit
+                  </Button>
                 </Form.Item>
               </Form>
             </div>

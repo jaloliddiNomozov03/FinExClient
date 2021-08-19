@@ -1,7 +1,10 @@
-import React, { useState } from "react";
-import { Button, Row, Col, Space, Input, Modal, Form } from "antd";
+import React, { useState, useEffect } from "react";
+import {Button, Row, Col, Space, Input, Modal, Form, DatePicker, Select, notification} from "antd";
 import "./NaxtpulTushumi.css";
+import {getStaffList} from "../../../../server/config/objects/StaffService";
+import {saveCashRegisterArrival} from "../../../../server/config/document/CashRegisterArrivalService";
 const { Search } = Input;
+const { Option } = Select;
 const onSearch = (value) => console.log(value);
 const layout = {
   labelCol: {
@@ -11,7 +14,11 @@ const layout = {
     span: 16,
   },
 };
-const HeaderTushum = () => {
+//getCashRegisterArrivals
+const HeaderTushum = (props) => {
+  const [date, setDate] = useState("");
+  const [staff, setStaff] = useState([]);
+  const [staffId, setStaffId] = useState(null);
   const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
 
   const showCreateModal = () => {
@@ -22,13 +29,55 @@ const HeaderTushum = () => {
     setIsCreateModalVisible(false);
   };
 
+  useEffect(()=>{
+    getStaff();
+  },[]);
   const handleCreateCancel = () => {
     setIsCreateModalVisible(false);
   };
 
   const onFinishCreate = (values) => {
-    console.log(values);
+    let cashRegisterArrival = {
+      comment: values.document.comment,
+      date: date,
+      isConstantDP: values.document.isConstantDP?values.document.isConstantDP.target.checked:false,
+      dpsAssignmentByParty: values.document.dpsAssignmentByParty?values.document.dpsAssignmentByParty.target.checked:false,
+      responsibleId: staffId
+    };
+    if (cashRegisterArrival.responsibleId && cashRegisterArrival.date){
+      saveCashRegisterArrival(cashRegisterArrival).then(value => {
+        if (value && value.data.success){
+          props.getCashRegisterArrivals();
+          notification["success"]({
+            message: "Data success save!",
+          });
+        }else {
+          notification["error"]({
+            message: "Data do not save!",
+          });
+        }
+      })
+    }
   };
+  const getStaff = () => {
+    getStaffList().then((value) => {
+      if (value && value.data) {
+        setStaff(value.data);
+      }
+    });
+  };
+  function onChangeStaff(value) {
+    setStaffId(value);
+  }
+  function onChange(value, dateString) {
+    // console.log('Selected Time: ', value);
+    setDate(dateString);
+  }
+
+
+  function onOk(value) {
+    console.log("onOk: ", value);
+  }
 
   return (
     <Row>
@@ -56,38 +105,97 @@ const HeaderTushum = () => {
                 onFinish={onFinishCreate}
                 // validateMessages={validateMessages}
               >
+                {/*<Form.Item*/}
+                {/*  name={["document", "data"]}*/}
+                {/*  label="Data"*/}
+                {/*  rules={[*/}
+                {/*    {*/}
+                {/*      required: true,*/}
+                {/*    },*/}
+                {/*  ]}*/}
+                {/*>*/}
+                {/*  <Input />*/}
+                {/*</Form.Item>*/}
                 <Form.Item
-                  name={["document", "data"]}
-                  label="Data"
-                  rules={[
-                    {
-                      required: true,
-                    },
-                  ]}
+                    name={["document", "responsible"]}
+                    label="Staff"
+                    rules={[
+                      {
+                        required: true,
+                      },
+                    ]}
                 >
-                  <Input />
+                  <Select
+                      // showSearch
+
+                      style={{ width: 300 }}
+                      placeholder=" "
+                      optionFilterProp="children"
+                      onChange={onChangeStaff}
+                      className="Select"
+                      onSearch={onSearch}
+                      filterOption={(input, option) =>
+                          option.children
+                              .toLowerCase()
+                              .indexOf(input.toLowerCase()) >= 0
+                      }
+                  >
+                    {Array.isArray(staff)
+                        ? staff.map((item) => (
+                            <Option value={item.id}>{item.name}</Option>
+                        ))
+                        : ""}
+                  </Select>
+                </Form.Item>
+
+                <Form.Item
+                    name={["document", "isConstantDP"]}
+                    label="IsConstanta:"
+                    valuePropName="unchecked"
+                >
+                  <Input type="checkbox" />
                 </Form.Item>
                 <Form.Item
-                  name={["document", "otvet"]}
-                  label="Otvetstvenniy"
-                  rules={[
-                    {
-                      type: "integer",
-                    },
-                  ]}
+                    name={["document", "dpsAssignmentByParty"]}
+                    label="DPSAssignmentByParty:"
+                    valuePropName="unchecked"
                 >
-                  <Input />
+                  <Input type="checkbox" />
                 </Form.Item>
                 <Form.Item
-                  name={["document", "otvet"]}
-                  label="Otvetstvenniy"
+                    name={["document", "date"]}
+                    label="Time"
+                    // rules={[
+                    //     {
+                    //         required: true,
+                    //     },
+                    // ]}
+                >
+                  <Space direction="vertical" size={12}>
+                    <DatePicker
+                        showTime
+                        onChange={onChange}
+                        onOk={onOk}
+                    />
+                  </Space>
+                </Form.Item>
+                <Form.Item
+                  name={["document", "comment"]}
+                  label="Comment"
                   rules={[
                     {
-                      type: "integer",
+                      type: "string",
                     },
                   ]}
                 >
-                  <textarea className="Textarea" />
+                  <Input type="textarea" className="" />
+                </Form.Item>
+                <Form.Item
+                    wrapperCol={{ ...layout.wrapperCol, offset: 8 }}
+                >
+                  <Button type="primary" htmlType="submit">
+                    Submit
+                  </Button>
                 </Form.Item>
               </Form>
             </div>

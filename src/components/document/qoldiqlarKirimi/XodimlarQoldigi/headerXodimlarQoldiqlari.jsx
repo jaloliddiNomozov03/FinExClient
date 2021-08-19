@@ -1,6 +1,9 @@
-import React, { useState } from "react";
-import { Button, Row, Col, Space, Input, Modal, Form, InputNumber } from "antd";
+import React, { useState, useEffect } from "react";
+import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, notification, Select, DatePicker} from "antd";
+import {getStaffList} from "../../../../server/config/objects/StaffService";
+import {saveEnteringCreditors} from "../../../../server/config/document/EnteringCreditorsService";
 const { Search } = Input;
+const { Option } = Select;
 const onSearch = (value) => console.log(value);
 const layout = {
   labelCol: {
@@ -10,8 +13,56 @@ const layout = {
     span: 16,
   },
 };
-const HeaderXodimlar = () => {
+const HeaderXodimlar = (props) => {
+  const [date, setDate] = useState("");
+  const [staff, setStaff] = useState([]);
+  // const [staffId, setStaffId] = useState(null);
   const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
+  useEffect(()=>{
+    getStaff();
+  },[]);
+  const getStaff = () => {
+    getStaffList().then((value) => {
+      if (value && value.data) {
+        setStaff(value.data);
+      }
+    });
+  };
+
+  const onFinishCreate = (values) => {
+    let enteringCreditors = {
+      comment: values.document.comment,
+      date: date,
+      responsibleId: values.document.responsible,
+      isConstanta: values.document.isConstanta
+          ? values.document.isConstanta.target.checked
+          : false,
+    };
+    if (enteringCreditors.responsibleId && enteringCreditors.date){
+      console.log(enteringCreditors);
+      saveEnteringCreditors(enteringCreditors).then(value => {
+        if (value && value.data.success){
+          props.getEnteringCreditors();
+          notification["success"]({
+            message: "Data success save!",
+          });
+        }else {
+          notification["error"]({
+            message: "Data do not save!",
+          });
+        }
+      })
+    }
+  };
+  function onChange(value, dateString) {
+    // console.log('Selected Time: ', value);
+    setDate(dateString);
+  }
+
+
+  function onOk(value) {
+    console.log("onOk: ", value);
+  }
 
   const showCreateModal = () => {
     setIsCreateModalVisible(true);
@@ -23,10 +74,6 @@ const HeaderXodimlar = () => {
 
   const handleCreateCancel = () => {
     setIsCreateModalVisible(false);
-  };
-
-  const onFinishCreate = (values) => {
-    console.log(values);
   };
 
   return (
@@ -54,39 +101,74 @@ const HeaderXodimlar = () => {
               // validateMessages={validateMessages}
             >
               <Form.Item
-                name={["document", "data"]}
-                label="Data"
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
+                  name={["document", "responsible"]}
+                  label="Staff"
+                  rules={[
+                    {
+                      required: true,
+                    },
+                  ]}
               >
-                <InputNumber />
+                <Select
+                    // showSearch
+
+                    style={{ width: 300 }}
+                    placeholder=" "
+                    optionFilterProp="children"
+                    // onChange={onChangeStaff}
+                    className="Select"
+                    onSearch={onSearch}
+                    filterOption={(input, option) =>
+                        option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
+                    }
+                >
+                  {Array.isArray(staff)
+                      ? staff.map((item) => (
+                          <Option value={item.id}>{item.name}</Option>
+                      ))
+                      : ""}
+                </Select>
               </Form.Item>
               <Form.Item
-                name={["document", "otvet"]}
-                label="Otvetstvenniy:"
-                rules={[
-                  {
-                    type: "string",
-                  },
-                ]}
+                  name={["document", "isConstanta"]}
+                  label="IsConstanta:"
+                  valuePropName="unchecked"
+                  // rules={[
+                  //     {
+                  //         type: "string",
+                  //     },
+                  // ]}
               >
-                <Input />
+                <Input type="checkbox" />
               </Form.Item>
               <Form.Item
-                name={["document", "izox"]}
-                label="Izox"
-                rules={[
-                  {
-                    type: "string",
-                  },
-                ]}
+                  name={["document", "date"]}
+                  label="Time"
+              >
+                <Space direction="vertical" size={12}>
+                  <DatePicker
+                      showTime
+                      onChange={onChange}
+                      onOk={onOk}
+                  />
+                </Space>
+              </Form.Item>
+              <Form.Item
+                  name={["document", "comment"]}
+                  label="Comment"
+                  rules={[
+                    {
+                      type: "string",
+                    },
+                  ]}
               >
                 <textarea />
               </Form.Item>
-              <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+              <Form.Item
+                  wrapperCol={{ ...layout.wrapperCol, offset: 8 }}
+              >
                 <Button type="primary" htmlType="submit">
                   Submit
                 </Button>
