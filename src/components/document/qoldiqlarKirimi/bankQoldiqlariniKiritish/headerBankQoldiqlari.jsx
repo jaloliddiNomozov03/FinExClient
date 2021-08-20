@@ -1,6 +1,9 @@
-import React, { useState } from "react";
-import { Button, Row, Col, Space, Input, Modal, Form, InputNumber } from "antd";
+import React, { useState, useEffect } from "react";
+import {Button, Row, Col, Space, Input, Modal, Form, notification, Select, DatePicker} from "antd";
+import {saveEnteringBank} from "../../../../server/config/document/EnteringBankService";
+import {getCounterpartList} from "../../../../server/config/objects/CounterpartyService";
 const { Search } = Input;
+const { Option } = Select;
 const onSearch = (value) => console.log(value);
 const layout = {
   labelCol: {
@@ -10,8 +13,56 @@ const layout = {
     span: 16,
   },
 };
-const HeaderBankQoldiqlari = () => {
+
+const HeaderBankQoldiqlari = (props) => {
+  const [date, setDate] = useState("");
+  const [counterpart, setCounterpart] = useState([]);
+  const [staffId, setStaffId] = useState(null);
   const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
+  useEffect(()=>{
+    getStaff();
+  },[]);
+  const getStaff = () => {
+    getCounterpartList().then((value) => {
+      if (value && value.data) {
+        setCounterpart(value.data);
+      }
+    });
+  };
+
+  const onFinishCreate = (values) => {
+    let enteringBank = {
+      comment: values.document.comment,
+      date: date,
+      responsibleId: staffId
+    };
+    if (enteringBank.responsibleId && enteringBank.date){
+      saveEnteringBank(enteringBank).then(value => {
+        if (value && value.data.success){
+          props.getEnteringBanks();
+          notification["success"]({
+            message: "Data success save!",
+          });
+        }else {
+          notification["error"]({
+            message: "Data do not save!",
+          });
+        }
+      })
+    }
+  };
+  function onChangeCounterpart(value) {
+    setStaffId(value);
+  }
+  function onChange(value, dateString) {
+    // console.log('Selected Time: ', value);
+    setDate(dateString);
+  }
+
+
+  function onOk(value) {
+    console.log("onOk: ", value);
+  }
 
   const showCreateModal = () => {
     setIsCreateModalVisible(true);
@@ -24,11 +75,6 @@ const HeaderBankQoldiqlari = () => {
   const handleCreateCancel = () => {
     setIsCreateModalVisible(false);
   };
-
-  const onFinishCreate = (values) => {
-    console.log(values);
-  };
-
   return (
     <Row>
       <Col span={4}>
@@ -54,39 +100,62 @@ const HeaderBankQoldiqlari = () => {
               // validateMessages={validateMessages}
             >
               <Form.Item
-                name={["document", "data"]}
-                label="Data"
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
+                  name={["document", "responsible"]}
+                  label="Staff"
+                  rules={[
+                    {
+                      required: true,
+                    },
+                  ]}
               >
-                <InputNumber />
+                <Select
+                    // showSearch
+
+                    style={{ width: 300 }}
+                    placeholder=" "
+                    optionFilterProp="children"
+                    onChange={onChangeCounterpart}
+                    className="Select"
+                    onSearch={onSearch}
+                    filterOption={(input, option) =>
+                        option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
+                    }
+                >
+                  {Array.isArray(counterpart)
+                      ? counterpart.map((item) => (
+                          <Option value={item.id}>{item.name}</Option>
+                      ))
+                      : ""}
+                </Select>
               </Form.Item>
               <Form.Item
-                name={["document", "otvet"]}
-                label="Otvetstvenniy:"
-                rules={[
-                  {
-                    type: "string",
-                  },
-                ]}
+                  name={["document", "date"]}
+                  label="Time"
               >
-                <Input />
+                <Space direction="vertical" size={12}>
+                  <DatePicker
+                      showTime
+                      onChange={onChange}
+                      onOk={onOk}
+                  />
+                </Space>
               </Form.Item>
               <Form.Item
-                name={["document", "izox"]}
-                label="Izox"
-                rules={[
-                  {
-                    type: "string",
-                  },
-                ]}
+                  name={["document", "comment"]}
+                  label="Comment"
+                  rules={[
+                    {
+                      type: "string",
+                    },
+                  ]}
               >
                 <textarea />
               </Form.Item>
-              <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+              <Form.Item
+                  wrapperCol={{ ...layout.wrapperCol, offset: 8 }}
+              >
                 <Button type="primary" htmlType="submit">
                   Submit
                 </Button>

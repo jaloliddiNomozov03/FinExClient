@@ -21,12 +21,12 @@ const PrixodBank = () => {
         getBankArrivals();
         notification["success"]({
           message: "Data success deleted!",
-          description: `${record.name} deleted!`,
+          description: `${record.code} deleted!`,
         });
       } else if (record.id) {
         notification["error"]({
           message: "Data error!",
-          description: `${record.key} not found!`,
+          description: `${record.code} not found!`,
         });
       } else {
         notification["error"]({

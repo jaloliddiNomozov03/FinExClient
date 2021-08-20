@@ -13,7 +13,7 @@ export const getCostsList=()=>{
 export const getCostsPage = (page=0, size=10) => {
     const config = {
         method: 'GET',
-        url: `${BASE_URL}/getCostsWithPage?page=${page}&size=${size}`
+        url: `${BASE_URL}/getPage?page=${page}&size=${size}`
     };
     return HttpRequestHub(config);
 };
