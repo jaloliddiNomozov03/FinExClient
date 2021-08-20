@@ -6,6 +6,7 @@ import ContentSpravochniklar from "./contentSpravochnik";
 import ContentRegistorlar from "./RegistorContent";
 import ContentXisobotlar from "./contentXisobotlar";
 import ContentSettings from "./contentSettings";
+import ContentProfil from './contentProfil';
 const { Content } = Layout;
 class ContentBase extends React.Component {
   render() {
@@ -31,6 +32,9 @@ class ContentBase extends React.Component {
             </Route>
             <Route path="/Settings">
               <ContentSettings />
+            </Route>
+            <Route path="/Profil">
+              <ContentProfil />
             </Route>
           </Switch>
         </div>
