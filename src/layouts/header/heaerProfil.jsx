@@ -1,13 +1,14 @@
 import React from "react";
-import { Menu } from "antd";
+import { Menu, Row, Col } from "antd";
 const HeaderOfProfil = () => {
-    return ( <Menu theme="dark" mode="horizontal" defaultSelectedKeys={[""]}>
-                             {/* Vse Document */}
-                <Menu.Item key="profill-1">
-                   Profil...
-                </Menu.Item>
-                
-            </Menu>
+    return (
+       
+                <Menu style={{ width: '100%' }} theme="dark" mode="horizontal" defaultSelectedKeys={[""]}>
+                    <Menu.Item key="profill-1">
+                        <span style={{ color: 'black' }} >  .</span>
+                    </Menu.Item>
+                </Menu>
+           
     );
 };
 export default HeaderOfProfil;

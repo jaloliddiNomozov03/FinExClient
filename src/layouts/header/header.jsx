@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Menu, Select } from "antd";
+import { Row, Col, Menu, Select, Avatar, Image } from "antd";
 import { Link } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
 import { Route, Switch } from "react-router-dom";
@@ -44,7 +44,7 @@ const HeaderBase = () => {
         <Col span={4}  >
 
           <Row>
-            <Menu defaultSelectedKeys={[""]} theme="dark" mode="horizontal" style={{width:'100%'}}  >
+            <Menu defaultSelectedKeys={[""]} theme="dark" mode="horizontal" style={{ width: '100%' }}  >
               <Menu.Item key="til"     >
                 <Col span={15} theme="dark" >
 
@@ -57,10 +57,12 @@ const HeaderBase = () => {
               </Menu.Item>
               <Menu.Item key="profil-1">
                 <Col span={9} >
-                  <Link to="/Profil">  <span style={{
-                    border: '1px solid white', 
-                    borderRadius: '90%', color: 'white', padding: '30%',
-                  }} > <UserOutlined />  </span>   </Link>
+                  <Link to="/Profil">   <Avatar
+                      src="    https://www.picsum.photos/400   "
+                      style={{ backgroundColor: '#87d068', }}
+                   
+                    icon={<UserOutlined />}
+                  />  </Link>
                 </Col>
               </Menu.Item>
             </Menu>
