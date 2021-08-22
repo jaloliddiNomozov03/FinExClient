@@ -14,9 +14,8 @@ const layout = {
   },
 };
 const HeaderQarizdorlik = (props) => {
-  const [date, setDate] = useState("");
   const [staff, setStaff] = useState([]);
-  // const [staffId, setStaffId] = useState(null);
+  const [date, setDate] = useState("");
   const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
   useEffect(()=>{
     getStaff();

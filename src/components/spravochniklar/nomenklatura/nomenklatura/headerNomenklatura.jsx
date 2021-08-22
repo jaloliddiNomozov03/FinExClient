@@ -1,6 +1,12 @@
-import React, { useState } from "react";
-import { Button, Row, Col, Space, Input, Modal, Form, InputNumber } from "antd";
+import React, { useState, useEffect } from "react";
+import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, Select, notification} from "antd";
+import {getCurrencyList} from "../../../../server/config/objects/CurrencyService";
+import {getUnitList} from "../../../../server/config/objects/UnitService";
+import {getProductionList} from "../../../../server/config/document/ProductionService";
+import {getNomenclatureList, saveNomenclature} from "../../../../server/config/objects/NomenklaturaService";
+import {getProductTypeList} from "../../../../server/config/objects/ProductTypeService";
 const { Search } = Input;
+const {Option} = Select;
 const onSearch = (value) => console.log(value);
 const layout = {
   labelCol: {
@@ -10,13 +16,52 @@ const layout = {
     span: 16,
   },
 };
-const HeaderNomenklatura = () => {
+const HeaderNomenklatura = (props) => {
+  const [date, setDate] = useState(null);
+  const [currency, setCurrency] = useState(null);
+  const [nomenclature, setNomenclature] = useState(null);
+  const [units, setUnits] = useState(null);
+  const [productType, setProductType] = useState(null);
   const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
-  const [isCreateGroupModalVisible, setIsCreateGroupModalVisible] =
-    useState(false);
+  const [isCreateGroupModalVisible, setIsCreateGroupModalVisible] = useState(false);
+  useEffect(()=>{
+    getCurrency();
+    getUnit();
+    getProductType();
+    getNom();
+  },[]);
 
+  const getCurrency = () => {
+    getCurrencyList().then((res) => {
+      if (res && res.data) {
+        setCurrency(res.data);
+      }
+    });
+  };
+  const getUnit = () => {
+    getUnitList().then((res) => {
+      if (res && res.data) {
+        setUnits(res.data);
+      }
+    });
+  };
+  const getProductType = () => {
+    getProductTypeList().then((res) => {
+      if (res && res.data) {
+        setProductType(res.data);
+      }
+    });
+  };
+  const getNom = () => {
+    getNomenclatureList().then((res) => {
+      if (res && res.data) {
+        setNomenclature(res.data);
+      }
+    });
+  };
   const showCreateModal = () => {
     setIsCreateModalVisible(true);
+    getNom();
   };
   const showCreateGroupModal = () => {
     setIsCreateGroupModalVisible(true);
@@ -36,13 +81,42 @@ const HeaderNomenklatura = () => {
     setIsCreateGroupModalVisible(false);
   };
 
-  const onFinishCreate = (values) => {
-    console.log(values);
-  };
+
   const onFinishCreateGroup = (values) => {
     console.log(values);
   };
-
+  const onFinishCreate = (values) => {
+    console.log(values);
+    let nomenclature = {
+      name: values.document.name,
+      barcode: values.document.barcode,
+      basicUnit: values.document.basicUnit,
+      coefficient: values.document.coefficient,
+      count: values.document.count,
+      currencyId: values.document.currencyId,
+      nomenclatureId: values.document.nomenclatureId,
+      productTypeId: values.document.productTypeId,
+      finishedProduct: values.document.finishedProduct?values.document.finishedProduct.target.checked: false,
+      isMoreUnits: values.document.isMoreUnits?values.document.isMoreUnits.target.checked:false,
+      rawMaterial: values.document.rawMaterial?values.document.rawMaterial.target.checked:false,
+      serialNumber: values.document.serialNumber?values.document.serialNumber.target.checked: false,
+    };
+    if (nomenclature.name && nomenclature.barcode&&nomenclature.basicUnit&&nomenclature.count&&nomenclature.currencyId
+    && nomenclature.productTypeId){
+      saveNomenclature(nomenclature).then(value => {
+        if (value && value.data.success){
+          props.getNomenclature();
+          notification["success"]({
+            message: "Data success save!",
+          });
+        }else {
+          notification["error"]({
+            message: "Data do not save!",
+          });
+        }
+      })
+    }
+  };
   return (
     <Row>
       <Col span={6}>
@@ -74,8 +148,8 @@ const HeaderNomenklatura = () => {
 
             >
               <Form.Item
-                name={["document", "desc"]}
-                label="Description"
+                name={["document", "name"]}
+                label="Name:"
                 rules={[
                   {
                     required: true,
@@ -84,97 +158,194 @@ const HeaderNomenklatura = () => {
               >
                 <Input />
               </Form.Item>
+
+              {/*currencyId*/}
               <Form.Item
-                name={["document", "code"]}
-                label="Code"
-                rules={[
-                  {
-                    type: "integer",
-                  },
-                ]}
+                  name={["document", "currencyId"]}
+                  label="Currency:"
+                  rules={[
+                    {
+                      required: true,
+                    },
+                  ]}
               >
-                <InputNumber />
+                <Select
+                    // showSearch
+
+                    style={{width: 300}}
+                    placeholder=" "
+                    optionFilterProp="children"
+                    // onChange={onChangeCounterpart}
+                    className="Select"
+                    onSearch={onSearch}
+                    filterOption={(input, option) =>
+                        option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
+                    }
+                >
+                  {Array.isArray(currency)
+                      ? currency.map((item) => (
+                          <Option value={item.id}>{item.name}</Option>
+                      ))
+                      : ""}
+                </Select>
               </Form.Item>
+              {/*nomenclature*/}
               <Form.Item
-                name={["document", "edinitsa"]}
-                label="Edinitsa"
-                rules={[
-                  {
-                    type: "string",
-                  },
-                ]}
+                  name={["document", "nomenclatureId"]}
+                  label="Roditel:"
+                  // rules={[
+                  //   {
+                  //     required: true,
+                  //   },
+                  // ]}
               >
-                <Input />
+                <Select
+                    // showSearch
+
+                    style={{width: 300}}
+                    placeholder=" "
+                    optionFilterProp="children"
+                    // onChange={onChangeCounterpart}
+                    className="Select"
+                    onSearch={onSearch}
+                    filterOption={(input, option) =>
+                        option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
+                    }
+                >
+                  <Option>nothing...</Option>
+                  {Array.isArray(nomenclature)
+                      ? nomenclature.map((item) => (
+                          <Option value={item.id}>{item.name}</Option>
+                      ))
+                      : ""}
+                </Select>
               </Form.Item>
+              {/* units */}
               <Form.Item
-                name={["document", "shtrc"]}
+                  name={["document", "basicUnit"]}
+                  label="Unit:"
+                  rules={[
+                    {
+                      required: true,
+                    },
+                  ]}
+              >
+                <Select
+                    // showSearch
+
+                    style={{width: 300}}
+                    placeholder=" "
+                    optionFilterProp="children"
+                    // onChange={onChangeCounterpart}
+                    className="Select"
+                    onSearch={onSearch}
+                    filterOption={(input, option) =>
+                        option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
+                    }
+                >
+                  {Array.isArray(units)
+                      ? units.map((item) => (
+                          <Option value={item.id}>{item.name}</Option>
+                      ))
+                      : ""}
+                </Select>
+              </Form.Item>
+
+              <Form.Item
+                name={["document", "barcode"]}
                 label="ShtrixCode"
                 rules={[{ type: "string" }]}
               >
+                <Input />
+              </Form.Item>
+              {/*productType*/}
+              <Form.Item
+                  name={["document", "productTypeId"]}
+                  label="productType:"
+                  rules={[
+                    {
+                      required: true,
+                    },
+                  ]}
+              >
+                <Select
+                    // showSearch
+
+                    style={{width: 300}}
+                    placeholder=" "
+                    optionFilterProp="children"
+                    // onChange={onChangeCounterpart}
+                    className="Select"
+                    onSearch={onSearch}
+                    filterOption={(input, option) =>
+                        option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
+                    }
+                >
+                  {Array.isArray(productType)
+                      ? productType.map((item) => (
+                          <Option value={item.id}>{item.name}</Option>
+                      ))
+                      : ""}
+                </Select>
+              </Form.Item>
+
+
+              {/*<Form.Item*/}
+              {/*  name={["document", "serialNumber"]}*/}
+              {/*  label="Seriyka"*/}
+              {/*  rules={[{ type: "string" }]}*/}
+              {/*>*/}
+              {/*  <Input />*/}
+              {/*</Form.Item>*/}
+              <Form.Item
+                  name={["document", "finishedProduct"]}
+                  label="finishedProduct:"
+                  valuePropName="unchecked"
+              >
+                <Input type="checkbox" />
+              </Form.Item>
+              <Form.Item
+                  name={["document", "isMoreUnits"]}
+                  label="IsMoreUnit:"
+                  valuePropName="unchecked"
+              >
+                <Input type="checkbox" />
+              </Form.Item>
+              <Form.Item
+                  name={["document", "count"]}
+                  label="Count:"
+                  rules={[{ type: "number" }]}
+              >
                 <InputNumber />
               </Form.Item>
               <Form.Item
-                name={["document", "TipTovara"]}
-                label="TipTovara"
-                rules={[{ type: "string" }]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name={["document", "seriyka"]}
-                label="Seriyka"
-                rules={[{ type: "string" }]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name={["document", "EdinIzm"]}
-                label="EdinitsaIzmereniya"
-                rules={[{ type: "string" }]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name={["document", "koeffitsient"]}
+                name={["document", "coefficient"]}
                 label="Koeffitsient"
-                rules={[{ type: "string" }]}
+                rules={[{ type: "number" }]}
               >
-                <Input />
+                <InputNumber />
               </Form.Item>
               <Form.Item
-                name={["document", "valyuta"]}
-                label="Valyuta"
-                rules={[{ type: "string" }]}
+                  name={["document", "rawMaterial"]}
+                  label="rawMaterial:"
+                  valuePropName="unchecked"
               >
-                <Input />
+                <Input type="checkbox" />
               </Form.Item>
               <Form.Item
-                name={["document", "sirye"]}
-                label="Sirye"
-                rules={[{ type: "string" }]}
+                  name={["document", "serialNumber"]}
+                  label="serialNumber:"
+                  valuePropName="unchecked"
               >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name={["document", "mahsulot"]}
-                label="Mahsulot"
-                rules={[{ type: "string" }]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name={["document", "mahsulotM"]}
-                label="MahsulotMiqdori"
-                rules={[{ type: "string" }]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name={["document", "description"]}
-                label="Description"
-                rules={[{ type: "string" }]}
-              >
-                <Input />
+                <Input type="checkbox" />
               </Form.Item>
 
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>

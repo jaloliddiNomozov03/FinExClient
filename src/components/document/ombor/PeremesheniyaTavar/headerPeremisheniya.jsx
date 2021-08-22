@@ -1,10 +1,14 @@
-import React, { useState } from "react";
-import { Button, Row, Col, Space, Input, Modal, Form, InputNumber } from "antd";
+import React, {useEffect, useState} from "react";
+import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, Select, DatePicker, notification} from "antd";
 import { Table } from "antd";
 import "./peremisheniya.css";
 import { dataa } from "./ModalTable";
 import { columnss } from "./ModalTable";
-
+import {getStaffList} from "../../../../server/config/objects/StaffService";
+import {getBranchesList} from "../../../../server/config/objects/BranchService";
+import {getWarehouseList} from "../../../../server/config/objects/WarehouseService";
+import {saveMovingGoods} from "../../../../server/config/document/MovingGoodsService";
+const {Option} = Select;
 const { Search } = Input;
 const onSearch = (value) => console.log(value);
 const layout = {
@@ -15,8 +19,41 @@ const layout = {
     span: 16,
   },
 };
-const HeaderPeremisheniya = () => {
+const HeaderPeremisheniya = (props) => {
+  const [date, setDate] = useState("");
+  const [staff, setStaff] = useState(null);
+  const [branch, setBranch] = useState(null);
+  const [warehouse, setWarehouse] = useState(null);
+
   const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
+
+  useEffect(()=>{
+    getStaff();
+    getBranch();
+    getWarehouses();
+  },[]);
+
+  const getStaff = () => {
+    getStaffList().then((value) => {
+      if (value && value.data) {
+        setStaff(value.data);
+      }
+    });
+  };
+  const getBranch = () => {
+    getBranchesList().then((value) => {
+      if (value && value.data) {
+        setBranch(value.data);
+      }
+    });
+  };
+  const getWarehouses = () => {
+    getWarehouseList().then((value) => {
+      if (value && value.data) {
+        setWarehouse(value.data);
+      }
+    });
+  };
 
   const showCreateModal = () => {
     setIsCreateModalVisible(true);
@@ -31,9 +68,40 @@ const HeaderPeremisheniya = () => {
   };
 
   const onFinishCreate = (values) => {
-    console.log(values);
+    let movingGood = {
+      accounting: values.document.accounting,
+      branchId: values.document.branchId,
+      date: date,
+      recipientWarehouseId: values.document.recipientWarehouseId,
+      senderWarehouseId: values.document.senderWarehouseId,
+      staffId: values.document.staffId,
+      comment: values.document.comment,
+    };
+    console.log(movingGood);
+    if (movingGood.branchId&&movingGood.recipientWarehouseId&&movingGood.senderWarehouseId&&movingGood.staffId&& movingGood.date){
+      saveMovingGoods(movingGood).then(value => {
+        if (value && value.data.success){
+          props.getMovingGoods();
+          notification["success"]({
+            message: "Data success save!",
+          });
+        }else {
+          notification["error"]({
+            message: "Data do not save!",
+          });
+        }
+      })
+    }
   };
+  function onChange(value, dateString) {
+    // console.log('Selected Time: ', value);
+    setDate(dateString);
+  }
 
+
+  function onOk(value) {
+    console.log("onOk: ", value);
+  }
   return (
     <Row>
       <Col span={4}>
@@ -74,65 +142,175 @@ const HeaderPeremisheniya = () => {
             <Form {...layout} name="nest-messages" onFinish={onFinishCreate}>
               <div className='ModalDiv'>
                 <Row>
-                  <Col span={8} style={{ borderRight: '1px solid #333', padding: '1%' }} >
+                  <Col span={12} style={{ borderRight: '1px solid #333', padding: '1%' }} >
                     <Form.Item
-                      name={["document", "data"]}
-                      label="Data"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
+                        name={["document", "accounting"]}
+                        label="Учет:"
+                        rules={[
+                          {
+                            type: "string",
+                          },
+                        ]}
                     >
-                      <InputNumber />
+                      <Input/>
                     </Form.Item>
                     <Form.Item
-                      name={["document", "otpravleniya "]}
-                      label="СкладОтправителя:"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
+                        name={["document", "branchId"]}
+                        label="Организация"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
                     >
-                      <Input />
+                      <Select
+                          // showSearch
+
+                          style={{width: 300}}
+                          placeholder=" "
+                          optionFilterProp="children"
+                          // onChange={onChangeCounterpart}
+                          className="Select"
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children
+                                  .toLowerCase()
+                                  .indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {Array.isArray(branch)
+                            ? branch.map((item) => (
+                                <Option value={item.id}>{item.name}</Option>
+                            ))
+                            : ""}
+                      </Select>
                     </Form.Item>
                     <Form.Item
-                      name={["document", "organizatsiya "]}
-                      label="Организация:"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
+                        name={["document", "senderWarehouseId"]}
+                        label="СкладОтправителя:"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
                     >
-                      <Input />
+                      <Select
+                          // showSearch
+
+                          style={{width: 300}}
+                          placeholder=" "
+                          optionFilterProp="children"
+                          // onChange={onChangeCounterpart}
+                          className="Select"
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children
+                                  .toLowerCase()
+                                  .indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {Array.isArray(warehouse)
+                            ? warehouse.map((item) => (
+                                <Option value={item.id}>{item.name}</Option>
+                            ))
+                            : ""}
+                      </Select>
                     </Form.Item>
                     <Form.Item
-                      name={["document", "otvetstvenniy "]}
-                      label="Ответственный:"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
+                        name={["document", "recipientWarehouseId"]}
+                        label="СкладПолучатель:"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
                     >
-                      <Input />
+                      <Select
+                          // showSearch
+
+                          style={{width: 300}}
+                          placeholder=" "
+                          optionFilterProp="children"
+                          // onChange={onChangeCounterpart}
+                          className="Select"
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children
+                                  .toLowerCase()
+                                  .indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {Array.isArray(warehouse)
+                            ? warehouse.map((item) => (
+                                <Option value={item.id}>{item.name}</Option>
+                            ))
+                            : ""}
+                      </Select>
                     </Form.Item>
                     <Form.Item
-                      name={["document", "skladpoluchatel "]}
-                      label="СкладПолучатель:"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
+                        name={["document", "staffId"]}
+                        label="Ответственный:"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
                     >
-                      <Input />
+                      <Select
+                          // showSearch
+
+                          style={{width: 300}}
+                          placeholder=" "
+                          optionFilterProp="children"
+                          // onChange={onChangeCounterpart}
+                          className="Select"
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children
+                                  .toLowerCase()
+                                  .indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {Array.isArray(staff)
+                            ? staff.map((item) => (
+                                <Option value={item.id}>{item.name}</Option>
+                            ))
+                            : ""}
+                      </Select>
                     </Form.Item>
-                    <Button type='primary' >Submit</Button>
+                    <Form.Item
+                        name={["document", "date"]}
+                        label="Time"
+                    >
+                      <Space direction="vertical" size={12}>
+                        <DatePicker
+                            showTime
+                            onChange={onChange}
+                            onOk={onOk}
+                        />
+                      </Space>
+                    </Form.Item>
+                    <Form.Item
+                        name={["document", "comment"]}
+                        label="Comment:"
+                        rules={[
+                          {
+                            type: "string",
+                          },
+                        ]}
+                    >
+                      <Input/>
+                    </Form.Item>
+
+                    <Form.Item
+                        wrapperCol={{...layout.wrapperCol, offset: 8}}
+                    >
+                      <Button type="primary" htmlType="submit">
+                        Submit
+                      </Button>
+                    </Form.Item>
                   </Col>
-                  <Col span={16} style={{padding:'1%'}} >
+                  <Col span={12} style={{padding:'1%'}} >
                     <Row>
                       <Button type="primary"> Добавить</Button>
 
