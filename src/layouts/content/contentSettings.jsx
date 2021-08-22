@@ -3,7 +3,6 @@ import ContentSlider from "../../components/ComponentSlider/slider";
 import { Switch, Route } from "react-router-dom";
 import ContentKonstantalar from "../../components/settings/konstantalar/konstantalar";
 import AccessContent from "../../components/settings/access/access";
-
 class ContentSettings extends React.Component {
   render() {
     return (
@@ -15,7 +14,7 @@ class ContentSettings extends React.Component {
             <ContentKonstantalar />
         </Route>
         <Route path="/Settings/access">
-            <AccessContent />
+          <AccessContent />
         </Route>
       </Switch>
     );
