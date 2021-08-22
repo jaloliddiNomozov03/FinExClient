@@ -5,6 +5,15 @@ import {HttpRequestHub} from "../../HttpRequestHub";
 
 const BASE_URL = '/api/v1/productType';
 
+export const getProductTypeList=()=>{
+    const config = {
+        url: `${BASE_URL}/list`,
+        method: 'GET',
+    };
+    return HttpRequestHub(config);
+};
+
+
 export const getPage = (page=0, size=10) => {
     const config = {
         method: 'GET',

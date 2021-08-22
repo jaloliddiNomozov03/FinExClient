@@ -1,35 +1,31 @@
 import {HttpRequestHub} from "../../HttpRequestHub";
-// import axios from "axios";
-// import {host, port} from "../../host";
 
+const BASE_URL = '/api/v1/production';
 
-const BASE_URL = '/api/v1/unit';
-
-export const getUnitList=()=>{
+export const getProductionList=()=>{
     const config = {
         method: 'GET',
-        url: `${BASE_URL}/list`
+        url: `${BASE_URL}/list`,
+    };
+    return HttpRequestHub(config);
+};
+export const getProductionPage = (page=0, size=10) => {
+    const config = {
+        url: `${BASE_URL}/all?page=${page}&size=${size}`,
+        method: 'GET'
     };
     return HttpRequestHub(config);
 };
 
-export const getUnitPage = (page=0, size=10) => {
-    const config = {
-        method: 'GET',
-        url: `${BASE_URL}/all?page=${page}&size=${size}`
-    };
-    return HttpRequestHub(config);
-};
-
-export const saveUnit =(unitObj)=>{
+export const saveProduction =(object)=>{
     const config = {
         method: 'POST',
-        data: unitObj,
-        url: `${BASE_URL}`
+        data: object,
+        url: `${BASE_URL}/save`
     };
     return HttpRequestHub(config);
 };
-export const deleteUnit = (id) => {
+export const deleteProduction = (id) => {
     const config = {
         method: 'DELETE',
         url: `${BASE_URL}/${id}`

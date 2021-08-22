@@ -5,6 +5,14 @@ import {HttpRequestHub} from "../../HttpRequestHub";
 
 const BASE_URL = '/api/v1/warehouse';
 
+export const getWarehouseList=()=>{
+    const config = {
+        method: 'GET',
+        url: `${BASE_URL}/list`
+    };
+    return HttpRequestHub(config);
+};
+
 export const getWarehousePage = (page=0, size=10) => {
     const config = {
         method: 'GET',
