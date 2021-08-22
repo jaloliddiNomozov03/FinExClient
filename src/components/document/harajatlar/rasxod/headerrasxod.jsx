@@ -102,19 +102,7 @@ const HeaderRasxod = (props) => {
     })
   };
 
-  // select functions
-  function onChangeCashBox(value) {
 
-  }
-  function onChangeStaff(value) {
-
-  }
-  function onChangeBranch(value) {
-
-  }
-  function onChangeSections(value) {
-
-  }
 
   return (
     <Row>
@@ -178,7 +166,7 @@ const HeaderRasxod = (props) => {
                           style={{ width: 300 }}
                           placeholder=" "
                           optionFilterProp="children"
-                          onChange={onChangeCashBox}
+
                           className='Select'
                           onSearch={onSearch}
                           filterOption={(input, option) =>
@@ -217,7 +205,7 @@ const HeaderRasxod = (props) => {
                           style={{ width: 300 }}
                           placeholder=" "
                           optionFilterProp="children"
-                          onChange={onChangeStaff}
+
                           className='Select'
                           onSearch={onSearch}
                           filterOption={(input, option) =>
@@ -245,7 +233,7 @@ const HeaderRasxod = (props) => {
                           style={{ width: 300 }}
                           placeholder=" "
                           optionFilterProp="children"
-                          onChange={onChangeBranch}
+
                           className='Select'
                           onSearch={onSearch}
                           filterOption={(input, option) =>
@@ -273,7 +261,6 @@ const HeaderRasxod = (props) => {
                           style={{ width: 300 }}
                           placeholder=" "
                           optionFilterProp="children"
-                          onChange={onChangeSections}
                           className='Select'
                           onSearch={onSearch}
                           filterOption={(input, option) =>

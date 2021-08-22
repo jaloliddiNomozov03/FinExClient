@@ -1,12 +1,18 @@
-import React, { useState } from "react";
-import { Button, Row, Col, Space, Input, Modal, Form, InputNumber } from "antd";
+import React, {useEffect, useState} from "react";
+import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, notification, Select, DatePicker} from "antd";
 import { Table } from "antd";
 import "./yukberuvchiQaytarish.css";
 import { dataa } from "./modalTablee";
 import { dataaa } from "./modalTablee";
 import { columnss } from "./modalTablee";
 import { columnsss } from "./modalTablee";
-
+import {saveGoodsToTheSupplier} from "../../../../server/config/document/ReturnOfGoodsToTheSupplier";
+import {getStaffList} from "../../../../server/config/objects/StaffService";
+import {getBranchesList} from "../../../../server/config/objects/BranchService";
+import {getWarehouseList} from "../../../../server/config/objects/WarehouseService";
+import {getCounterpartList} from "../../../../server/config/objects/CounterpartyService";
+import {getCurrencyList} from "../../../../server/config/objects/CurrencyService";
+const { Option } = Select;
 const { Search } = Input;
 const onSearch = (value) => console.log(value);
 const layout = {
@@ -17,7 +23,7 @@ const layout = {
     span: 16,
   },
 };
-const HeaderYukberuvchi = () => {
+const HeaderYukberuvchi = (props) => {
   const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
 
   const showCreateModal = () => {
@@ -32,9 +38,94 @@ const HeaderYukberuvchi = () => {
     setIsCreateModalVisible(false);
   };
 
+  const [date, setDate] = useState("");
+  const [branch, setBranch]=useState([]);
+  const [staff, setStaff]=useState([]);
+  const [counterparty, setCounterparty]=useState([]);
+  const [maturity, setMaturity] = useState("");
+  const [currency, setCurrency] = useState([]);
+
+  const [warehouse, setWarehouse]=useState([]);
+
+  useEffect(()=>{
+
+    getStaff();
+    getBranches();
+    getWarehouse();
+    getCounterParty();
+    getCurrency();
+  },[]);
+
   const onFinishCreate = (values) => {
     console.log(values);
+    console.log(date)
+    let rasxod = {
+      ...values.document,
+      rate: values.document.rate,
+      date: date,
+      repaymentDate: maturity
+
+    };
+    if (rasxod.date && rasxod.responsibleId&&rasxod.branchId&&rasxod.comment&&rasxod.warehouseId){
+      saveGoodsToTheSupplier(rasxod).then(value => {
+        if (value && value.data.success){
+          props.getList();
+          notification['success']({
+            message:'Data success saved!',
+          });
+        }else {
+          notification['error']({
+            message:'Data not saved!',
+          });
+        }
+      })
+    }
   };
+
+  const getStaff = ()=>{
+    getStaffList().then(value => {
+      if (value && value.data){
+        setStaff(value.data);
+      }
+    })
+  };const getCurrency = ()=>{
+    getCurrencyList().then(value => {
+      if (value && value.data){
+        setCurrency(value.data);
+      }
+    })
+  };
+  const getBranches = ()=>{
+    getBranchesList().then(value => {
+      if (value && value.data){
+        setBranch(value.data);
+      }
+    })
+  };
+  const getWarehouse = ()=>{
+    getWarehouseList().then(value => {
+      if (value && value.data){
+        setWarehouse(value.data);
+      }
+    })
+  };
+
+  const getCounterParty = ()=>{
+    getCounterpartList().then(value => {
+      if (value && value.data){
+        setCounterparty(value.data);
+      }
+    })
+  };
+  function onChangeMaturity(value, dateString) {
+    console.log('Selected Time: ', dateString);
+    setMaturity(dateString);
+  }
+
+  function onChange(value, dateString) {
+    console.log('Selected Time: ', dateString);
+    setDate(dateString);
+  }
 
   return (
     <Row>
@@ -88,15 +179,16 @@ const HeaderYukberuvchi = () => {
                       Malumotlar
                     </h4>
                     <Form.Item
-                      name={["document", "number"]}
+                      name={["document", "code"]}
                       label="Nomer:"
                       rules={[
                         {
-                          required: true,
+                          required: false,
+                          type:"number"
                         },
                       ]}
                     >
-                      <Input />
+                      <InputNumber />
                     </Form.Item>
                     <Form.Item
                       name={["document", "data"]}
@@ -107,21 +199,39 @@ const HeaderYukberuvchi = () => {
                         },
                       ]}
                     >
-                      <InputNumber style={{ width: '39vh' }} />
+                      <Space direction="vertical" size={12}>
+                        <DatePicker showTime onChange={onChange} />
+                      </Space>
                     </Form.Item>
                     <Form.Item
-                      name={["document", "otvet"]}
-                      label="Otvetstvenniy:"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
+                        name={["document", "responsibleId"]}
+                        label="Otvetstvenniy:"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
                     >
-                      <Input />
+                      <Select
+                          style={{ width: 300 }}
+                          placeholder=" "
+                          optionFilterProp="children"
+
+                          className='Select'
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {
+                          Array.isArray(staff)?staff.map((item)=>(
+                              <Option value={item.id}>{item.name}</Option>
+                          )):""
+                        }
+                      </Select>
                     </Form.Item>
                     <Form.Item
-                      name={["document", "uchyet"]}
+                      name={["document", "account"]}
                       label="Uchyet:"
                       rules={[
                         {
@@ -132,66 +242,113 @@ const HeaderYukberuvchi = () => {
                       <Input />
                     </Form.Item>
                     <Form.Item
-                      name={["document", "ombor"]}
-                      label="Ombor:"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
+                        name={["document", "warehouseId"]}
+                        label="Ombor:"
+                        rules={[
+                          {
+                            required: true
+                          },
+                        ]}
                     >
-                      <Input />
+                      <Select
+                          style={{ width: 300 }}
+                          placeholder=" "
+                          optionFilterProp="children"
+                          className='Select'
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {
+                          Array.isArray(warehouse)?warehouse.map((item)=>(
+                              <Option value={item.id}>{item.name}</Option>
+                          )):""
+                        }
+                      </Select>
                     </Form.Item>
                     <Form.Item
-                      name={["document", "organizatsiya"]}
+                      name={["document", "branchId"]}
                       label="Organizatsiya:"
                       rules={[
                         {
-                          type: "string",
+                          required: true,
                         },
                       ]}
                     >
-                      <Input />
-                    </Form.Item>
-                    <Form.Item
-                      name={["document", "kontragent"]}
-                      label="Kontragent:"
-                      rules={[
+                      <Select
+                          style={{ width: 300 }}
+                          placeholder=" "
+                          optionFilterProp="children"
+
+                          className='Select'
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
                         {
-                          type: "string",
-                        },
-                      ]}
-                    >
-                      <Input />
+                          Array.isArray(branch)?branch.map((item)=>(
+                              <Option value={item.id}>{item.name}</Option>
+                          )):""
+                        }
+                      </Select>
                     </Form.Item>
                     <Form.Item
-                      name={["document", "bonus"]}
+                        name={["document", "counterpartyId"]}
+                        label="Kontragent:"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
+                    >
+
+                      <Select
+                          style={{ width: 300 }}
+                          placeholder=" "
+                          optionFilterProp="children"
+                          className='Select'
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {
+                          Array.isArray(counterparty)?counterparty.map((item)=>(
+                              <Option value={item.id}>{item.name}</Option>
+                          )):""
+                        }
+                      </Select>
+                    </Form.Item>
+                    <Form.Item
+                      name={["document", "salesBonusPercentage"]}
                       label="ProtsentBonusPoProdaji:"
                       rules={[
                         {
-                          type: "string",
+                          type: "number",
                         },
                       ]}
                     >
-                      <Input />
+                      <InputNumber />
                     </Form.Item>
                     <Form.Item
-                      name={["document", "kurs"]}
+                      name={["document", "rate"]}
                       label="Kurs:"
                       rules={[
                         {
-                          type: "string",
+                          type: "number",
                         },
                       ]}
                     >
-                      <Input />
+                      <InputNumber />
                     </Form.Item>
                     <h4 style={{ color: "blue", textAlign: "center" }}>
                       Tulov muddati
                     </h4>
 
                     <Form.Item
-                      name={["document", "valyuta"]}
+                      name={["document", "currencyId"]}
                       label="Valyuta:"
                       rules={[
                         {
@@ -199,21 +356,36 @@ const HeaderYukberuvchi = () => {
                         },
                       ]}
                     >
-                      <Input />
+                      <Select
+                          style={{ width: 300 }}
+                          placeholder=" "
+                          optionFilterProp="children"
+                          className='Select'
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {
+                          Array.isArray(currency)?currency.map((item)=>(
+                              <Option value={item.id}>{item.name}</Option>
+                          )):""
+                        }
+                      </Select>
                     </Form.Item>
                     <Form.Item
-                      name={["document", "summadoc"]}
+                      name={["document", "sumDocument"]}
                       label="SummaDocument:"
                       rules={[
                         {
-                          type: "string",
+                          type: "number",
                         },
                       ]}
                     >
-                      <Input />
+                      <InputNumber />
                     </Form.Item>
                     <Form.Item
-                      name={["document", "tulov"]}
+                      name={["document", "dateRepayment"]}
                       label="TulovMuddati:"
                       rules={[
                         {
@@ -221,21 +393,41 @@ const HeaderYukberuvchi = () => {
                         },
                       ]}
                     >
-                      <Input />
+                      <Space direction="vertical" size={12}>
+                        <DatePicker showTime onChange={onChangeMaturity} />
+                      </Space>
                     </Form.Item>
                     <Form.Item
-                      name={["document", "obshiydalog"]}
+                      name={["document", "totalDebt"]}
                       label="ObshiyDalog:"
                       // style={{padding:"0", margin: '0'}}
                       rules={[
                         {
-                          type: "string",
+                          type: "number",
                         },
                       ]}
                     >
-                      <Input />
+                      <InputNumber />
                     </Form.Item>
-
+                    {/*<div className='Mt' >*/}
+                      <Form.Item
+                          name={["document", "comment"]}
+                          label="Izox"
+                          className="Textarea"
+                          rules={[
+                            {
+                              type: "string",
+                            },
+                          ]}
+                      >
+                        <textarea style={{ minHeight: "15vh", minWidth: "100vh" }} />
+                      </Form.Item>
+                    {/*</div>*/}
+                    <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                      <Button type="primary" htmlType="submit">
+                        Submit
+                      </Button>
+                    </Form.Item>
                   </Col>
 
                   <Col span={16} style={{ padding: '1%', borderLeft:'1px solid #555' }} >
@@ -274,20 +466,7 @@ const HeaderYukberuvchi = () => {
                         />
                       </Row>
                     </div>
-                    <div className='Mt' >
-                      <Form.Item
-                        name={["document", "izox"]}
-                        label="Izox"
-                        className="Textarea"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <textarea style={{ minHeight: "15vh", minWidth: "100vh" }} />
-                      </Form.Item>
-                    </div>
+
                   </Col>
                 </Row>
               </div>

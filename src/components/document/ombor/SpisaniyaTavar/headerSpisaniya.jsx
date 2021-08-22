@@ -1,11 +1,16 @@
-import React, { useState } from "react";
-import { Button, Row, Col, Space, Input, Modal, Form, InputNumber, } from "antd";
+import React, {useEffect, useState} from "react";
+import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, notification, DatePicker, Select} from "antd";
 import { Table } from "antd";
 import "./spisaniya.css";
 import { dataa } from "./ModalTable";
 import { columnss } from "./ModalTable";
 import TextArea from "antd/lib/input/TextArea";
+import {saveWriteOfGoods} from "../../../../server/config/document/WriteOffOfGoods";
+import {getStaffList} from "../../../../server/config/objects/StaffService";
+import {getBranchesList} from "../../../../server/config/objects/BranchService";
+import {getWarehouseList} from "../../../../server/config/objects/WarehouseService";
 
+const { Option } = Select;
 const { Search } = Input;
 const onSearch = (value) => console.log(value);
 const layout = {
@@ -16,7 +21,7 @@ const layout = {
     span: 16,
   },
 };
-const HeaderSpisaniya = () => {
+const HeaderSpisaniya = (props) => {
   const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
 
   const showCreateModal = () => {
@@ -31,10 +36,71 @@ const HeaderSpisaniya = () => {
     setIsCreateModalVisible(false);
   };
 
+
+  const [date, setDate] = useState("");
+  const [branch, setBranch]=useState([]);
+  const [staff, setStaff]=useState([]);
+  const [warehouse, setWarehouse]=useState([]);
+
+  useEffect(()=>{
+
+    getStaff();
+    getBranches();
+    getWarehouse();
+  },[]);
+
   const onFinishCreate = (values) => {
     console.log(values);
+    console.log(date)
+    let rasxod = {
+      date: date,
+      responsibleId: values.document.responsible,
+      branchId: values.document.branch,
+      warehouseId: values.document.warehouse,
+      comment: values.document.comment,
+    };
+    if (rasxod.date && rasxod.responsibleId&&rasxod.branchId&&rasxod.comment&&rasxod.warehouseId){
+      saveWriteOfGoods(rasxod).then(value => {
+        if (value && value.data.success){
+          props.getList();
+          notification['success']({
+            message:'Data success saved!',
+          });
+        }else {
+          notification['error']({
+            message:'Data not saved!',
+          });
+        }
+      })
+    }
   };
 
+  const getStaff = ()=>{
+    getStaffList().then(value => {
+      if (value && value.data){
+        setStaff(value.data);
+      }
+    })
+  };
+  const getBranches = ()=>{
+    getBranchesList().then(value => {
+      if (value && value.data){
+        setBranch(value.data);
+      }
+    })
+  };
+  const getWarehouse = ()=>{
+    getWarehouseList().then(value => {
+      if (value && value.data){
+        setWarehouse(value.data);
+      }
+    })
+  };
+
+  function onChange(value, dateString) {
+    console.log('Selected Time: ', dateString);
+    setDate(dateString);
+  } 
   return (
     <Row>
       <Col span={4}>
@@ -76,53 +142,115 @@ const HeaderSpisaniya = () => {
                 <Row>
                   <Col span={7} style={{ borderRight: '1px solid #333', padding: '1%' }} >
                     <Form.Item
-                      name={["document", "data"]}
-                      label="Data"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
+                        name={["document", "time"]}
+                        label="Time"
                     >
-                      <InputNumber />
+                      <Space direction="vertical" size={12}>
+                        <DatePicker showTime onChange={onChange} />
+                      </Space>
                     </Form.Item>
 
                     <Form.Item
-                      name={["document", "ombor "]}
+                      name={["document", "warehouse"]}
                       label="Ombor:"
                       rules={[
                         {
-                          type: "string",
+                          required: true
                         },
                       ]}
                     >
-                      <Input />
+                      <Select
+                          style={{ width: 300 }}
+                          placeholder=" "
+                          optionFilterProp="children"
+                          className='Select'
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {
+                          Array.isArray(warehouse)?warehouse.map((item)=>(
+                              <Option value={item.id}>{item.name}</Option>
+                          )):""
+                        }
+                      </Select>
                     </Form.Item>
 
                     <Form.Item
-                      name={["document", "organizatsiya "]}
-                      label="Организация:"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
+                        name={["document", "branch"]}
+                        label="Organizatsiya"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
                     >
-                      <Input />
+                      <Select
+                          style={{ width: 300 }}
+                          placeholder=" "
+                          optionFilterProp="children"
+
+                          className='Select'
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {
+                          Array.isArray(branch)?branch.map((item)=>(
+                              <Option value={item.id}>{item.name}</Option>
+                          )):""
+                        }
+                      </Select>
                     </Form.Item>
 
+
                     <Form.Item
-                      name={["document", "otvetstvenniy "]}
-                      label="Ответственный:"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
+                        name={["document", "responsible"]}
+                        label="Responsible"
+                        rules={[
+                          {
+                            required: true,
+                          },
+                        ]}
                     >
-                      <Input />
+                      <Select
+                          style={{ width: 300 }}
+                          placeholder=" "
+                          optionFilterProp="children"
+
+                          className='Select'
+                          onSearch={onSearch}
+                          filterOption={(input, option) =>
+                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                          }
+                      >
+                        {
+                          Array.isArray(staff)?staff.map((item)=>(
+                              <Option value={item.id}>{item.name}</Option>
+                          )):""
+                        }
+                      </Select>
                     </Form.Item>
-                    <Button type='primary' >Submit</Button>
+                    <Form.Item
+                        name={["document", "comment"]}
+                        label="Izox:"
+                        className="Textarea"
+                        rules={[
+                          {
+                            type: "string",
+                          },
+                        ]}
+                    >
+                      <TextArea  style={{height:'10vh', width:'100vh' }} />
+                    </Form.Item>
+
+                    <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                      <Button type="primary" htmlType="submit">
+                        Submit
+                      </Button>
+                    </Form.Item>
                   </Col>
                   <Col span={16} style={{ padding: '1%' }} >
                     <Row>
@@ -145,18 +273,7 @@ const HeaderSpisaniya = () => {
                       scroll={{ x: 1000, y: 400 }}
                       dataSource={dataa}
                     />
-                    <Form.Item
-                      name={["document", "izox "]}
-                      label="Izox:"
-                      className="Textarea"
-                      rules={[
-                        {
-                          type: "string",
-                        },
-                      ]}
-                    >
-                      <TextArea  style={{height:'10vh', width:'100vh' }} />
-                    </Form.Item>
+
 
 
                   </Col>
