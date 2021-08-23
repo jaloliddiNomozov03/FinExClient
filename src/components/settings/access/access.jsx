@@ -217,6 +217,7 @@ const AccessContent = () => {
           }}
         >
           <Switch>
+            {/* --------provedenie------ */}
             <Route path="/Settings/Access/provedenie/obshie">
               <Menu key="provedenie-opt" mode="vertical">
                 <Menu.Item key="obsh-1">Option</Menu.Item>
@@ -428,6 +429,1279 @@ const AccessContent = () => {
             <Route path="/Settings/Access/provedenie/Documents">
               <Menu.Item key="prv-4">Konstantalar</Menu.Item>
             </Route>
+            {/* -------redaktirovat-----*/}
+            <Route path="/Settings/Access/redoktirovat/obshie">
+              <Menu key="redoktirovat-opt" mode="vertical">
+                <Menu.Item key="obsh-1">Option</Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/redoktirovat/spravochniklar">
+              <Menu key="redoktirovat-spr" mode="vertical">
+                <Menu.Item key="sprav-1">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/BankHisobRaqamlari">
+                    BankHisobRaqamlari
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-2">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/Bulimlar">
+                    Bulimlar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-3">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/ChiqimTuri">
+                    ChiqimTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-4">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/Filial">
+                    Filial
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-5">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/Firma">
+                    Firma
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-6">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/Kassalar">
+                    Kassalar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-7">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/Omborlar">
+                    Omborlar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-8">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/Valyutalar">
+                    Valyutalar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-9">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/MahsulotTuri">
+                    MahsulotTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-10">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/NarxTuri">
+                    NarxTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-11">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/Nomenklatura">
+                    Nomenklatura
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-12">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/Partiya">
+                    Partiya
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-13">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/UlchovBirligi">
+                    UlchovBirligi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-14">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/Bulim">
+                    Bulim
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-15">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/Foydalanuvchi">
+                    Foydalanuvchi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-16">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/Kontragent">
+                    Kontragent
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-17">
+                  <Link to="/Settings/Access/redoktirovat/spravochniklar/Xodim">
+                    Xodim
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/redoktirovat/Documents">
+              <Menu key="redoktirovat-docs" mode="vertical">
+                <Menu.Item key="doc-1">
+                  <Link to="/Settings/Access/redoktirovat/Documents/PrixodBank">
+                    PrixodBank
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-2">
+                  <Link to="/Settings/Access/redoktirovat/Documents/RasxodBank">
+                    RasxodBank
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-3">
+                  <Link to="/Settings/Access/redoktirovat/Documents/OchistitDp">
+                    OchistitDp
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-4">
+                  <Link to="/Settings/Access/redoktirovat/Documents/VseDocument">
+                    VseDocument
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-5">
+                  <Link to="/Settings/Access/redoktirovat/Documents/Raschet">
+                    Raschet
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-6">
+                  <Link to="/Settings/Access/redoktirovat/Documents/Rasxod">
+                    Rasxod
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-8">
+                  <Link to="/Settings/Access/redoktirovat/Documents/IshlabChiqarish">
+                    IshlabChiqarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-9">
+                  <Link to="/Settings/Access/redoktirovat/Documents/KassagaNaqdPulTushumi">
+                    KassagaNaqdPulTushumi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-10">
+                  <Link to="/Settings/Access/redoktirovat/Documents/KassagaNaqdPulChiqimi">
+                    KassagaNaqdPulChiqimi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-11">
+                  <Link to="/Settings/Access/redoktirovat/Documents/Intervizatsiya">
+                    Intervizatsiya
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-12">
+                  <Link to="/Settings/Access/redoktirovat/Documents/PostupleniyaTovara">
+                    PastupleniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-13">
+                  <Link to="/Settings/Access/redoktirovat/Documents/PeremesheniyaTovara">
+                    PeremesheniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-14">
+                  <Link to="/Settings/Access/redoktirovat/Documents/SpisaniyaTovara">
+                    SpisaniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-15">
+                  <Link to="/Settings/Access/redoktirovat/Documents/MahsulotlarniKlientdanQaytarish">
+                    MahsulotlarniKlientdanQaytarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-16">
+                  <Link to="/Settings/Access/redoktirovat/Documents/MahsulotlarniYukBeruvchigaQaytarish">
+                    MahsulotlarniYukBeruvchigaQaytarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-17">
+                  <Link to="/Settings/Access/redoktirovat/Documents/BankQoldiqlariniKiritish">
+                    BankQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-18">
+                  <Link to="/Settings/Access/redoktirovat/Documents/KassaQoldiqlariniKiritish">
+                    KassaQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-19">
+                  <Link to="/Settings/Access/redoktirovat/Documents/MahsulotQoldiqlariniKiritish">
+                    MahsulotQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-20">
+                  <Link to="/Settings/Access/redoktirovat/Documents/QarzdorlikQoldiqlariniKiritish">
+                    QarzdorlikQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-21">
+                  <Link to="/Settings/Access/redoktirovat/Documents/XodimlarQoldigi">
+                    XodimlarQoldigi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-22">
+                  <Link to="/Settings/Access/redoktirovat/Documents/Savdo">
+                    Savdo
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-23">
+                  <Link to="/Settings/Access/redoktirovat/Documents/Servis">
+                    Servis
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/redoktirovat/Documents">
+              <Menu.Item key="kons-4">Konstantalar</Menu.Item>
+            </Route>
+            {/* --------udalenie--------*/}
+            <Route path="/Settings/Access/udalenie/obshie">
+              <Menu key="udalenie-opt" mode="vertical">
+                <Menu.Item key="obsh-1">Option</Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/udalenie/spravochniklar">
+              <Menu key="udalenie-spr" mode="vertical">
+                <Menu.Item key="sprav-1">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/BankHisobRaqamlari">
+                    BankHisobRaqamlari
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-2">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/Bulimlar">
+                    Bulimlar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-3">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/ChiqimTuri">
+                    ChiqimTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-4">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/Filial">
+                    Filial
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-5">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/Firma">
+                    Firma
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-6">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/Kassalar">
+                    Kassalar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-7">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/Omborlar">
+                    Omborlar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-8">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/Valyutalar">
+                    Valyutalar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-9">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/MahsulotTuri">
+                    MahsulotTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-10">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/NarxTuri">
+                    NarxTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-11">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/Nomenklatura">
+                    Nomenklatura
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-12">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/Partiya">
+                    Partiya
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-13">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/UlchovBirligi">
+                    UlchovBirligi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-14">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/Bulim">
+                    Bulim
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-15">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/Foydalanuvchi">
+                    Foydalanuvchi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-16">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/Kontragent">
+                    Kontragent
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-17">
+                  <Link to="/Settings/Access/udalenie/spravochniklar/Xodim">
+                    Xodim
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/udalenie/Documents">
+              <Menu key="udalenie-docs" mode="vertical">
+                <Menu.Item key="doc-1">
+                  <Link to="/Settings/Access/udalenie/Documents/PrixodBank">
+                    PrixodBank
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-2">
+                  <Link to="/Settings/Access/udalenie/Documents/RasxodBank">
+                    RasxodBank
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-3">
+                  <Link to="/Settings/Access/udalenie/Documents/OchistitDp">
+                    OchistitDp
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-4">
+                  <Link to="/Settings/Access/udalenie/Documents/VseDocument">
+                    VseDocument
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-5">
+                  <Link to="/Settings/Access/udalenie/Documents/Raschet">
+                    Raschet
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-6">
+                  <Link to="/Settings/Access/udalenie/Documents/Rasxod">
+                    Rasxod
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-8">
+                  <Link to="/Settings/Access/udalenie/Documents/IshlabChiqarish">
+                    IshlabChiqarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-9">
+                  <Link to="/Settings/Access/udalenie/Documents/KassagaNaqdPulTushumi">
+                    KassagaNaqdPulTushumi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-10">
+                  <Link to="/Settings/Access/udalenie/Documents/KassagaNaqdPulChiqimi">
+                    KassagaNaqdPulChiqimi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-11">
+                  <Link to="/Settings/Access/udalenie/Documents/Intervizatsiya">
+                    Intervizatsiya
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-12">
+                  <Link to="/Settings/Access/udalenie/Documents/PostupleniyaTovara">
+                    PastupleniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-13">
+                  <Link to="/Settings/Access/udalenie/Documents/PeremesheniyaTovara">
+                    PeremesheniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-14">
+                  <Link to="/Settings/Access/udalenie/Documents/SpisaniyaTovara">
+                    SpisaniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-15">
+                  <Link to="/Settings/Access/udalenie/Documents/MahsulotlarniKlientdanQaytarish">
+                    MahsulotlarniKlientdanQaytarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-16">
+                  <Link to="/Settings/Access/udalenie/Documents/MahsulotlarniYukBeruvchigaQaytarish">
+                    MahsulotlarniYukBeruvchigaQaytarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-17">
+                  <Link to="/Settings/Access/udalenie/Documents/BankQoldiqlariniKiritish">
+                    BankQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-18">
+                  <Link to="/Settings/Access/udalenie/Documents/KassaQoldiqlariniKiritish">
+                    KassaQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-19">
+                  <Link to="/Settings/Access/udalenie/Documents/MahsulotQoldiqlariniKiritish">
+                    MahsulotQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-20">
+                  <Link to="/Settings/Access/udalenie/Documents/QarzdorlikQoldiqlariniKiritish">
+                    QarzdorlikQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-21">
+                  <Link to="/Settings/Access/udalenie/Documents/XodimlarQoldigi">
+                    XodimlarQoldigi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-22">
+                  <Link to="/Settings/Access/udalenie/Documents/Savdo">
+                    Savdo
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-23">
+                  <Link to="/Settings/Access/udalenie/Documents/Servis">
+                    Servis
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/udalenie/Documents">
+              <Menu.Item key="kons-4">Konstantalar</Menu.Item>
+            </Route>
+            {/* ---------superAdmin--------- */}
+            <Route path="/Settings/Access/superAdmin/obshie">
+              <Menu key="superAdmin-opt" mode="vertical">
+                <Menu.Item key="obsh-1">Option</Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/superAdmin/spravochniklar">
+              <Menu key="superAdmin-spr" mode="vertical">
+                <Menu.Item key="sprav-1">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/BankHisobRaqamlari">
+                    BankHisobRaqamlari
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-2">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/Bulimlar">
+                    Bulimlar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-3">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/ChiqimTuri">
+                    ChiqimTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-4">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/Filial">
+                    Filial
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-5">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/Firma">
+                    Firma
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-6">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/Kassalar">
+                    Kassalar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-7">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/Omborlar">
+                    Omborlar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-8">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/Valyutalar">
+                    Valyutalar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-9">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/MahsulotTuri">
+                    MahsulotTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-10">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/NarxTuri">
+                    NarxTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-11">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/Nomenklatura">
+                    Nomenklatura
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-12">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/Partiya">
+                    Partiya
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-13">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/UlchovBirligi">
+                    UlchovBirligi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-14">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/Bulim">
+                    Bulim
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-15">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/Foydalanuvchi">
+                    Foydalanuvchi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-16">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/Kontragent">
+                    Kontragent
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-17">
+                  <Link to="/Settings/Access/superAdmin/spravochniklar/Xodim">
+                    Xodim
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/superAdmin/Documents">
+              <Menu key="superAdmin-docs" mode="vertical">
+                <Menu.Item key="doc-1">
+                  <Link to="/Settings/Access/superAdmin/Documents/PrixodBank">
+                    PrixodBank
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-2">
+                  <Link to="/Settings/Access/superAdmin/Documents/RasxodBank">
+                    RasxodBank
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-3">
+                  <Link to="/Settings/Access/superAdmin/Documents/OchistitDp">
+                    OchistitDp
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-4">
+                  <Link to="/Settings/Access/superAdmin/Documents/VseDocument">
+                    VseDocument
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-5">
+                  <Link to="/Settings/Access/superAdmin/Documents/Raschet">
+                    Raschet
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-6">
+                  <Link to="/Settings/Access/superAdmin/Documents/Rasxod">
+                    Rasxod
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-8">
+                  <Link to="/Settings/Access/superAdmin/Documents/IshlabChiqarish">
+                    IshlabChiqarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-9">
+                  <Link to="/Settings/Access/superAdmin/Documents/KassagaNaqdPulTushumi">
+                    KassagaNaqdPulTushumi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-10">
+                  <Link to="/Settings/Access/superAdmin/Documents/KassagaNaqdPulChiqimi">
+                    KassagaNaqdPulChiqimi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-11">
+                  <Link to="/Settings/Access/superAdmin/Documents/Intervizatsiya">
+                    Intervizatsiya
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-12">
+                  <Link to="/Settings/Access/superAdmin/Documents/PostupleniyaTovara">
+                    PastupleniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-13">
+                  <Link to="/Settings/Access/superAdmin/Documents/PeremesheniyaTovara">
+                    PeremesheniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-14">
+                  <Link to="/Settings/Access/superAdmin/Documents/SpisaniyaTovara">
+                    SpisaniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-15">
+                  <Link to="/Settings/Access/superAdmin/Documents/MahsulotlarniKlientdanQaytarish">
+                    MahsulotlarniKlientdanQaytarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-16">
+                  <Link to="/Settings/Access/superAdmin/Documents/MahsulotlarniYukBeruvchigaQaytarish">
+                    MahsulotlarniYukBeruvchigaQaytarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-17">
+                  <Link to="/Settings/Access/superAdmin/Documents/BankQoldiqlariniKiritish">
+                    BankQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-18">
+                  <Link to="/Settings/Access/superAdmin/Documents/KassaQoldiqlariniKiritish">
+                    KassaQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-19">
+                  <Link to="/Settings/Access/superAdmin/Documents/MahsulotQoldiqlariniKiritish">
+                    MahsulotQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-20">
+                  <Link to="/Settings/Access/superAdmin/Documents/QarzdorlikQoldiqlariniKiritish">
+                    QarzdorlikQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-21">
+                  <Link to="/Settings/Access/superAdmin/Documents/XodimlarQoldigi">
+                    XodimlarQoldigi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-22">
+                  <Link to="/Settings/Access/superAdmin/Documents/Savdo">
+                    Savdo
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-23">
+                  <Link to="/Settings/Access/superAdmin/Documents/Servis">
+                    Servis
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/superAdmin/Documents">
+              <Menu.Item key="kons-4">Konstantalar</Menu.Item>
+            </Route>
+            {/* -------adminstrator-------- */}
+            <Route path="/Settings/Access/adminstrator/obshie">
+              <Menu key="adminstrator-opt" mode="vertical">
+                <Menu.Item key="obsh-1">Option</Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/adminstrator/spravochniklar">
+              <Menu key="adminstrator-spr" mode="vertical">
+                <Menu.Item key="sprav-1">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/BankHisobRaqamlari">
+                    BankHisobRaqamlari
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-2">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/Bulimlar">
+                    Bulimlar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-3">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/ChiqimTuri">
+                    ChiqimTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-4">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/Filial">
+                    Filial
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-5">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/Firma">
+                    Firma
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-6">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/Kassalar">
+                    Kassalar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-7">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/Omborlar">
+                    Omborlar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-8">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/Valyutalar">
+                    Valyutalar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-9">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/MahsulotTuri">
+                    MahsulotTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-10">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/NarxTuri">
+                    NarxTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-11">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/Nomenklatura">
+                    Nomenklatura
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-12">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/Partiya">
+                    Partiya
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-13">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/UlchovBirligi">
+                    UlchovBirligi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-14">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/Bulim">
+                    Bulim
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-15">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/Foydalanuvchi">
+                    Foydalanuvchi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-16">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/Kontragent">
+                    Kontragent
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-17">
+                  <Link to="/Settings/Access/adminstrator/spravochniklar/Xodim">
+                    Xodim
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/adminstrator/Documents">
+              <Menu key="adminstrator-docs" mode="vertical">
+                <Menu.Item key="doc-1">
+                  <Link to="/Settings/Access/adminstrator/Documents/PrixodBank">
+                    PrixodBank
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-2">
+                  <Link to="/Settings/Access/adminstrator/Documents/RasxodBank">
+                    RasxodBank
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-3">
+                  <Link to="/Settings/Access/adminstrator/Documents/OchistitDp">
+                    OchistitDp
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-4">
+                  <Link to="/Settings/Access/adminstrator/Documents/VseDocument">
+                    VseDocument
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-5">
+                  <Link to="/Settings/Access/adminstrator/Documents/Raschet">
+                    Raschet
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-6">
+                  <Link to="/Settings/Access/adminstrator/Documents/Rasxod">
+                    Rasxod
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-8">
+                  <Link to="/Settings/Access/adminstrator/Documents/IshlabChiqarish">
+                    IshlabChiqarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-9">
+                  <Link to="/Settings/Access/adminstrator/Documents/KassagaNaqdPulTushumi">
+                    KassagaNaqdPulTushumi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-10">
+                  <Link to="/Settings/Access/adminstrator/Documents/KassagaNaqdPulChiqimi">
+                    KassagaNaqdPulChiqimi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-11">
+                  <Link to="/Settings/Access/adminstrator/Documents/Intervizatsiya">
+                    Intervizatsiya
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-12">
+                  <Link to="/Settings/Access/adminstrator/Documents/PostupleniyaTovara">
+                    PastupleniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-13">
+                  <Link to="/Settings/Access/adminstrator/Documents/PeremesheniyaTovara">
+                    PeremesheniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-14">
+                  <Link to="/Settings/Access/adminstrator/Documents/SpisaniyaTovara">
+                    SpisaniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-15">
+                  <Link to="/Settings/Access/adminstrator/Documents/MahsulotlarniKlientdanQaytarish">
+                    MahsulotlarniKlientdanQaytarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-16">
+                  <Link to="/Settings/Access/adminstrator/Documents/MahsulotlarniYukBeruvchigaQaytarish">
+                    MahsulotlarniYukBeruvchigaQaytarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-17">
+                  <Link to="/Settings/Access/adminstrator/Documents/BankQoldiqlariniKiritish">
+                    BankQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-18">
+                  <Link to="/Settings/Access/adminstrator/Documents/KassaQoldiqlariniKiritish">
+                    KassaQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-19">
+                  <Link to="/Settings/Access/adminstrator/Documents/MahsulotQoldiqlariniKiritish">
+                    MahsulotQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-20">
+                  <Link to="/Settings/Access/adminstrator/Documents/QarzdorlikQoldiqlariniKiritish">
+                    QarzdorlikQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-21">
+                  <Link to="/Settings/Access/adminstrator/Documents/XodimlarQoldigi">
+                    XodimlarQoldigi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-22">
+                  <Link to="/Settings/Access/adminstrator/Documents/Savdo">
+                    Savdo
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-23">
+                  <Link to="/Settings/Access/adminstrator/Documents/Servis">
+                    Servis
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/adminstrator/Documents">
+              <Menu.Item key="kons-4">Konstantalar</Menu.Item>
+            </Route>
+            {/* --------manager-------- */}
+            <Route path="/Settings/Access/manager/obshie">
+              <Menu key="manager-opt" mode="vertical">
+                <Menu.Item key="obsh-1">Option</Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/manager/spravochniklar">
+              <Menu key="manager-spr" mode="vertical">
+                <Menu.Item key="sprav-1">
+                  <Link to="/Settings/Access/manager/spravochniklar/BankHisobRaqamlari">
+                    BankHisobRaqamlari
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-2">
+                  <Link to="/Settings/Access/manager/spravochniklar/Bulimlar">
+                    Bulimlar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-3">
+                  <Link to="/Settings/Access/manager/spravochniklar/ChiqimTuri">
+                    ChiqimTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-4">
+                  <Link to="/Settings/Access/manager/spravochniklar/Filial">
+                    Filial
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-5">
+                  <Link to="/Settings/Access/manager/spravochniklar/Firma">
+                    Firma
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-6">
+                  <Link to="/Settings/Access/manager/spravochniklar/Kassalar">
+                    Kassalar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-7">
+                  <Link to="/Settings/Access/manager/spravochniklar/Omborlar">
+                    Omborlar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-8">
+                  <Link to="/Settings/Access/manager/spravochniklar/Valyutalar">
+                    Valyutalar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-9">
+                  <Link to="/Settings/Access/manager/spravochniklar/MahsulotTuri">
+                    MahsulotTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-10">
+                  <Link to="/Settings/Access/manager/spravochniklar/NarxTuri">
+                    NarxTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-11">
+                  <Link to="/Settings/Access/manager/spravochniklar/Nomenklatura">
+                    Nomenklatura
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-12">
+                  <Link to="/Settings/Access/manager/spravochniklar/Partiya">
+                    Partiya
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-13">
+                  <Link to="/Settings/Access/manager/spravochniklar/UlchovBirligi">
+                    UlchovBirligi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-14">
+                  <Link to="/Settings/Access/manager/spravochniklar/Bulim">
+                    Bulim
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-15">
+                  <Link to="/Settings/Access/manager/spravochniklar/Foydalanuvchi">
+                    Foydalanuvchi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-16">
+                  <Link to="/Settings/Access/manager/spravochniklar/Kontragent">
+                    Kontragent
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-17">
+                  <Link to="/Settings/Access/manager/spravochniklar/Xodim">
+                    Xodim
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/manager/Documents">
+              <Menu key="manager-docs" mode="vertical">
+                <Menu.Item key="doc-1">
+                  <Link to="/Settings/Access/manager/Documents/PrixodBank">
+                    PrixodBank
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-2">
+                  <Link to="/Settings/Access/manager/Documents/RasxodBank">
+                    RasxodBank
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-3">
+                  <Link to="/Settings/Access/manager/Documents/OchistitDp">
+                    OchistitDp
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-4">
+                  <Link to="/Settings/Access/manager/Documents/VseDocument">
+                    VseDocument
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-5">
+                  <Link to="/Settings/Access/manager/Documents/Raschet">
+                    Raschet
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-6">
+                  <Link to="/Settings/Access/manager/Documents/Rasxod">
+                    Rasxod
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-8">
+                  <Link to="/Settings/Access/manager/Documents/IshlabChiqarish">
+                    IshlabChiqarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-9">
+                  <Link to="/Settings/Access/manager/Documents/KassagaNaqdPulTushumi">
+                    KassagaNaqdPulTushumi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-10">
+                  <Link to="/Settings/Access/manager/Documents/KassagaNaqdPulChiqimi">
+                    KassagaNaqdPulChiqimi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-11">
+                  <Link to="/Settings/Access/manager/Documents/Intervizatsiya">
+                    Intervizatsiya
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-12">
+                  <Link to="/Settings/Access/manager/Documents/PostupleniyaTovara">
+                    PastupleniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-13">
+                  <Link to="/Settings/Access/manager/Documents/PeremesheniyaTovara">
+                    PeremesheniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-14">
+                  <Link to="/Settings/Access/manager/Documents/SpisaniyaTovara">
+                    SpisaniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-15">
+                  <Link to="/Settings/Access/manager/Documents/MahsulotlarniKlientdanQaytarish">
+                    MahsulotlarniKlientdanQaytarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-16">
+                  <Link to="/Settings/Access/manager/Documents/MahsulotlarniYukBeruvchigaQaytarish">
+                    MahsulotlarniYukBeruvchigaQaytarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-17">
+                  <Link to="/Settings/Access/manager/Documents/BankQoldiqlariniKiritish">
+                    BankQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-18">
+                  <Link to="/Settings/Access/manager/Documents/KassaQoldiqlariniKiritish">
+                    KassaQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-19">
+                  <Link to="/Settings/Access/manager/Documents/MahsulotQoldiqlariniKiritish">
+                    MahsulotQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-20">
+                  <Link to="/Settings/Access/manager/Documents/QarzdorlikQoldiqlariniKiritish">
+                    QarzdorlikQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-21">
+                  <Link to="/Settings/Access/manager/Documents/XodimlarQoldigi">
+                    XodimlarQoldigi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-22">
+                  <Link to="/Settings/Access/manager/Documents/Savdo">
+                    Savdo
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-23">
+                  <Link to="/Settings/Access/manager/Documents/Servis">
+                    Servis
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/manager/Documents">
+              <Menu.Item key="kons-4">Konstantalar</Menu.Item>
+            </Route>
+            {/* ------------kassir--------- */}
+            <Route path="/Settings/Access/kassir/obshie">
+              <Menu key="kassir-opt" mode="vertical">
+                <Menu.Item key="obsh-1">Option</Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/kassir/spravochniklar">
+              <Menu key="kassir-spr" mode="vertical">
+                <Menu.Item key="sprav-1">
+                  <Link to="/Settings/Access/kassir/spravochniklar/BankHisobRaqamlari">
+                    BankHisobRaqamlari
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-2">
+                  <Link to="/Settings/Access/kassir/spravochniklar/Bulimlar">
+                    Bulimlar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-3">
+                  <Link to="/Settings/Access/kassir/spravochniklar/ChiqimTuri">
+                    ChiqimTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-4">
+                  <Link to="/Settings/Access/kassir/spravochniklar/Filial">
+                    Filial
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-5">
+                  <Link to="/Settings/Access/kassir/spravochniklar/Firma">
+                    Firma
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-6">
+                  <Link to="/Settings/Access/kassir/spravochniklar/Kassalar">
+                    Kassalar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-7">
+                  <Link to="/Settings/Access/kassir/spravochniklar/Omborlar">
+                    Omborlar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-8">
+                  <Link to="/Settings/Access/kassir/spravochniklar/Valyutalar">
+                    Valyutalar
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-9">
+                  <Link to="/Settings/Access/kassir/spravochniklar/MahsulotTuri">
+                    MahsulotTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-10">
+                  <Link to="/Settings/Access/kassir/spravochniklar/NarxTuri">
+                    NarxTuri
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-11">
+                  <Link to="/Settings/Access/kassir/spravochniklar/Nomenklatura">
+                    Nomenklatura
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-12">
+                  <Link to="/Settings/Access/kassir/spravochniklar/Partiya">
+                    Partiya
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-13">
+                  <Link to="/Settings/Access/kassir/spravochniklar/UlchovBirligi">
+                    UlchovBirligi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-14">
+                  <Link to="/Settings/Access/kassir/spravochniklar/Bulim">
+                    Bulim
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-15">
+                  <Link to="/Settings/Access/kassir/spravochniklar/Foydalanuvchi">
+                    Foydalanuvchi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-16">
+                  <Link to="/Settings/Access/kassir/spravochniklar/Kontragent">
+                    Kontragent
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="sprav-17">
+                  <Link to="/Settings/Access/kassir/spravochniklar/Xodim">
+                    Xodim
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/kassir/Documents">
+              <Menu key="kassir-docs" mode="vertical">
+                <Menu.Item key="doc-1">
+                  <Link to="/Settings/Access/kassir/Documents/PrixodBank">
+                    PrixodBank
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-2">
+                  <Link to="/Settings/Access/kassir/Documents/RasxodBank">
+                    RasxodBank
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-3">
+                  <Link to="/Settings/Access/kassir/Documents/OchistitDp">
+                    OchistitDp
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-4">
+                  <Link to="/Settings/Access/kassir/Documents/VseDocument">
+                    VseDocument
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-5">
+                  <Link to="/Settings/Access/kassir/Documents/Raschet">
+                    Raschet
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-6">
+                  <Link to="/Settings/Access/kassir/Documents/Rasxod">
+                    Rasxod
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-8">
+                  <Link to="/Settings/Access/kassir/Documents/IshlabChiqarish">
+                    IshlabChiqarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-9">
+                  <Link to="/Settings/Access/kassir/Documents/KassagaNaqdPulTushumi">
+                    KassagaNaqdPulTushumi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-10">
+                  <Link to="/Settings/Access/kassir/Documents/KassagaNaqdPulChiqimi">
+                    KassagaNaqdPulChiqimi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-11">
+                  <Link to="/Settings/Access/kassir/Documents/Intervizatsiya">
+                    Intervizatsiya
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-12">
+                  <Link to="/Settings/Access/kassir/Documents/PostupleniyaTovara">
+                    PastupleniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-13">
+                  <Link to="/Settings/Access/kassir/Documents/PeremesheniyaTovara">
+                    PeremesheniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-14">
+                  <Link to="/Settings/Access/kassir/Documents/SpisaniyaTovara">
+                    SpisaniyaTovara
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-15">
+                  <Link to="/Settings/Access/kassir/Documents/MahsulotlarniKlientdanQaytarish">
+                    MahsulotlarniKlientdanQaytarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-16">
+                  <Link to="/Settings/Access/kassir/Documents/MahsulotlarniYukBeruvchigaQaytarish">
+                    MahsulotlarniYukBeruvchigaQaytarish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-17">
+                  <Link to="/Settings/Access/kassir/Documents/BankQoldiqlariniKiritish">
+                    BankQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-18">
+                  <Link to="/Settings/Access/kassir/Documents/KassaQoldiqlariniKiritish">
+                    KassaQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-19">
+                  <Link to="/Settings/Access/kassir/Documents/MahsulotQoldiqlariniKiritish">
+                    MahsulotQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-20">
+                  <Link to="/Settings/Access/kassir/Documents/QarzdorlikQoldiqlariniKiritish">
+                    QarzdorlikQoldiqlariniKiritish
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-21">
+                  <Link to="/Settings/Access/kassir/Documents/XodimlarQoldigi">
+                    XodimlarQoldigi
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-22">
+                  <Link to="/Settings/Access/kassir/Documents/Savdo">
+                    Savdo
+                  </Link>
+                </Menu.Item>
+                <Menu.Item key="doc-23">
+                  <Link to="/Settings/Access/kassir/Documents/Servis">
+                    Servis
+                  </Link>
+                </Menu.Item>
+              </Menu>
+            </Route>
+            <Route path="/Settings/Access/kassir/Documents">
+              <Menu.Item key="kons-4">Konstantalar</Menu.Item>
+            </Route>
+            
           </Switch>
         </Menu>
       </Sider>
@@ -1669,62 +2943,62 @@ const AccessContent = () => {
                 </Menu.Item>
                 <Menu.Item key="mKQ-4">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniKlientdanQaytarish/organizatsiya">
-                  Organizatsiya
+                    Organizatsiya
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mKQ-5">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniKlientdanQaytarish/otvetstvenniy">
-                  Otvetstvenniy
+                    Otvetstvenniy
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mKQ-6">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniKlientdanQaytarish/uchyet">
-                  Uchyet
+                    Uchyet
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mKQ-7">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniKlientdanQaytarish/kontragent">
-                  Kontragent
+                    Kontragent
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mKQ-8">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniKlientdanQaytarish/konstantaDP">
-                  KonstantaDP
+                    KonstantaDP
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mKQ-9">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniKlientdanQaytarish/tulovMuddati">
-                  Tulov muddati
+                    Tulov muddati
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mKQ-10">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniKlientdanQaytarish/summaDakument">
-                  SummaDakument
+                    SummaDakument
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mKQ-11">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniKlientdanQaytarish/obshiyDolg">
-                  ObshiyDolg
+                    ObshiyDolg
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mKQ-12">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniKlientdanQaytarish/protsentBonusPoProdaji">
-                  ProtsentBonusPoProdaji
+                    ProtsentBonusPoProdaji
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mKQ-13">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniKlientdanQaytarish/valyuta">
-                  Valyuta
+                    Valyuta
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mKQ-14">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniKlientdanQaytarish/izox">
-                  Izox
+                    Izox
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mKQ-15">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniKlientdanQaytarish/action">
-                  Action
+                    Action
                   </Link>
                 </Menu.Item>
               </Menu>
@@ -1748,67 +3022,67 @@ const AccessContent = () => {
                 </Menu.Item>
                 <Menu.Item key="mYQ-4">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniYukBeruvchigaQaytarish/organizatsiya">
-                  Organizatsiya
+                    Organizatsiya
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mYQ-5">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniYukBeruvchigaQaytarish/otvetstvenniy">
-                  Otvetstvenniy
+                    Otvetstvenniy
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mYQ-6">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniYukBeruvchigaQaytarish/uchyet">
-                  Uchyet
+                    Uchyet
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mYQ-7">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniYukBeruvchigaQaytarish/kontragent">
-                  Kontragent
+                    Kontragent
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mYQ-8">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniYukBeruvchigaQaytarish/konstantaDP">
-                  KonstantaDP
+                    KonstantaDP
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mYQ-9">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniYukBeruvchigaQaytarish/tulovMuddati">
-                  Tulov muddati
+                    Tulov muddati
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mYQ-10">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniYukBeruvchigaQaytarish/summaDakument">
-                  SummaDakument
+                    SummaDakument
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mYQ-11">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniYukBeruvchigaQaytarish/obshiyDolg">
-                  ObshiyDolg
+                    ObshiyDolg
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mYQ-12">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniYukBeruvchigaQaytarish/protsentBonusPoProdaji">
-                  ProtsentBonusPoProdaji
+                    ProtsentBonusPoProdaji
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mYQ-13">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniYukBeruvchigaQaytarish/valyuta">
-                  Valyuta
+                    Valyuta
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mYQ-14">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniYukBeruvchigaQaytarish/kurs">
-                  Kurs
+                    Kurs
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mYQ-15">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniYukBeruvchigaQaytarish/izox">
-                  Izox
+                    Izox
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mYQ-16">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotlarniYukBeruvchigaQaytarish/action">
-                  Action
+                    Action
                   </Link>
                 </Menu.Item>
               </Menu>
@@ -1827,17 +3101,17 @@ const AccessContent = () => {
                 </Menu.Item>
                 <Menu.Item key="bQK-3">
                   <Link to="/Settings/Access/provedenie/Documents/BankQoldiqlariniKiritish/responsible">
-                  Responsible
+                    Responsible
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="bQK-4">
                   <Link to="/Settings/Access/provedenie/Documents/BankQoldiqlariniKiritish/comment">
-                  Comment
+                    Comment
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="bQK-5">
                   <Link to="/Settings/Access/provedenie/Documents/BankQoldiqlariniKiritish/action">
-                  Action
+                    Action
                   </Link>
                 </Menu.Item>
               </Menu>
@@ -1856,17 +3130,17 @@ const AccessContent = () => {
                 </Menu.Item>
                 <Menu.Item key="kQK-3">
                   <Link to="/Settings/Access/provedenie/Documents/KassaQoldiqlariniKiritish/responsible">
-                  Responsible
+                    Responsible
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="kQK-4">
                   <Link to="/Settings/Access/provedenie/Documents/KassaQoldiqlariniKiritish/comment">
-                  Comment
+                    Comment
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="kQK-5">
                   <Link to="/Settings/Access/provedenie/Documents/KassaQoldiqlariniKiritish/action">
-                  Action
+                    Action
                   </Link>
                 </Menu.Item>
               </Menu>
@@ -1890,42 +3164,42 @@ const AccessContent = () => {
                 </Menu.Item>
                 <Menu.Item key="mQK-4">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotQoldiqlariniKiritish/organizatsiya">
-                  Organizatsiya
+                    Organizatsiya
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mQK-5">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotQoldiqlariniKiritish/otvetstvenniy">
-                  Otvetstvenniy
+                    Otvetstvenniy
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mQK-6">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotQoldiqlariniKiritish/summaDapRas">
-                  SummaDapRas
+                    SummaDapRas
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mQK-7">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotQoldiqlariniKiritish/uchyet">
-                  Uchyet
+                    Uchyet
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mQK-8">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotQoldiqlariniKiritish/ustanavitSenaNom">
-                  UstanavitSenaNom
+                    UstanavitSenaNom
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mQK-9">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotQoldiqlariniKiritish/tipuchyetSpisan">
-                  TipuchyetSpisan
+                    TipuchyetSpisan
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mQK-10">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotQoldiqlariniKiritish/izox">
-                  Izox
+                    Izox
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="mQK-11">
                   <Link to="/Settings/Access/provedenie/Documents/MahsulotQoldiqlariniKiritish/action">
-                  Action
+                    Action
                   </Link>
                 </Menu.Item>
               </Menu>
@@ -1944,22 +3218,22 @@ const AccessContent = () => {
                 </Menu.Item>
                 <Menu.Item key="qQK-3">
                   <Link to="/Settings/Access/provedenie/Documents/QarzdorlikQoldiqlariniKiritish/responsibleName">
-                  ResponsibleName
+                    ResponsibleName
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="qQK-4">
                   <Link to="/Settings/Access/provedenie/Documents/QarzdorlikQoldiqlariniKiritish/konstantaDP">
-                  KonstantaDP
+                    KonstantaDP
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="qQK-5">
                   <Link to="/Settings/Access/provedenie/Documents/QarzdorlikQoldiqlariniKiritish/comment">
-                  Comment
+                    Comment
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="qQK-6">
                   <Link to="/Settings/Access/provedenie/Documents/QarzdorlikQoldiqlariniKiritish/action">
-                  Action
+                    Action
                   </Link>
                 </Menu.Item>
               </Menu>
@@ -1978,22 +3252,22 @@ const AccessContent = () => {
                 </Menu.Item>
                 <Menu.Item key="xQ-3">
                   <Link to="/Settings/Access/provedenie/Documents/XodimlarQoldigi/responsibleName">
-                  ResponsibleName
+                    ResponsibleName
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="xQ-4">
                   <Link to="/Settings/Access/provedenie/Documents/XodimlarQoldigi/konstantaDP">
-                  KonstantaDP
+                    KonstantaDP
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="xQ-5">
                   <Link to="/Settings/Access/provedenie/Documents/XodimlarQoldigi/comment">
-                  Comment
+                    Comment
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="xQ-6">
                   <Link to="/Settings/Access/provedenie/Documents/XodimlarQoldigi/action">
-                  Action
+                    Action
                   </Link>
                 </Menu.Item>
               </Menu>
@@ -2017,82 +3291,82 @@ const AccessContent = () => {
                 </Menu.Item>
                 <Menu.Item key="savdo-4">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/kontragent">
-                  Kontragent
+                    Kontragent
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-5">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/organizatsiya">
-                  Organizatsiya
+                    Organizatsiya
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-6">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/otvetstvenniy	">
-                  Otvetstvenniy	
+                    Otvetstvenniy
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-7">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/uchyet">
-                  Uchyet
+                    Uchyet
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-8">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/tolovTuri">
-                  TolovTuri
+                    TolovTuri
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-9">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/kurs">
-                  Kurs
+                    Kurs
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-10">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/tipProdaji">
-                  TipProdaji
+                    TipProdaji
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-11">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/valyuta">
-                  Valyuta
+                    Valyuta
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-12">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/izox">
-                  Izox
+                    Izox
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-13">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/harajatTuri">
-                  HarajatTuri
+                    HarajatTuri
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-14">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/podrazdeleniye">
-                  Podrazdeleniye
+                    Podrazdeleniye
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-15">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/tipUchyetSpisaniyeTavar">
-                  TipUchyetSpisaniyeTavar
+                    TipUchyetSpisaniyeTavar
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-16">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/tulovMuddati">
-                  TulovMuddati
+                    TulovMuddati
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-17">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/konstantaDP">
-                  KonstantaDP
+                    KonstantaDP
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-18">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/proSenaBonusPoProdaji">
-                  ProSenaBonusPoProdaji
+                    ProSenaBonusPoProdaji
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="savdo-19">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/action">
-                  Action
+                    Action
                   </Link>
                 </Menu.Item>
               </Menu>
@@ -2106,52 +3380,52 @@ const AccessContent = () => {
                 </Menu.Item>
                 <Menu.Item key="servis-2">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/nomenklavyatura">
-                  Nomenklavyatura
+                    Nomenklavyatura
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="servis-3">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/ednIzm">
-                  EdnIzm
+                    EdnIzm
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="servis-4">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/valyuta">
-                  Valyuta
+                    Valyuta
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="servis-5">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/ostatka">
-                  Ostatka
+                    Ostatka
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="servis-6">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/summaPosledniy">
-                  SummaPosledniy
+                    SummaPosledniy
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="servis-7">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/summaSredniy">
-                  SummaSredniy
+                    SummaSredniy
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="servis-8">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/summaMax">
-                  SummaMax
+                    SummaMax
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="servis-9">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/senaPosledniy">
-                  SenaPosledniy
+                    SenaPosledniy
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="servis-10">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/sena">
-                  Sena
+                    Sena
                   </Link>
                 </Menu.Item>
                 <Menu.Item key="servis-11">
                   <Link to="/Settings/Access/provedenie/Documents/Savdo/action">
-                  Action
+                    Action
                   </Link>
                 </Menu.Item>
               </Menu>

@@ -58,7 +58,7 @@ const HeaderBase = () => {
               <Menu.Item key="profil-1">
                 <Col span={9} >
                   <Link to="/Profil">   <Avatar
-                      src="    https://www.picsum.photos/400   "
+                      src="https://www.picsum.photos/800"
                       style={{ backgroundColor: '#87d068', }}
                    
                     icon={<UserOutlined />}

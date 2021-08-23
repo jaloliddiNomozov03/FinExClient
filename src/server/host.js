@@ -4,8 +4,8 @@ export const userAccessTokenName = "ZUMWSUQUN";
 
 export const token = getCookie(userAccessTokenName);
 
-// export let host = "https://ssgroup-finex-app.herokuapp.com";
-export let host = "http://localhost";
+export let host = "https://ssgroup-finex-app.herokuapp.com";
+// export let host = "http://localhost";
 export let port = "9000";
 
 export let headers = {
