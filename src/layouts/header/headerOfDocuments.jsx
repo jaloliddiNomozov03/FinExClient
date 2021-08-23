@@ -33,7 +33,7 @@ const HeaderOfDocuments = () => {
                     <Link to="/Documents/KassagaNaqtPulTyshumi" >Kassaga naqt pul tushumi</Link>
                 </Menu.Item>
                 <Menu.Item key="nav-9">
-                    <Link to="/Documents/KassagaNaxtPulChiqimi" >Kassadan naqt pul tushumi</Link>
+                    <Link to="/Documents/KassagaNaxtPulChiqimi" >Kassadan naqt pul chiqimi</Link>
                 </Menu.Item>
                                             {/* Ombor  */}
                 <Menu.Item key="nav-10">
@@ -53,7 +53,7 @@ const HeaderOfDocuments = () => {
                     <Link to="/Documents/Maxsulotlarnikilentdanqaytarish" >Maxsulotlarnikilentdanqaytarish</Link>
                 </Menu.Item>
                 <Menu.Item key="nav-15">
-                    <Link to="/Documents/Maxsulotlarniyukberuvchigaqaytarisj" >Maxsulotlarniyukberuvchigaqaytarisj</Link>
+                    <Link to="/Documents/MahsulotlarniYukBeruvchigaQaytarish" >MahsulotlarniYukBeruvchigaQaytarish</Link>
                 </Menu.Item>
                                         {/* Qoldiqlar kirimi  */}
                 <Menu.Item key="nav-16">
