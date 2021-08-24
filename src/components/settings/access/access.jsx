@@ -6,6 +6,7 @@ import {
   NotificationOutlined,
 } from "@ant-design/icons";
 import { Link, Route, Switch } from "react-router-dom";
+import Checkboxes from "./checkboxContent";
 
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout;
@@ -13708,7 +13709,9 @@ const AccessContent = () => {
         </Menu>
       </Sider>
 
-      <Content style={{ padding: "0 24px", minHeight: 280 }}>Content</Content>
+      <Content style={{ padding: "0 24px", minHeight: 280 }}>
+        <Checkboxes />
+      </Content>
     </Layout>
   );
 };
