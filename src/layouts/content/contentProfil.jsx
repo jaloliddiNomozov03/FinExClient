@@ -7,13 +7,11 @@ import './content.css'
 class ContentProfil extends React.Component {
 
     render() {
-        function onChange(e) {
-            console.log(`checked = ${e.target.checked}`);
-        }
         return (
             <div style={{ backgroundColor: 'whitesmoke', width: '95%', height: '100%' }} >
                 <Row >
-                    <Col span={10} offset={4} style={{ borderTop: '  2px solid blue', backgroundColor: 'white', padding: '1%', marginTop:'3%' }} >
+                    <Col span={10} offset={4} style={{ borderTop: '  2px solid blue',
+                     backgroundColor: 'white', padding: '1%', marginTop:'3%' }} >
                         <Row>
                             <Col span={24}  >
                             </Col>
@@ -109,16 +107,10 @@ class ContentProfil extends React.Component {
                                     <Button type='primary'   >Submit</Button>
                                 </Col>
                             </Row>
-
-
-
-
                         </Form>
                     </Col>
                     <Col span={6} style={{ borderTop: '  2px solid blue', backgroundColor: 'white',marginTop:'3%',padding:'1%'  }}   >
-
                         <Row >
-                            {/* style={{ marginTop: '24%' }}  */}
                             <Col span={24}  >
                                 <h1> Rasm</h1>
                             </Col>
@@ -134,13 +126,10 @@ class ContentProfil extends React.Component {
                                         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
                                     />
                                 </div>
-
                             </Col>
                         </Row>
                     </Col>
                 </Row>
-                {/* </div> */}
-
             </div>
         );
     }

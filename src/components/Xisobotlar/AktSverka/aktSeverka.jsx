@@ -1,7 +1,8 @@
 import { Table } from "antd";
+import HeaderAkt from "./HeaderAkt";
 import './aktSevarka.css';
 const columns = [
-    { title: "1", dataIndex: "1", key: "1", width: '15vh'  }, 
+    { title: "1", dataIndex: "1", key: "1",   }, 
     { title: "2 ", dataIndex: "2", key: "2", },
     { title: "3 ", dataIndex: "3", key: "3",  },
     { title: "4 ", dataIndex: "4", key: "4", },
@@ -46,6 +47,7 @@ const Akt = () => {
     <Table className='Jadval'
       columns={columns}
       dataSource={data}
+      title={HeaderAkt}
     />
   );
 };

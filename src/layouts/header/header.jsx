@@ -49,9 +49,9 @@ const HeaderBase = () => {
                 <Col span={15} theme="dark" >
 
                   <Select defaultValue="Uzb" theme="dark" onChange={handleChange}>
-                    <Option value="Uzb"> <strong>Uzb</strong> </Option>
-                    <Option value="En"><strong>En</strong></Option>
-                    <Option value="Ru" > <strong>Ru</strong> </Option>
+                    <Option value="Uzb"> Uzb </Option>
+                    <Option value="En">En</Option>
+                    <Option value="Ru" > Ru </Option>
                   </Select>
                 </Col>
               </Menu.Item>

@@ -1,5 +1,6 @@
 import { Table } from "antd";
 import './tavarB.css';
+import HeaderTavarB from "./headerTavarB";
 const columns = [
     { title: "1", dataIndex: "1", key: "1", width: '15vh'  }, 
     { title: "2 ", dataIndex: "2", key: "2", },
@@ -46,6 +47,7 @@ const TavarB = () => {
     <Table className='Jadval'
       columns={columns}
       dataSource={data}
+      title={HeaderTavarB}
     />
   );
 };

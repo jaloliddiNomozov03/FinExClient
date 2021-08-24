@@ -1,4 +1,5 @@
 import { Table } from "antd";
+import HeaderTori from './HeaderTori'
 import './kreditID.css';
 const columns = [
     { title: "1", dataIndex: "1", key: "1", width: '15vh'  }, 
@@ -46,6 +47,8 @@ const KreditID = () => {
     <Table className='Jadval'
       columns={columns}
       dataSource={data}
+      title={HeaderTori}
+
     />
   );
 };
