@@ -1,36 +1,32 @@
 import {HttpRequestHub} from "../../HttpRequestHub";
-// import axios from "axios";
-// import {host, port} from "../../host";
 
+const BASE_URL = '/api/v1/wholesale';
 
-const BASE_URL = '/api/v1/productType';
-
-export const getProductTypeList=()=>{
+export const getWholesaleList=()=>{
     const config = {
+        method: 'GET',
         url: `${BASE_URL}/list`,
-        method: 'GET',
     };
+
     return HttpRequestHub(config);
 };
-
-
-export const getPage = (page=0, size=10) => {
+export const getWholasalePage = (page=0, size=10) => {
     const config = {
         method: 'GET',
-        url: `${BASE_URL}/all?page=${page}&size=${size}`
+        url: `${BASE_URL}/getPage?page=${page}&size=${size}`
     };
     return HttpRequestHub(config);
 };
 
-export const save =(productType)=>{
+export const saveWholasale =(costs)=>{
     const config = {
         method: 'POST',
-        data: productType,
-        url: `${BASE_URL}`
+        data: costs,
+        url: `${BASE_URL}/`
     };
     return HttpRequestHub(config);
 };
-export const deleteProduct = (id) => {
+export const deleteWholasale = (id) => {
     const config = {
         method: 'DELETE',
         url: `${BASE_URL}/${id}`

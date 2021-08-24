@@ -1,35 +1,35 @@
 import {HttpRequestHub} from "../../HttpRequestHub";
 
-const BASE_URL = '/api/v1/nomenclature';
+const BASE_URL = '/api/v1/write-off-of-goods';
 
-export const getNomenclatureList=()=>{
+export const getWriteOfGoodsList=()=>{
     const config = {
         method: 'GET',
-        url: `${BASE_URL}/idList`
+        url: `${BASE_URL}/list`,
+    };
+
+    return HttpRequestHub(config);
+};
+export const getWriteOfGoodsPage = (page=0, size=10) => {
+    const config = {
+        method: 'GET',
+        url: `${BASE_URL}/getPage?page=${page}&size=${size}`
     };
     return HttpRequestHub(config);
 };
 
-export const getNomenclaturePage = (page=0, size=10) => {
-    const config = {
-        method: 'GET',
-        url: `${BASE_URL}/all?page=${page}&size=${size}`
-    };
-    return HttpRequestHub(config);
-};
-
-export const saveNomenclature =(nomenclature)=>{
+export const saveWriteOfGoods =(costs)=>{
     const config = {
         method: 'POST',
-        data: nomenclature,
-        url: `${BASE_URL}`
+        data: costs,
+        url: `${BASE_URL}/`
     };
     return HttpRequestHub(config);
 };
-export const deleteNomenclature = (id) => {
+export const deleteWriteOfGoods = (id) => {
     const config = {
         method: 'DELETE',
-        url: `${BASE_URL}/${id}`
+        url: `${BASE_URL}/delete/${id}`
     };
     return HttpRequestHub(config);
 };
