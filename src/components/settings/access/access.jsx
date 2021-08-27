@@ -6,7 +6,8 @@ import {
   NotificationOutlined,
 } from "@ant-design/icons";
 import { Link, Route, Switch } from "react-router-dom";
-import Checkboxes from "./checkboxContent";
+import CheckboxesOfProSpravo from "./provedenie/checkboxProSprav";
+import CheckboxesOfProDocs from "./provedenie/checkboxesProDocs";
 
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout;
@@ -13710,7 +13711,14 @@ const AccessContent = () => {
       </Sider>
 
       <Content style={{ padding: "0 24px", minHeight: 280 }}>
-        <Checkboxes />
+        <Switch>
+          <Route path="/Settings/Access/provedenie/spravochniklar">
+            <CheckboxesOfProSpravo />
+          </Route>
+          <Route path="/Settings/Access/provedenie/Documents">
+            <CheckboxesOfProDocs />
+          </Route>
+        </Switch>
       </Content>
     </Layout>
   );
