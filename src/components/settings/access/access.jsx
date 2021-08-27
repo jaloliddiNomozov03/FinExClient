@@ -8,6 +8,18 @@ import {
 import { Link, Route, Switch } from "react-router-dom";
 import CheckboxesOfProSpravo from "./provedenie/checkboxProSprav";
 import CheckboxesOfProDocs from "./provedenie/checkboxesProDocs";
+import CheckboxesOfRedoDocs from "./redoktirovat/checkboxesRedoDocs";
+import CheckboxesOfRedoSpravo from "./redoktirovat/checkboxesRedoSpravo";
+import CheckboxesOfUdaSpravo from "./udalenie/checkboxesUdaSpravo";
+import CheckboxesOfUdaDocs from "./udalenie/checkboxesUdaDocs";
+import CheckboxesOfSuperSpravo from "./superAdmin/checkboxesSuperSpravo";
+import CheckboxesOfSuperDocs from "./superAdmin/checkboxesSuperDocs";
+import CheckboxesOfAdminSpravo from "./adminstrator/checkboxesAdminSpravo";
+import CheckboxesOfAdminDocs from "./adminstrator/checkboxesAdminDocs";
+import CheckboxesOfManagerSpravo from "./manager/checkboxesManagerSpravo";
+import CheckboxesOfManagerDocs from "./manager/checkboxesManagerDocs";
+import CheckboxesOfKassirSpravo from "./kassir/checkboxesKassirSpravo";
+import CheckboxesOfKassirDocs from "./kassir/checkboxesKassirDocs";
 
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout;
@@ -13717,6 +13729,42 @@ const AccessContent = () => {
           </Route>
           <Route path="/Settings/Access/provedenie/Documents">
             <CheckboxesOfProDocs />
+          </Route>
+          <Route path="/Settings/Access/redoktirovat/spravochniklar">
+            <CheckboxesOfRedoSpravo />
+          </Route>
+          <Route path="/Settings/Access/redoktirovat/Documents">
+            <CheckboxesOfRedoDocs />
+          </Route>
+          <Route path="/Settings/Access/udalenie/spravochniklar">
+            <CheckboxesOfUdaSpravo />
+          </Route>
+          <Route path="/Settings/Access/udalenie/Documents">
+            <CheckboxesOfUdaDocs />
+          </Route>
+          <Route path="/Settings/Access/superAdmin/spravochniklar">
+            <CheckboxesOfSuperSpravo />
+          </Route>
+          <Route path="/Settings/Access/superAdmin/Documents">
+            <CheckboxesOfSuperDocs />
+          </Route>
+          <Route path="/Settings/Access/adminstrator/spravochniklar">
+            <CheckboxesOfAdminSpravo />
+          </Route>
+          <Route path="/Settings/Access/adminstrator/Documents">
+            <CheckboxesOfAdminDocs />
+          </Route>
+          <Route path="/Settings/Access/manager/spravochniklar">
+            <CheckboxesOfManagerSpravo />
+          </Route>
+          <Route path="/Settings/Access/manager/Documents">
+            <CheckboxesOfManagerDocs />
+          </Route>
+          <Route path="/Settings/Access/kassir/spravochniklar">
+            <CheckboxesOfKassirSpravo />
+          </Route>
+          <Route path="/Settings/Access/kassir/Documents">
+            <CheckboxesOfKassirDocs />
           </Route>
         </Switch>
       </Content>
