@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Menu, Select, Avatar, Image } from "antd";
+import { Row, Col, Menu, Select, Avatar, } from "antd";
 import { Link } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
 import { Route, Switch } from "react-router-dom";
@@ -58,8 +58,8 @@ const HeaderBase = () => {
               <Menu.Item key="profil-1">
                 <Col span={9} >
                   <Link to="/Profil">   <Avatar
-                      src="https://www.picsum.photos/800"
                       style={{ backgroundColor: '#87d068', }}
+                      src="https://www.picsum.photos/800"
                    
                     icon={<UserOutlined />}
                   />  </Link>
