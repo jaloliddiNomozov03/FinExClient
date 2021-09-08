@@ -17,7 +17,7 @@ const HeaderBase = () => {
   }
   return (
     <>
-      <Row>
+      <Row style={{padding: "4px"}}>
         <Col span={20} >
           <Switch>
             <Route path="/Documents">
