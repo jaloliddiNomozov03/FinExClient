@@ -105,17 +105,6 @@ const HeaderTushum = (props) => {
                 onFinish={onFinishCreate}
                 // validateMessages={validateMessages}
               >
-                {/*<Form.Item*/}
-                {/*  name={["document", "data"]}*/}
-                {/*  label="Data"*/}
-                {/*  rules={[*/}
-                {/*    {*/}
-                {/*      required: true,*/}
-                {/*    },*/}
-                {/*  ]}*/}
-                {/*>*/}
-                {/*  <Input />*/}
-                {/*</Form.Item>*/}
                 <Form.Item
                     name={["document", "responsible"]}
                     label="Staff"

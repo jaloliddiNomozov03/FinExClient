@@ -1,5 +1,5 @@
 import React from "react";
-import { Row, Col, Menu, Select, Avatar, Image } from "antd";
+import { Row, Col, Menu, Select, Avatar, } from "antd";
 import { Link } from "react-router-dom";
 import { UserOutlined } from "@ant-design/icons";
 import { Route, Switch } from "react-router-dom";
@@ -49,17 +49,17 @@ const HeaderBase = () => {
                 <Col span={15} theme="dark" >
 
                   <Select defaultValue="Uzb" theme="dark" onChange={handleChange}>
-                    <Option value="Uzb"> <strong>Uzb</strong> </Option>
-                    <Option value="En"><strong>En</strong></Option>
-                    <Option value="Ru" > <strong>Ru</strong> </Option>
+                    <Option value="Uzb"> Uzb </Option>
+                    <Option value="En">En</Option>
+                    <Option value="Ru" > Ru </Option>
                   </Select>
                 </Col>
               </Menu.Item>
               <Menu.Item key="profil-1">
                 <Col span={9} >
                   <Link to="/Profil">   <Avatar
-                      src="https://www.picsum.photos/800"
                       style={{ backgroundColor: '#87d068', }}
+                      src="https://www.picsum.photos/800"
                    
                     icon={<UserOutlined />}
                   />  </Link>
