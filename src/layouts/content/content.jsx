@@ -6,7 +6,8 @@ import ContentSpravochniklar from "./contentSpravochnik";
 import ContentRegistorlar from "./RegistorContent";
 import ContentXisobotlar from "./contentXisobotlar";
 import ContentSettings from "./contentSettings";
-import ContentProfil from './contentProfil';
+import ContentProfil from "./contentProfil";
+import TagsComponent from "../footer/tags";
 const { Content } = Layout;
 class ContentBase extends React.Component {
   render() {
@@ -37,6 +38,7 @@ class ContentBase extends React.Component {
               <ContentProfil />
             </Route>
           </Switch>
+          <TagsComponent />
         </div>
       </Content>
     );

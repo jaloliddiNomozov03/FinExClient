@@ -8,16 +8,15 @@ import FooterBase from "./footer/footer";
 
 class LayoutBase extends React.Component {
   render() {
-    
     return (
-        <Layout style={{ minHeight: "100vh" }}>
-          <SiderBase />
-          <Layout className="site-layout">
-            <HeaderBase />
-            <ContentBase />
-            <FooterBase />
-          </Layout>
+      <Layout style={{ minHeight: "100vh" }}>
+        <SiderBase />
+        <Layout className="site-layout">
+          <HeaderBase />
+          <ContentBase />
+          <FooterBase />
         </Layout>
+      </Layout>
     );
   }
 }
