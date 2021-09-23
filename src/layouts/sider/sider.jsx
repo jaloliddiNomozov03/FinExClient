@@ -3,35 +3,49 @@ import logogo from "../../logo.svg";
 import { Link } from "react-router-dom";
 import { Layout, Menu } from "antd";
 import {
-    DesktopOutlined,
-    HomeOutlined,
-    DatabaseOutlined,
-    PieChartOutlined,
-    FolderOutlined,
-    FileDoneOutlined,
-    SendOutlined,
-    SettingOutlined,
+  DesktopOutlined,
+  HomeOutlined,
+  DatabaseOutlined,
+  PieChartOutlined,
+  FolderOutlined,
+  FileDoneOutlined,
+  SendOutlined,
+  SettingOutlined,
 } from "@ant-design/icons";
 
-
 const { Sider } = Layout;
-
 class SiderBase extends React.Component {
   constructor() {
     super();
     this.state = {
-      collapsed: false,
+      positioneSider: "static",
     };
   }
-  onCollapse = (collapsed) => {
-    console.log(collapsed);
-    this.setState({ collapsed });
+  onBreakpoint = (broken) => {
+    console.log(broken);
+    broken
+      ? this.setState({
+          positioneSider: "absolute",
+        })
+      : this.setState({
+          positioneSider: "static",
+        });
   };
 
   render() {
-    const { collapsed } = this.state;
     return (
-      <Sider collapsible collapsed={collapsed} onCollapse={this.onCollapse}>
+      <Sider
+        breakpoint="lg"
+        onBreakpoint={this.onBreakpoint}
+        collapsedWidth="0"
+        style={{
+          position: this.state.positioneSider,
+          zIndex: 5,
+          top: 0,
+          left: 0,
+          bottom: 0,
+        }}
+      >
         <div className="logo">
           <img src={logogo} className="logogo" alt="logo" />
         </div>
@@ -39,23 +53,22 @@ class SiderBase extends React.Component {
           <Menu.Item key="1" icon={<HomeOutlined />}>
             Quick menu
           </Menu.Item>
-          <Menu.Item key="2" icon={<DesktopOutlined />}>
-            Option 2
-          </Menu.Item>
-          <Menu.Item key="docs" icon={<FolderOutlined />} >
+          <Menu.Item key="docs" icon={<FolderOutlined />}>
             <Link to="/Documents">Документы</Link>
           </Menu.Item>
           <Menu.Item key="sub2" icon={<PieChartOutlined />} title="Xisobotlar">
             <Link to="/Xisobotlar">Xisobotlar</Link>
           </Menu.Item>
-          <Menu.Item key="reg"   icon={<DatabaseOutlined  />}>
-            <Link to='/Registrlar' > <span  >Registrlar</span> </Link>
+          <Menu.Item key="reg" icon={<DatabaseOutlined />}>
+            <Link to="/Registrlar">
+              <span>Registrlar</span>
+            </Link>
           </Menu.Item>
           <Menu.Item key="spr" icon={<FileDoneOutlined />}>
-           <Link to="/Spravochniklar">Spravochniklar</Link>
+            <Link to="/Spravochniklar">Spravochniklar</Link>
           </Menu.Item>
           <Menu.Item key="set" icon={<SettingOutlined />}>
-           <Link to="/Settings">Settings</Link>
+            <Link to="/Settings">Settings</Link>
           </Menu.Item>
           <Menu.Item key="tgb" icon={<SendOutlined />}>
             Telegram bot
