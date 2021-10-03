@@ -1,0 +1,43 @@
+*{
+    transition: all 0.3s;
+    transition-property: all;
+    transition-duration: 0.3s;
+    transition-timing-function: ease;
+    transition-delay: 0s; 
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.Wrebber{
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+.CardGrid{
+    height: 22%;
+    width: 17%;
+    margin: auto;
+    margin-left: 2.4%;
+    margin-top: 2%;
+}
+.CardDiv{
+    margin: auto;
+}
+.Icon{
+    font-size: 270%;
+    text-align: center;
+    justify-content: center;
+    padding: auto;
+}
+.Title{
+    font-size: 22px;
+}
+.styleCardSwiperSlide{
+    position: relative;
+}
+.div2{
+    width: 68%;
+    height:100%;
+    position: absolute;
+    left: 2%;
+}

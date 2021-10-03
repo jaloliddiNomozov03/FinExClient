@@ -62,7 +62,7 @@ const HeaderBase = () => {
                       src="https://www.picsum.photos/800"
                    
                     icon={<UserOutlined />}
-                  />  </Link>
+                  />   </Link>
                 </Col>
               </Menu.Item>
             </Menu>

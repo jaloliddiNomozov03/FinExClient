@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, notification} from "antd";
-import {saveSection} from "../../../../server/config/objects/SectionService";
+import { Button, Row, Col, Space, Input, Modal, Form, InputNumber, notification } from "antd";
+import { saveSection } from "../../../../server/config/objects/SectionService";
 const { Search } = Input;
 const onSearch = (value) => console.log(value);
 const layout = {
@@ -12,39 +12,39 @@ const layout = {
   },
 };
 const HeaderBulim = (props) => {
-    const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
+  const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
 
-    const showCreateModal = () => {
-        setIsCreateModalVisible(true);
+  const showCreateModal = () => {
+    setIsCreateModalVisible(true);
+  };
+
+  const handleCreateOk = () => {
+    setIsCreateModalVisible(false);
+  };
+
+  const handleCreateCancel = () => {
+    setIsCreateModalVisible(false);
+  };
+
+  const onFinishCreate = (values) => {
+    const section = {
+      name: values.document.desc,
     };
-
-    const handleCreateOk = () => {
-        setIsCreateModalVisible(false);
-    };
-
-    const handleCreateCancel = () => {
-        setIsCreateModalVisible(false);
-    };
-
-    const onFinishCreate = (values) => {
-        const section = {
-            name: values.document.desc,
-        };
-        saveSection(section).then((value) => {
-            if (value && value.data.success) {
-                props.getSection();
-                notification["success"]({
-                    message: "Data save!",
-                    description: `${section.name} successfully saved!!`,
-                });
-            } else {
-                notification["error"]({
-                    message: "Data not save!",
-                    description: `${section.name} don't save!`,
-                });
-            }
+    saveSection(section).then((value) => {
+      if (value && value.data.success) {
+        props.getSection();
+        notification["success"]({
+          message: "Data save!",
+          description: `${section.name} successfully saved!!`,
         });
-    };
+      } else {
+        notification["error"]({
+          message: "Data not save!",
+          description: `${section.name} don't save!`,
+        });
+      }
+    });
+  };
 
   return (
     <Row>
@@ -60,15 +60,23 @@ const HeaderBulim = (props) => {
             onCancel={handleCreateCancel}
             className="Modal"
           >
-            <Button type="primary">Запусать и закрыть</Button>
-            <Button className="Top">Запусать</Button>
-            <Button className="Yew">Еще</Button>
-
+            <Row style={{ marginBottom: "3%" }} >
+              <Col span={10}>
+                <Button type='primary'>Запусать и закрыть</Button>
+              </Col>
+              <Col span={2}>
+                <Button>Запусать</Button>
+              </Col>
+              <Col span={3} offset={9}>
+                <Button type='primary'>Еще</Button>
+              </Col>
+            </Row>
             <Form
               {...layout}
               name="nest-messages"
               onFinish={onFinishCreate}
-              // validateMessages={validateMessages}
+              marginTop="2%"
+            // validateMessages={validateMessages}
             >
               <Form.Item
                 name={["document", "desc"]}
@@ -90,7 +98,7 @@ const HeaderBulim = (props) => {
                   },
                 ]}
               >
-                <InputNumber />
+                <InputNumber style={{ width: "100%" }} />
               </Form.Item>
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                 <Button type="primary" htmlType="submit">

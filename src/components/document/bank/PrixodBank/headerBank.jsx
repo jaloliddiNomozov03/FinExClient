@@ -1,18 +1,8 @@
 import React, { useState, useEffect } from "react";
 import {
-  Button,
-  Row,
-  Col,
-  Space,
-  Input,
-  Modal,
-  Form,
-  Checkbox,
-  Radio,
-  Select,
-  notification,
+  Table, Button, Row, Col, Space, Input, Modal, Form,
+  Checkbox, Radio, Select, notification, DatePicker
 } from "antd";
-import { Table, DatePicker } from "antd";
 import "./prixodBank.css";
 import { dataa } from "./ModalTable";
 import { dataaa } from "./ModalTable";
@@ -235,468 +225,442 @@ const HeaderBank = (props) => {
             className="Modal"
             width="100%"
             height="100vh"
-            // margin-top='-150%'
           >
-            {/*<div className="linktop">*/}
-            {/*    <Button type='primary' >*/}
-            {/*        Основное*/}
-            {/*    </Button>*/}
-            {/*    <a href="#" >Банк</a>*/}
-            {/*    <a href="#">Взаиморасчети</a>*/}
-            {/*    <a href="#">ДатаПогашение</a>*/}
-            {/*    <a href="#">Даходы</a>*/}
-            {/*    <a href="#">Расходы</a>*/}
-            {/*</div>*/}
-            {/*<div className='ButtonTop'>*/}
-            {/*    <Button className="Btn" type='primary' >*/}
-            {/*        Провести и закрыть*/}
-            {/*    </Button>*/}
-            {/*    <Button className="Btn" >*/}
-            {/*        Записать*/}
-            {/*    </Button>*/}
-            {/*    <Button className="Btn" >*/}
-            {/*        Провести*/}
-            {/*    </Button>*/}
-            {/*    <Button className="Eshyo" >*/}
-            {/*        Еще*/}
-            {/*    </Button>*/}
-            {/*</div>*/}
-
-            <Form
-              {...layout}
-              name="nest-messages"
-              onFinish={onFinishCreate}
+            <div className="linktop">
+              <Button type="primary">Основное</Button>
+              <a href="#">Банк</a>
+              <a href="#">Взаиморасчети</a>
+              <a href="#">ДатаПогашение</a>
+              <a href="#">Доходы</a>
+              <a href="#">Расходы</a>
+            </div>
+            <div>
+              <Row>
+                <Col span={3}>
+                  <Button type='primary'>Запусать и закрыть</Button>
+                </Col>
+                <Col span={2}>
+                  <Button>Запусать</Button>
+                </Col>
+                <Col span={2}>
+                  <Button>Провести</Button>
+                </Col>
+                <Col span={3} offset={14}>
+                  <Button type='primary'>Еще</Button>
+                </Col>
+              </Row>
+            </div>
+            <div className="ModalDiv">
+              <Form
+                {...layout}
+                name="nest-messages"
+                onFinish={onFinishCreate}
               // validateMessages={validateMessages}
-            >
-              <div className="Webber">
-                <div className="content">
-                  <div className="content1">
-                    <div className="contetnTable1">
-                      <Checkbox>
-                        {" "}
-                        <strong>Kontragent</strong>{" "}
-                      </Checkbox>
-
-                      <Form.Item
-                        name={["document", "responsible"]}
-                        label="Staff"
-                        rules={[
-                          {
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Select
-                          // showSearch
-
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          onChange={onChangeStaff}
-                          className="Select"
-                          onFocus={onFocus}
-                          onBlur={onBlur}
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                            option.children
-                              .toLowerCase()
-                              .indexOf(input.toLowerCase()) >= 0
-                          }
+              >
+                <Row>
+                  <Col span={7} style={{ borderRight: "1px solid #555" }} offset={1}   >
+                    <Row>
+                      <Col span={22}   >
+                        <Form.Item
+                          name={["document", "retailAmount"]}
+                          wrapperCol={{ offset: 1 }}
+                          style={{ width: "96%" }}
+                          label="RetailAmount:"
+                          rules={[
+                            {
+                              type: "string",
+                              required: true,
+                            },
+                          ]}
                         >
-                          {Array.isArray(staff)
-                            ? staff.map((item) => (
-                                <Option value={item.id}>{item.name}</Option>
-                              ))
-                            : ""}
-                        </Select>
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "time"]}
-                        label="Time"
-                        // rules={[
-                        //     {
-                        //         required: true,
-                        //     },
-                        // ]}
-                      >
-                        <Space direction="vertical" size={12}>
-                          <DatePicker
-                            showTime
-                            onChange={onChange}
-                            onOk={onOk}
-                          />
-                        </Space>
-                      </Form.Item>
-
-                      <Form.Item
-                        name={["document", "bankAccount"]}
-                        label="BankAccount"
-                        rules={[
-                          {
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Select
-                          // showSearch
-
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          onChange={onChangeBank}
-                          className="Select"
-                          onFocus={onFocus}
-                          onBlur={onBlur}
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                            option.children
-                              .toLowerCase()
-                              .indexOf(input.toLowerCase()) >= 0
-                          }
+                          <Input />
+                        </Form.Item>
+                        <Form.Item
+                          name={["document", "time"]}
+                          wrapperCol={{ offset: 0 }}
+                          label="Time"
+                          style={{ width: "100%" }}
                         >
-                          {Array.isArray(bankAccount)
-                            ? bankAccount.map((item) => (
+                          <Space direction="vertical" size={10}>
+                            <DatePicker
+                              showTime
+                              onChange={onChange}
+                              onOk={onOk}
+                            />
+                          </Space>
+                        </Form.Item>
+
+                        <Form.Item
+                          name={["document", "bankAccount"]}
+                          label="BankAccount"
+                          rules={[
+                            {
+                              required: true,
+                            },
+                          ]}
+                        >
+                          <Select
+                            // showSearch
+
+                            style={{ width: "90%" }}
+                            placeholder=" "
+                            optionFilterProp="children"
+                            onChange={onChangeBank}
+                            className="Select"
+                            onFocus={onFocus}
+                            onBlur={onBlur}
+                            onSearch={onSearch}
+                            filterOption={(input, option) =>
+                              option.children
+                                .toLowerCase()
+                                .indexOf(input.toLowerCase()) >= 0
+                            }
+                          >
+                            {Array.isArray(bankAccount)
+                              ? bankAccount.map((item) => (
                                 <Option value={item.id}>{item.bank}</Option>
                               ))
-                            : ""}
-                        </Select>
-                      </Form.Item>
+                              : ""}
+                          </Select>
+                        </Form.Item>
 
-                      <Form.Item
-                        name={["document", "branch"]}
-                        label="Branch"
-                        rules={[
-                          {
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Select
-                          // showSearch
-
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          onChange={onChangeBranch}
-                          className="Select"
-                          onFocus={onFocus}
-                          onBlur={onBlur}
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                            option.children
-                              .toLowerCase()
-                              .indexOf(input.toLowerCase()) >= 0
-                          }
+                        <Form.Item
+                          name={["document", "branch"]}
+                          label="Branch"
+                          rules={[
+                            {
+                              required: true,
+                            },
+                          ]}
                         >
-                          {Array.isArray(branch)
-                            ? branch.map((item) => (
+                          <Select
+                            // showSearch
+
+                            style={{ width: "90%" }}
+                            placeholder=" "
+                            optionFilterProp="children"
+                            onChange={onChangeBranch}
+                            className="Select"
+                            onFocus={onFocus}
+                            onBlur={onBlur}
+                            onSearch={onSearch}
+                            filterOption={(input, option) =>
+                              option.children
+                                .toLowerCase()
+                                .indexOf(input.toLowerCase()) >= 0
+                            }
+                          >
+                            {Array.isArray(branch)
+                              ? branch.map((item) => (
                                 <Option value={item.id}>{item.name}</Option>
                               ))
-                            : ""}
-                        </Select>
-                      </Form.Item>
-
-                      <Form.Item
-                        name={["document", "retailAmount"]}
-                        label="RetailAmount:"
-                        rules={[
-                          {
-                            type: "string",
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-
-                      <Form.Item
-                        name={["document", "isCounterParty"]}
-                        label="IsCounterParty:"
-                        valuePropName="unchecked"
-                        // rules={[
-                        //     {
-                        //         required: true
-                        //     },
-                        // ]}
-                      >
-                        <Input type="checkbox" />
-                      </Form.Item>
-
-                      <Form.Item
-                        name={["document", "isConstanta"]}
-                        label="IsConstanta:"
-                        valuePropName="unchecked"
-                        // rules={[
-                        //     {
-                        //         type: "string",
-                        //     },
-                        // ]}
-                      >
-                        <Input type="checkbox" />
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "sections"]}
-                        label="Sections"
-                        rules={[
-                          {
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Select
-                          // showSearch
-
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          onChange={onChangeSections}
-                          className="Select"
-                          onFocus={onFocus}
-                          onBlur={onBlur}
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                            option.children
-                              .toLowerCase()
-                              .indexOf(input.toLowerCase()) >= 0
-                          }
+                              : ""}
+                          </Select>
+                        </Form.Item>
+                        <Form.Item
+                          name={["document", "responsible"]}
+                          label="Staff"
+                          rules={[
+                            {
+                              required: true,
+                            },
+                          ]}
                         >
-                          {Array.isArray(sections)
-                            ? sections.map((item) => (
+                          <Select
+                            style={{ width: "90%" }}
+                            placeholder=" "
+                            optionFilterProp="children"
+                            onChange={onChangeStaff}
+                            className="Select"
+                            onFocus={onFocus}
+                            onBlur={onBlur}
+                            onSearch={onSearch}
+                            filterOption={(input, option) =>
+                              option.children
+                                .toLowerCase()
+                                .indexOf(input.toLowerCase()) >= 0
+                            }
+                          >
+                            {Array.isArray(staff)
+                              ? staff.map((item) => (
                                 <Option value={item.id}>{item.name}</Option>
                               ))
-                            : ""}
-                        </Select>
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "sumEnumeration"]}
-                        label="SumEnumeration:"
-                        rules={[
-                          {
-                            type: "string",
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
+                              : ""}
+                          </Select>
+                        </Form.Item>
 
-                      <Form.Item
-                        name={["document", "comment"]}
-                        label="Comment"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
-                      >
-                        <TextArea rows={2} />
-                      </Form.Item>
-                    </div>
-                    <div className="contetnTable2">
-                      <Radio>
-                        <strong>KonstandaDP</strong>
-                      </Radio>
-                      <Radio>
-                        <strong>1</strong>
-                      </Radio>
-
-                      <Form.Item
-                        name={["document", "sumCounterParty"]}
-                        label="SumCounterParty:"
-                        rules={[
-                          {
-                            type: "string",
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "percentEnumeration"]}
-                        label="PercentEnumeration:"
-                        rules={[
-                          {
-                            type: "string",
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "counter"]}
-                        label="Counterparty"
-                        rules={[
-                          {
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Select
-                          // showSearch
-
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          onChange={onChangeCounter}
-                          className="Select"
-                          onFocus={onFocus}
-                          onBlur={onBlur}
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                            option.children
-                              .toLowerCase()
-                              .indexOf(input.toLowerCase()) >= 0
-                          }
+                        <Form.Item
+                          wrapperCol={{ ...layout.wrapperCol, offset: 8 }}
                         >
-                          {Array.isArray(counterparty)
-                            ? counterparty.map((item) => (
+                          <Button type="primary" htmlType="submit" style={{ width: "90%" }}>
+                            Submit
+                          </Button>
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col span={7} offset={1} style={{ borderRight: "1px solid #555" }}  >
+                    <Row>
+                      <Col span={22}>
+
+                        <Form.Item
+                          name={["document", "sections"]}
+                          label="Sections"
+
+                          rules={[
+                            {
+                              required: true,
+                            },
+                          ]}
+                        >
+                          <Select
+                            style={{ width: "90%" }}
+                            placeholder=" "
+                            optionFilterProp="children"
+                            onChange={onChangeSections}
+                            className="Select"
+                            onFocus={onFocus}
+                            onBlur={onBlur}
+                            onSearch={onSearch}
+                            filterOption={(input, option) =>
+                              option.children
+                                .toLowerCase()
+                                .indexOf(input.toLowerCase()) >= 0
+                            }
+                          >
+                            {Array.isArray(sections)
+                              ? sections.map((item) => (
                                 <Option value={item.id}>{item.name}</Option>
                               ))
-                            : ""}
-                        </Select>
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "company"]}
-                        label="Company"
-                        rules={[
-                          {
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Select
-                          // showSearch
-
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          onChange={onChangeCompany}
-                          className="Select"
-                          onFocus={onFocus}
-                          onBlur={onBlur}
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                            option.children
-                              .toLowerCase()
-                              .indexOf(input.toLowerCase()) >= 0
-                          }
+                              : ""}
+                          </Select>
+                        </Form.Item>
+                        <Form.Item
+                          name={["document", "sumEnumeration"]}
+                          label="SumEnumeration:"
+                          wrapperCol={{ offset: 1 }}
+                          style={{ width: "97%" }}
+                          rules={[
+                            {
+                              type: "string",
+                              required: true,
+                            },
+                          ]}
                         >
-                          {Array.isArray(company)
-                            ? company.map((item) => (
+                          <Input />
+                        </Form.Item>
+                        <Row>
+                          <Col span={24} >
+                            <Form.Item
+                              name={["document", "Kontragent"]}
+                              label="Kontragent:"
+                              valuePropName="unchecked"
+                            >
+                              <Input type="checkbox" />
+                            </Form.Item>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col span={24}  >
+                            <Form.Item
+                              name={["document", "isCounterParty"]}
+                              label="IsCounterParty:"
+                              valuePropName="unchecked"
+                            >
+                              <Input type="checkbox" />
+                            </Form.Item>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col span={24} >
+                            <Form.Item
+                              name={["document", "isConstanta"]}
+                              label="IsConstanta:"
+                              valuePropName="unchecked"
+                            >
+                              <Input type="checkbox" />
+                            </Form.Item>
+                          </Col>
+                        </Row>
+                        <Row>
+                          <Col span={10} offset={1} >
+                            <Radio> <p>KonstandaDP</p></Radio>
+                          </Col >
+                          <Col span={5} offset={4}  >
+                            <Radio>
+                              <p>1</p>
+                            </Radio>
+                          </Col>
+                        </Row>
+                        <Row  >
+                          <Col span={24} >
+                            <Form.Item
+                              name={["document", "comment"]}
+                              label="Comment"
+                              rules={[
+                                {
+                                  type: "string",
+                                },
+                              ]}
+                            >
+                              <TextArea rows={2} style={{ fontSize: "12px" }} />
+                            </Form.Item>
+                          </Col>
+                        </Row>
+
+                      </Col>
+                    </Row>
+                  </Col>
+                  <Col span={7} >
+                    <Row>
+                      <Col span={22} offset={2} >
+
+                        <Form.Item
+                          name={["document", "sumCounterParty"]}
+                          label="SumCounterParty:"
+                          wrapperCol={{ offset: 1 }}
+                          style={{ width: "96%" }}
+                          rules={[
+                            {
+                              type: "string",
+                              required: true,
+                            },
+                          ]}
+                        >
+                          <Input />
+                        </Form.Item>
+                        <Form.Item
+                          name={["document", "percentEnumeration"]}
+                          label="PercentEnumeration:"
+                          wrapperCol={{ offset: 1 }}
+                          style={{ width: "96%" }}
+                          rules={[
+                            {
+                              type: "string",
+                              required: true,
+                            },
+                          ]}
+                        >
+                          <Input />
+                        </Form.Item>
+                        <Form.Item
+                          name={["document", "counter"]}
+                          label="Counterparty"
+                          rules={[
+                            {
+                              required: true,
+                            },
+                          ]}
+                        >
+                          <Select
+                            style={{ width: "90%" }}
+                            placeholder=" "
+                            optionFilterProp="children"
+                            onChange={onChangeCounter}
+                            className="Select"
+                            onFocus={onFocus}
+                            onBlur={onBlur}
+                            onSearch={onSearch}
+                            filterOption={(input, option) =>
+                              option.children
+                                .toLowerCase()
+                                .indexOf(input.toLowerCase()) >= 0
+                            }
+                          >
+                            {Array.isArray(counterparty)
+                              ? counterparty.map((item) => (
                                 <Option value={item.id}>{item.name}</Option>
                               ))
-                            : ""}
-                        </Select>
-                      </Form.Item>
-                      <Form.Item
-                        name={["document", "currency"]}
-                        label="Currency"
-                        rules={[
-                          {
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Select
-                          // showSearch
-
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          onChange={onChangeCurrency}
-                          className="Select"
-                          onFocus={onFocus}
-                          onBlur={onBlur}
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                            option.children
-                              .toLowerCase()
-                              .indexOf(input.toLowerCase()) >= 0
-                          }
+                              : ""}
+                          </Select>
+                        </Form.Item>
+                        <Form.Item
+                          name={["document", "company"]}
+                          label="Company"
+                          rules={[
+                            {
+                              required: true,
+                            },
+                          ]}
                         >
-                          {Array.isArray(currency)
-                            ? currency.map((item) => (
+                          <Select
+                            // showSearch
+
+                            style={{ width: "90%" }}
+                            placeholder=" "
+                            optionFilterProp="children"
+                            onChange={onChangeCompany}
+                            className="Select"
+                            onFocus={onFocus}
+                            onBlur={onBlur}
+                            onSearch={onSearch}
+                            filterOption={(input, option) =>
+                              option.children
+                                .toLowerCase()
+                                .indexOf(input.toLowerCase()) >= 0
+                            }
+                          >
+                            {Array.isArray(company)
+                              ? company.map((item) => (
                                 <Option value={item.id}>{item.name}</Option>
                               ))
-                            : ""}
-                        </Select>
-                      </Form.Item>
-                      {/*<Form.Item*/}
-                      {/*    name={["document", "kurskontragent "]}*/}
-                      {/*    label="Kurs kontragenta:"*/}
-                      {/*    rules={[*/}
-                      {/*        {*/}
-                      {/*            type: "string",*/}
-                      {/*        },*/}
-                      {/*    ]}*/}
-                      {/*>*/}
-                      {/*    <Input />*/}
-                      {/*</Form.Item>*/}
-                      {/*<Form.Item*/}
-                      {/*    name={["document", "summaKontragenta "]}*/}
-                      {/*    label="Summa Kontragenta:"*/}
-                      {/*    rules={[*/}
-                      {/*        {*/}
-                      {/*            type: "string",*/}
-                      {/*        },*/}
-                      {/*    ]}*/}
-                      {/*>*/}
-                      {/*    <Input />*/}
-                      {/*</Form.Item>*/}
-                      <Form.Item
-                        name={["document", "sumDP"]}
-                        label="SumDP:"
-                        rules={[
-                          {
-                            type: "string",
-                            required: true,
-                          },
-                        ]}
-                      >
-                        <Input />
-                      </Form.Item>
-                      <Form.Item
-                        wrapperCol={{ ...layout.wrapperCol, offset: 8 }}
-                      >
-                        <Button type="primary" htmlType="submit">
-                          Submit
-                        </Button>
-                      </Form.Item>
-                    </div>
-                  </div>
-                  {/*<div className="component2">*/}
-                  {/*    <Col>*/}
-                  {/*        <Space className='ModalSpace'>*/}
+                              : ""}
+                          </Select>
+                        </Form.Item>
+                        <Form.Item
+                          name={["document", "currency"]}
+                          label="Currency"
+                          rules={[
+                            {
+                              required: true,
+                            },
+                          ]}
+                        >
+                          <Select
+                            // showSearch
 
-                  {/*            /!* <Button className='EshyoModal' >Еще</Button> *!/*/}
-                  {/*        </Space>*/}
-                  {/*    </Col>*/}
+                            style={{ width: "90%" }}
+                            placeholder=" "
+                            optionFilterProp="children"
+                            onChange={onChangeCurrency}
+                            className="Select"
+                            onFocus={onFocus}
+                            onBlur={onBlur}
+                            onSearch={onSearch}
+                            filterOption={(input, option) =>
+                              option.children
+                                .toLowerCase()
+                                .indexOf(input.toLowerCase()) >= 0
+                            }
+                          >
+                            {Array.isArray(currency)
+                              ? currency.map((item) => (
+                                <Option value={item.id}>{item.name}</Option>
+                              ))
+                              : ""}
+                          </Select>
+                        </Form.Item>
 
-                  {/*    <div className='ModalTable1'>*/}
-
-                  {/*        <Table className='Jadval'*/}
-                  {/*            columns={columnss}*/}
-                  {/*            // scroll={{ x: 700, y: 400 }}*/}
-                  {/*            dataSource={dataa}*/}
-                  {/*        // height='2%'*/}
-
-                  {/*        />*/}
-                  {/*    </div>*/}
-                  {/*    <div className='ModalTable2' >*/}
-                  {/*        <Table className='Jadval'*/}
-                  {/*            columns={columnsss}*/}
-                  {/*            scroll={{ x: 700, y: 400 }}*/}
-                  {/*            dataSource={dataaa}*/}
-                  {/*            height='2%'*/}
-
-                  {/*        />*/}
-                  {/*    </div>*/}
-                  {/*</div>*/}
-                </div>
-              </div>
-            </Form>
+                        <Form.Item
+                          name={["document", "sumDP"]}
+                          label="SumDP:"
+                          wrapperCol={{ offset: 1 }}
+                          style={{ width: "96%" }}
+                          rules={[
+                            {
+                              type: "string",
+                              required: true,
+                            },
+                          ]}
+                        >
+                          <Input />
+                        </Form.Item>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Form>
+            </div>
           </Modal>
         </Space>
       </Col>

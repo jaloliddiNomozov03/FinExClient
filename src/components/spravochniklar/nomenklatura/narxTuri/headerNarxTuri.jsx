@@ -73,7 +73,7 @@ const HeaderNarxTuri = (props) => {
               {...layout}
               name="nest-messages"
               onFinish={onFinishCreate}
-              // validateMessages={validateMessages}
+            // validateMessages={validateMessages}
             >
               <Form.Item
                 name={["document", "desc"]}
@@ -95,13 +95,17 @@ const HeaderNarxTuri = (props) => {
                   },
                 ]}
               >
-                <InputNumber />
+                <InputNumber style={{ width: "100%" }} />
               </Form.Item>
-              <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                <Button type="primary" htmlType="submit">
-                  Submit
-                </Button>
-              </Form.Item>
+              <Row>
+                <Col offset={19} >
+                  <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                    <Button type="primary" htmlType="submit">
+                      Submit
+                    </Button>
+                  </Form.Item>
+                </Col>
+              </Row>
             </Form>
           </Modal>
         </Space>

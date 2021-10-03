@@ -134,15 +134,23 @@ const HeaderKontragent = (props) => {
             onOk={handleCreateOk}
             onCancel={handleCreateCancel}
           >
-            <Button type="primary">Запусать и закрыть</Button>
-            <Button className="Top">Запусать</Button>
-            <Button className="Yew">Еще</Button>
+            <Row style={{ marginBottom: "3%" }} >
+              <Col span={10}>
+                <Button type='primary'>Запусать и закрыть</Button>
+              </Col>
+              <Col span={2}>
+                <Button>Запусать</Button>
+              </Col>
+              <Col span={3} offset={9}>
+                <Button type='primary'>Еще</Button>
+              </Col>
+            </Row>
             <Form
               {...layout}
               name="nest-messages"
               onFinish={onFinishCreate}
               size="small"
-              // validateMessages={validateMessages}
+            // validateMessages={validateMessages}
             >
               <Form.Item
                 name={["document", "code"]}
@@ -153,7 +161,7 @@ const HeaderKontragent = (props) => {
                   },
                 ]}
               >
-                <InputNumber />
+                <InputNumber style={{ width: "100%" }} />
               </Form.Item>
               <Form.Item
                 name={["document", "name"]}
@@ -211,11 +219,11 @@ const HeaderKontragent = (props) => {
               <Form.Item
                 name={["document", "typeCounterPart"]}
                 label="TypeCounterPart"
-                // rules={[
-                //   {
-                //     required: true,
-                //   },
-                // ]}
+              // rules={[
+              //   {
+              //     required: true,
+              //   },
+              // ]}
               >
                 <Select
                   // showSearch
@@ -234,8 +242,8 @@ const HeaderKontragent = (props) => {
                 >
                   {Array.isArray(props.branch)
                     ? props.branch.map((item) => (
-                        <Option value={item.id}>{item.name}</Option>
-                      ))
+                      <Option value={item.id}>{item.name}</Option>
+                    ))
                     : ""}
                 </Select>
               </Form.Item>
@@ -266,8 +274,8 @@ const HeaderKontragent = (props) => {
                 >
                   {Array.isArray(price)
                     ? price.map((item) => (
-                        <Option value={item.id}>{item.name}</Option>
-                      ))
+                      <Option value={item.id}>{item.name}</Option>
+                    ))
                     : ""}
                 </Select>
               </Form.Item>
@@ -298,8 +306,8 @@ const HeaderKontragent = (props) => {
                 >
                   {Array.isArray(branch)
                     ? branch.map((item) => (
-                        <Option value={item.id}>{item.name}</Option>
-                      ))
+                      <Option value={item.id}>{item.name}</Option>
+                    ))
                     : ""}
                 </Select>
               </Form.Item>
@@ -320,14 +328,22 @@ const HeaderKontragent = (props) => {
             onOk={handleCreateGroupOk}
             onCancel={handleCreateGroupCancel}
           >
-            <Button type="primary">Запусать и закрыть</Button>
-            <Button className="Top">Запусать</Button>
-            <Button className="Yew">Еще</Button>
+            <Row style={{ marginBottom: "3%" }} >
+              <Col span={10}>
+                <Button type='primary'>Запусать и закрыть</Button>
+              </Col>
+              <Col span={2}>
+                <Button>Запусать</Button>
+              </Col>
+              <Col span={3} offset={9}>
+                <Button type='primary'>Еще</Button>
+              </Col>
+            </Row>
             <Form
               {...layout}
               name="nest-messages"
               onFinish={onFinishCreateGroup}
-              // validateMessages={validateMessages}
+            // validateMessages={validateMessages}
             >
               <Form.Item
                 name={["document", "desc"]}
@@ -349,7 +365,7 @@ const HeaderKontragent = (props) => {
                   },
                 ]}
               >
-                <InputNumber />
+                <InputNumber style={{ width: "100%" }} />
               </Form.Item>
               <Form.Item
                 name={["document", "raditel"]}

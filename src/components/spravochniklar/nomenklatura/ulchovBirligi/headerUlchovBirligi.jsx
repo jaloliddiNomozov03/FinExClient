@@ -54,7 +54,7 @@ const HeaderUlchovBirligi = (props) => {
               Create
             </Button>
             <Modal
-                title="Narx Turi (create)"
+                title="Ulchov Birligi"
                 visible={isCreateModalVisble}
                 onOk={handleCreateOk}
                 onCancel={handleCreateCancel}
@@ -68,13 +68,14 @@ const HeaderUlchovBirligi = (props) => {
                 <Form.Item
                     name={["document", "desc"]}
                     label="Description"
+                    width="100%"
                     rules={[
                       {
                         required: true,
                       },
                     ]}
                 >
-                  <Input />
+                  <Input/>
                 </Form.Item>
                 <Form.Item
                     name={["document", "code"]}
@@ -85,7 +86,7 @@ const HeaderUlchovBirligi = (props) => {
                       },
                     ]}
                 >
-                  <InputNumber />
+                  <InputNumber style={{width:"100%"}} />
                 </Form.Item>
                 <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                   <Button type="primary" htmlType="submit">

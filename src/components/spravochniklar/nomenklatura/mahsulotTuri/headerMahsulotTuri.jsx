@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, notification} from "antd";
-import {save} from "../../../../server/config/objects/ProductTypeService";
+import { Button, Row, Col, Space, Input, Modal, Form, InputNumber, notification } from "antd";
+import { save } from "../../../../server/config/objects/ProductTypeService";
 const { Search } = Input;
 const onSearch = (value) => console.log(value);
 const layout = {
@@ -22,28 +22,28 @@ const HeaderMahsulotTuri = (props) => {
   const handleCreateOk = () => {
     setIsCreateModalVisible(false);
   };
-  
+
   const handleCreateCancel = () => {
     setIsCreateModalVisible(false);
   };
 
   const onFinishCreate = (values) => {
     const doc = {
-      name:values.document.desc
+      name: values.document.desc
     };
     save(doc).then(value => {
-        if (value && value.data.success){
-            props.getList();
-            notification['success']({
-                message:'Data save!',
-                description: `${doc.name} successfully saved!!`
-            })
-        }else {
-            notification['error']({
-                message:'Data not save!',
-                description: `${doc.name} don't save!`
-            })
-        }
+      if (value && value.data.success) {
+        props.getList();
+        notification['success']({
+          message: 'Data save!',
+          description: `${doc.name} successfully saved!!`
+        })
+      } else {
+        notification['error']({
+          message: 'Data not save!',
+          description: `${doc.name} don't save!`
+        })
+      }
     })
   };
 
@@ -64,7 +64,7 @@ const HeaderMahsulotTuri = (props) => {
               {...layout}
               name="nest-messages"
               onFinish={onFinishCreate}
-              // validateMessages={validateMessages}
+            // validateMessages={validateMessages}
             >
               <Form.Item
                 name={["document", "desc"]}
@@ -86,13 +86,18 @@ const HeaderMahsulotTuri = (props) => {
                   },
                 ]}
               >
-                <InputNumber />
+                <InputNumber style={{ width: "100%" }} />
               </Form.Item>
-              <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                <Button type="primary" htmlType="submit">
-                  Submit
-                </Button>
-              </Form.Item>
+              <Row>
+                <Col  offset={19} >
+                  <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                    <Button type="primary" htmlType="submit">
+                      Submit
+                    </Button>
+                  </Form.Item>
+
+                </Col>
+              </Row>
             </Form>
           </Modal>
         </Space>

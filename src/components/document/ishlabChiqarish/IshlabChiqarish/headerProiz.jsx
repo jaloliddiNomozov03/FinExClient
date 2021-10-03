@@ -163,7 +163,7 @@ const HeaderProiz = (props) => {
                         onOk={handleCreateOk}
                         onCancel={handleCreateCancel}
                         className="Modal"
-                        width="96%"
+                        width="100%"
                         height="100vh"
                     >
                         <div className="linktop">

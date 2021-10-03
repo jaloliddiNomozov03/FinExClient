@@ -79,7 +79,7 @@ const HeaderOmborlar = (props) => {
             Create
           </Button>
           <Modal
-            title="Kassalar (create)"
+            title="Omborlar"
             visible={isCreateModalVisble}
             onOk={handleCreateOk}
             onCancel={handleCreateCancel}
@@ -105,7 +105,7 @@ const HeaderOmborlar = (props) => {
                   },
                 ]}
               >
-                <InputNumber />
+                <InputNumber style={{width:"100%"}} />
               </Form.Item>
               <Form.Item
                 name={["document", "koeffitsient"]}

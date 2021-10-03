@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
-import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, Select, notification} from "antd";
-import {saveStaff} from "../../../../server/config/objects/StaffService";
-import {getSectionsList} from "../../../../server/config/objects/SectionsService";
-import {getSectionList} from "../../../../server/config/objects/SectionService";
+import { Button, Row, Col, Space, Input, Modal, Form, InputNumber, Select, notification } from "antd";
+import { saveStaff } from "../../../../server/config/objects/StaffService";
+import { getSectionsList } from "../../../../server/config/objects/SectionsService";
+import { getSectionList } from "../../../../server/config/objects/SectionService";
 const { Search } = Input;
 const { Option } = Select;
 const onSearch = (value) => console.log(value);
 const layout = {
-  labelCol: {
-    span: 8,
-  },
-  wrapperCol: {
-    span: 16,
-  },
+    labelCol: {
+        span: 8,
+    },
+    wrapperCol: {
+        span: 16,
+    },
 };
 const HeaderFoydalanuvchi = (props) => {
 
@@ -20,26 +20,26 @@ const HeaderFoydalanuvchi = (props) => {
     const [section, setSection] = useState([]);
     const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
 
-  const showCreateModal = () => {
-    setIsCreateModalVisible(true);
-  };
+    const showCreateModal = () => {
+        setIsCreateModalVisible(true);
+    };
 
-  const handleCreateOk = () => {
-    setIsCreateModalVisible(false);
-  };
+    const handleCreateOk = () => {
+        setIsCreateModalVisible(false);
+    };
 
     const handleCreateCancel = () => {
         setIsCreateModalVisible(false);
     };
-    useEffect(()=>{
+    useEffect(() => {
         getSections();
-    },[]);
-    const getSections=()=>{
-      getSectionList().then(value => {
-          if (value && value.data){
-              setSection(value.data);
-          }
-      })
+    }, []);
+    const getSections = () => {
+        getSectionList().then(value => {
+            if (value && value.data) {
+                setSection(value.data);
+            }
+        })
     };
     const onFinishCreate = (values) => {
         console.log(values);
@@ -51,12 +51,12 @@ const HeaderFoydalanuvchi = (props) => {
             sectionId: id,
             phoneNumber: values.document.phoneNumber,
         };
-        if (employee.name && employee.info && employee.address &&employee.position&&employee.sectionId &&employee.phoneNumber){
-            saveStaff(employee).then(value =>{
-                if (value && value.data.success){
+        if (employee.name && employee.info && employee.address && employee.position && employee.sectionId && employee.phoneNumber) {
+            saveStaff(employee).then(value => {
+                if (value && value.data.success) {
                     props.getEmployees();
                     notification['success']({
-                        message:'Data success save!'
+                        message: 'Data success save!'
                     });
                 }
             })
@@ -75,24 +75,31 @@ const HeaderFoydalanuvchi = (props) => {
         console.log('focus');
     }
 
-  return (
-    <Row>
-      <Col span={4}>
-        <Space>
-          <Button className="Create" type="primary" onClick={showCreateModal}>
-            Create
-          </Button>
-          <Modal
-            title="Xodimlar"
-            visible={isCreateModalVisble}
-            onOk={handleCreateOk}
-            onCancel={handleCreateCancel}
-            className="Modal"
-          >
-            <Button type="primary">Запусать и закрыть</Button>
-            <Button className="Top">Запусать</Button>
-            <Button className="Yew">Еще</Button>
-
+    return (
+        <Row>
+            <Col span={4}>
+                <Space>
+                    <Button className="Create" type="primary" onClick={showCreateModal}>
+                        Create
+                    </Button>
+                    <Modal
+                        title="Xodimlar"
+                        visible={isCreateModalVisble}
+                        onOk={handleCreateOk}
+                        onCancel={handleCreateCancel}
+                        className="Modal"
+                    >
+                        <Row style={{ marginBottom: "3%" }} >
+                            <Col span={10}>
+                                <Button type='primary'>Запусать и закрыть</Button>
+                            </Col>
+                            <Col span={2}>
+                                <Button>Запусать</Button>
+                            </Col>
+                            <Col span={3} offset={9}>
+                                <Button type='primary'>Еще</Button>
+                            </Col>
+                        </Row>
                         <Form
                             {...layout}
                             name="nest-messages"
@@ -120,7 +127,7 @@ const HeaderFoydalanuvchi = (props) => {
                                 ]}
 
                             >
-                                <InputNumber />
+                                <InputNumber style={{width:"100%"}} />
                             </Form.Item>
                             <Form.Item
                                 name={["document", "section"]}
@@ -135,7 +142,7 @@ const HeaderFoydalanuvchi = (props) => {
                                 <Select
                                     // showSearch
 
-                                    style={{ width: 300 }}
+                                    style={{width:"100%"}} 
                                     placeholder=" "
                                     optionFilterProp="children"
                                     onChange={onChange}
@@ -148,9 +155,9 @@ const HeaderFoydalanuvchi = (props) => {
                                     }
                                 >
                                     {
-                                        Array.isArray(section)?section.map((item)=>(
+                                        Array.isArray(section) ? section.map((item) => (
                                             <Option value={item.id}>{item.name}</Option>
-                                        )):""
+                                        )) : ""
                                     }
                                 </Select>
                             </Form.Item>

@@ -84,7 +84,7 @@ const HeaderFilial = (props) => {
                   },
                 ]}
               >
-                <InputNumber />
+                <InputNumber style={{width:"100%"}} />
               </Form.Item>
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                 <Button type="primary" htmlType="submit">

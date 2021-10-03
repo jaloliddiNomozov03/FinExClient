@@ -56,16 +56,19 @@ const HeaderPartiya = () => {
             onOk={handleCreateOk}
             onCancel={handleCreateCancel}
             className="Modal"
+            width="60%"
           >
-            <Button type="primary" >
-              Запусать и закрыть
-            </Button>
-            <Button className='Top'>
-              Запусать
-            </Button>
-            <Button className='Yew' >
-              Еще
-            </Button>
+            <Row>
+              <Col span={6}>
+                <Button type='primary'>Запусать и закрыть</Button>
+              </Col>
+              <Col span={2}>
+                <Button>Запусать</Button>
+              </Col>
+              <Col span={3} offset={13}>
+                <Button type='primary'>Еще</Button>
+              </Col>
+            </Row>
 
             <Form
               {...layout}
@@ -73,128 +76,127 @@ const HeaderPartiya = () => {
               onFinish={onFinishCreate}
             // validateMessages={validateMessages}
             >
-              <Form.Item
-                name={["document", "code"]}
-                label="Code"
-                rules={[
-                  {
-                    required: true,
-                  },
-                ]}
-              >
-                <InputNumber />
-              </Form.Item>
-              <Form.Item
-                name={["document", "desc"]}
-                label="Наименование:"
-                rules={[
-                  {
-                    type: "integer",
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name={["document", "edinitsa"]}
-                label="Owner"
-                rules={[
-                  {
-                    type: "string",
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name={["document", "shtrc"]}
-                label="PrixodData"
-                rules={[{ type: "string" }]}
-              >
-                <InputNumber />
-              </Form.Item>
-              <Form.Item
-                name={["document", "TipTovara"]}
-                label="Document"
-                rules={[{ type: "string" }]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name={["document", "seriyka"]}
-                label="Kirim narxi"
-                rules={[{ type: "string" }]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name={["document", "EdinIzm"]}
-                label="Sotib olish narxi"
-                rules={[{ type: "string" }]}
-              >
-                <Input />
-              </Form.Item>
-              {/*<Form.Item*/}
-              {/*  name={["document", "koeffitsient"]}*/}
-              {/*  label="Valyuta"*/}
-              {/*  rules={[{ type: "string" }]}*/}
-              {/*>*/}
-              {/*  <Input />*/}
-              {/*</Form.Item>*/}
-              <Form.Item
-                  name={["document", "koeffitsient"]}
-                  label="Valyuta"
-              >
-                
-                <Select
-                  // showSearch
+              <Row style={{ marginTop: "2%" }} >
+                <Col span={11} offset={1} >
+                  <Form.Item
+                    name={["document", "code"]}
+                    label="Code"
+                    rules={[
+                      {
+                        required: true,
+                      },
+                    ]}
+                  >
+                    <InputNumber style={{ width:"100%" }} />
+                  </Form.Item>
+                  <Form.Item
+                    name={["document", "desc"]}
+                    label="Наименование:"
+                    rules={[
+                      {
+                        type: "integer",
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    name={["document", "edinitsa"]}
+                    label="Owner"
+                    rules={[
+                      {
+                        type: "string",
+                      },
+                    ]}
+                  >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    name={["document", "shtrc"]}
+                    label="PrixodData"
+                    rules={[{ type: "string" }]}
+                  >
+                    <InputNumber style={{ width:"100%" }} />
+                  </Form.Item>
+                  <Form.Item
+                    name={["document", "TipTovara"]}
+                    label="Document"
+                    rules={[{ type: "string" }]}
+                  >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    name={["document", "seriyka"]}
+                    label="Kirim narxi"
+                    rules={[{ type: "string" }]}
+                  >
+                    <Input />
+                  </Form.Item>
+                </Col>
+                <Col span={11} offset={1}  >
+                  <Form.Item
+                    name={["document", "EdinIzm"]}
+                    label="Sotib olish narxi"
+                    rules={[{ type: "string" }]}
+                  >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    name={["document", "koeffitsient"]}
+                    label="Valyuta"
+                  >
 
-                  style={{ width: 300 }}
-                  placeholder=" "
-                  optionFilterProp="children"
-                  onChange={onChange}
-                  className='Select'
-                  onFocus={onFocus}
-                  onBlur={onBlur}
-                  onSearch={onSearch}
-                  filterOption={(input, option) =>
-                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                  }
-                >
-                  <Option value="jack">UZS</Option>
-                  <Option value="lucy">USD</Option>
-                  <Option value="tom">RU</Option>
-                </Select>
-              </Form.Item>
+                    <Select
+                      // showSearch
 
-            
-              <Form.Item
-                name={["document", "sirye"]}
-                label=" Organizatsiya"
-                rules={[{ type: "string" }]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name={["document", "mahsulot"]}
-                label="Srokgodnosti"
-                rules={[{ type: "string" }]}
-              >
-                <Input />
-              </Form.Item>
-              <Form.Item
-                name={["document", "mahsulotM"]}
-                label="O'lchov birligi"
-                rules={[{ type: "string" }]}
-              >
-                <Input />
-              </Form.Item>
+                      style={{ width:"100%" }}
+                      placeholder=" "
+                      optionFilterProp="children"
+                      onChange={onChange}
+                      className='Select'
+                      onFocus={onFocus}
+                      onBlur={onBlur}
+                      onSearch={onSearch}
+                      filterOption={(input, option) =>
+                        option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                      }
+                    >
+                      <Option value="jack">UZS</Option>
+                      <Option value="lucy">USD</Option>
+                      <Option value="tom">RU</Option>
+                    </Select>
+                  </Form.Item>
 
-              <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-                <Button type="primary" htmlType="submit">
-                  Submit
-                </Button>
-              </Form.Item>
+
+                  <Form.Item
+                    name={["document", "sirye"]}
+                    label=" Organizatsiya"
+                    rules={[{ type: "string" }]}
+                  >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    name={["document", "mahsulot"]}
+                    label="Srokgodnosti"
+                    rules={[{ type: "string" }]}
+                  >
+                    <Input />
+                  </Form.Item>
+                  <Form.Item
+                    name={["document", "mahsulotM"]}
+                    label="O'lchov birligi"
+                    rules={[{ type: "string" }]}
+                  >
+                    <Input />
+                  </Form.Item>
+
+                  <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                    <Button type="primary" htmlType="submit">
+                      Submit
+                    </Button>
+                  </Form.Item>
+                </Col>
+              </Row>
             </Form>
           </Modal>
         </Space>

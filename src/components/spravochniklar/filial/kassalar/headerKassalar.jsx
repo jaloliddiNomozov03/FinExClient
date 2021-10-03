@@ -94,7 +94,7 @@ const HeaderKassalar = (props) => {
                   },
                 ]}
               >
-                <InputNumber />
+                <InputNumber style={{width:"100%"}} />
               </Form.Item>
               <Form.Item
                 name={["document", "koeffitsient"]}
