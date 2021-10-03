@@ -10,7 +10,6 @@ const TagsComponent = () => {
   const { tags, setTags, urlTags } = useContext(TagsContext);
   const handleClose = (removedTag) => {
     const sortedTags = tags.filter((tag) => tag !== removedTag);
-    console.log(sortedTags);
     setTags(sortedTags);
   };
   const forMap = (tag) => {
@@ -22,10 +21,7 @@ const TagsComponent = () => {
           handleClose(tag);
         }}
       >
-        
-          <Link to={urlTags.get(tag)}>
-          {tag}
-        </Link>
+        <Link to={urlTags.get(tag)}>{tag}</Link>
       </Tag>
     );
     return (
@@ -39,7 +35,7 @@ const TagsComponent = () => {
     .filter((tag, index) => tag !== tags[index + 1])
     .map(forMap);
   return (
-    <div style={{ marginBottom: 16, position: "absolute", bottom: "3px" }}>
+    <div style={{ marginBottom: 16, position: "absolute", bottom: "3px", zIndex: "3" }}>
       <TweenOneGroup
         enter={{
           scale: 0.8,

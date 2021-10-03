@@ -1,4 +1,4 @@
-import { Table, notification } from "antd";
+import { Table, notification, Button } from "antd";
 import HeaderMahsulotTuri from "./headerMahsulotTuri";
 import {useEffect, useState} from "react";
 import {deleteProduct, getPage} from "../../../../server/config/objects/ProductTypeService";
@@ -8,15 +8,15 @@ import {deleteProduct, getPage} from "../../../../server/config/objects/ProductT
 const MahsulotTuri = (props) => {
 
     const columns = [
-        { title: "Description", dataIndex: "name", key: "name", fixed: "left" },
-        { title: "Code", dataIndex: "code", key: "code", width: 100 },
+        { title: "Description", dataIndex: "name", key: "name", width: 90 },
+        { title: "Code", dataIndex: "code", key: "code", width: 90 },
         {
             title: "Action",
             dataIndex: "",
-            width: 90,
+            width: 60,
             fixed: "right",
             key: "x",
-            render: (record) => <button onClick={()=>{deleteProduct(record.key).then(value => {
+            render: (record) => <Button type="primary" onClick={()=>{deleteProduct(record.key).then(value => {
                 if (value && value.data){
                     getList();
                     notification['success']({
@@ -34,7 +34,7 @@ const MahsulotTuri = (props) => {
                         description: `Don't delete!`
                     })
                 }
-            })}}> Delete</button>,
+            })}}> Delete </Button>,
 
         },
     ];
@@ -80,9 +80,9 @@ const MahsulotTuri = (props) => {
           <Table
           title={TitleHeader}
           columns={columns}
-        //   scroll={{ x: 1500, y: 400 }}
+          scroll={{ x: 400, y: 400 }}
           dataSource={data}
-          scroll={{ y: 310 }}
+        //   scroll={{ y: 310 }}
           pagination={{
 
               total: total,
