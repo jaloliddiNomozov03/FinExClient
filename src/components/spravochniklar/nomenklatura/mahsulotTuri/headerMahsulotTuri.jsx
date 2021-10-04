@@ -109,7 +109,7 @@ const HeaderMahsulotTuri = (props) => {
       <Col
         xs={{ offset: 7, span: 6 }}
         sm={{ offset: 12, span: 8 }}
-        lg={{ span: 8, offset: 14 }}
+        lg={{ offset: 14, span: 8}}
       >
         <Space>
           <Search
