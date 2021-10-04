@@ -39,13 +39,13 @@ const NarxTuri = () => {
   };
 
   const columns = [
-    { title: "Description", dataIndex: "name", key: "name", fixed: "left" },
+    { title: "Description", dataIndex: "name", key: "name" },
     { title: "Code", dataIndex: "code", key: "code", width: 100 },
     {
       title: "Action",
       dataIndex: "",
       width: 90,
-      fixed: "right",
+      // fixed: "right",
       key: "x",
       render: (record) => (
         <button onClick={() => deletePriceById(record)}>Delete</button>
@@ -77,11 +77,11 @@ const NarxTuri = () => {
   };
   return (
     <Table
+      size="small"
       title={TitleHeader}
       columns={columns}
-      //   scroll={{ x: 1500, y: 400 }}
       dataSource={prices}
-      scroll={{ y: 310 }}
+      scroll={{ x: 400 }}
       pagination={{
         total: total,
 

@@ -111,14 +111,14 @@ const Nomenklatura = () => {
   const columns = [
     { title: "Name", dataIndex: "name", key: "name"},
     { title: "Code", dataIndex: "code", key: "code" },
-    { title: "EdinitsaIzmereniya", dataIndex: "basicUnitName", key: "basicUnitName" },
+    { title: "EdinitsaIzmereniya", dataIndex: "basicUnitName",width: 200, key: "basicUnitName" },
     { title: "ShtrixCode", dataIndex: "barcode", key: "barcode" },
     { title: "nomenclature", dataIndex: "nomenclatureName", key: "nomenclatureName" },
     { title: "TipTovara", dataIndex: "productTypeName", key: "productTypeName" },
     { title: "Seriyka", dataIndex: "serialNumber", key: "serialNumber",
       render: (record) => <Checkbox type="checkbox" checked={record} />,},
     {
-      title: "MnogoEdinitsaIzmereniya", dataIndex: "isMoreUnits", key: "isMoreUnits",
+      title: "MnogoEdinitsaIzmereniya", dataIndex: "isMoreUnits",width: 200, key: "isMoreUnits",
       render: (record) => <Checkbox type="checkbox" checked={record} />,
     },
     { title: "Koeffitsient", dataIndex: "coefficient", key: "coefficient" },
@@ -141,6 +141,7 @@ const Nomenklatura = () => {
   const TitleHeader=()=> <HeaderNomenklatura getNomenclature={getNomenclature}/>;
   return (
     <Table
+      size="small"
       title={TitleHeader}
       columns={columns}
       expandable={{
@@ -149,7 +150,7 @@ const Nomenklatura = () => {
         ),
         rowExpandable: (record) => record.description !== "",
       }}
-      scroll={{ x: 2000, y: 400 }}
+      scroll={{ x: 2000, y: 2000 }}
       dataSource={data}
       pagination={{
         total: total,
