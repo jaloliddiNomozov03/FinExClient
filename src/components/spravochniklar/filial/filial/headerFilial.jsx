@@ -48,7 +48,7 @@ const HeaderFilial = (props) => {
 
   return (
     <Row>
-      <Col span={4}>
+      <Col xs={{ span: 1 }} sm={{ span: 2 }} lg={{ span: 2 }}>
         <Space>
           <Button type="primary" onClick={showCreateModal}>
             Create
@@ -95,12 +95,14 @@ const HeaderFilial = (props) => {
           </Modal>
         </Space>
       </Col>
-      <Col span={8} offset={12}>
+      <Col xs={{ offset: 7, span: 6 }}
+        sm={{ offset: 12, span: 8 }}
+        lg={{ offset: 14, span: 8}}>
         <Space>
           <Search
             placeholder="input search text"
             onSearch={onSearch}
-            enterButton
+            allowClear
           />
           <Button type="primary">More actions</Button>
         </Space>

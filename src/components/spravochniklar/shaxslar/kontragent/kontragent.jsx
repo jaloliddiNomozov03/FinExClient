@@ -69,23 +69,21 @@ const Kontragent = () => {
       title: "Ismi",
       dataIndex: "name",
       key: "name",
-      fixed: "left",
-      width: "26%",
+      width: 80,
     },
-    { title: "Code", dataIndex: "code", key: "code", width: "7%" },
-    { title: "Manzil", dataIndex: "address", key: "address " },
+    { title: "Code", dataIndex: "code", key: "code", width: 80 },
+    { title: "Manzil", dataIndex: "address", key: "address ", width: 80 },
     {
       title: "Tel raqam",
       dataIndex: "phoneNumber",
       key: "phoneNumber",
-      width: "15%",
+      width: 80,
     },
-    { title: "Info", dataIndex: "info", key: "info" },
+    { title: "Info", dataIndex: "info", key: "info", width: 80 },
     {
       title: "Action",
       dataIndex: "",
-      width: 90,
-      fixed: "right",
+      width: 80,
       key: "x",
       render: (record) => (
         <button onClick={() => deleteCounterPartyById(record)}> Delete </button>
@@ -97,9 +95,9 @@ const Kontragent = () => {
       className="table"
       columns={columns}
       title={TitleHeader}
-      //   scroll={{ x: 1500, y: 400 }}
+      scroll={{ x: 1500, y: 400 }}
       dataSource={data}
-      scroll={{ y: 310 }}
+      // scroll={{ y: 310 }}
       pagination={{
         total: total,
 

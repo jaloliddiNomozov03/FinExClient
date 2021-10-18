@@ -122,10 +122,17 @@ const HeaderKontragent = (props) => {
     setPriceType(value);
   }
   return (
-    <Row>
-      <Col span={4}>
+    <Row style={{
+      padding: "14px 0 0"
+    }}>
+      <Col xs={{ span: 1 }} sm={{ span: 2 }} lg={{ span: 2 }}>
         <Space>
-          <Button type="primary" onClick={showCreateModal}>
+          <Button
+            type="primary"
+            style={{ marginLeft: "-35px" }}
+            size="small"
+            onClick={showCreateModal}
+          >
             Create
           </Button>
           <Modal
@@ -311,7 +318,7 @@ const HeaderKontragent = (props) => {
               </Form.Item>
             </Form>
           </Modal>
-          <Button type="primary" onClick={showCreateGroupModal}>
+          <Button type="primary" size="small" onClick={showCreateGroupModal}>
             Create group
           </Button>
           <Modal
@@ -368,14 +375,21 @@ const HeaderKontragent = (props) => {
           </Modal>
         </Space>
       </Col>
-      <Col span={8} offset={12}>
+      <Col
+        xs={{ offset: 11, span: 1 }}
+        sm={{ offset: 12, span: 10 }}
+        lg={{ offset: 8, span: 14 }}
+      >
         <Space>
           <Search
-            placeholder="input search text"
+            size="small"
+            placeholder="search"
             onSearch={onSearch}
-            enterButton
+            allowClear
           />
-          <Button type="primary">More actions</Button>
+          <Button type="primary" size="small">
+            More actions
+          </Button>
         </Space>
       </Col>
     </Row>

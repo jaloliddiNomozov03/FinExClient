@@ -1,6 +1,16 @@
 import React, { useState } from "react";
-import { Button, Row, Col, Space, Input, Modal, Form, InputNumber, Select } from "antd";
-import './partiya.css'
+import {
+  Button,
+  Row,
+  Col,
+  Space,
+  Input,
+  Modal,
+  Form,
+  InputNumber,
+  Select,
+} from "antd";
+import "./partiya.css";
 const { Search } = Input;
 const { Option } = Select;
 const onSearch = (value) => console.log(value);
@@ -30,22 +40,22 @@ const HeaderPartiya = () => {
   const onFinishCreate = (values) => {
     console.log(values);
   };
-  // Bu pasdagilar Select uchun funksiyalar  
+  // Bu pasdagilar Select uchun funksiyalar
   function onChange(value) {
     console.log(`selected ${value}`);
   }
 
   function onBlur() {
-    console.log('blur');
+    console.log("blur");
   }
 
   function onFocus() {
-    console.log('focus');
+    console.log("focus");
   }
 
   return (
     <Row>
-      <Col span={4}>
+      <Col xs={{ span: 1 }} sm={{ span: 2 }} lg={{ span: 2 }}>
         <Space>
           <Button className="Create" type="primary" onClick={showCreateModal}>
             Create
@@ -57,21 +67,15 @@ const HeaderPartiya = () => {
             onCancel={handleCreateCancel}
             className="Modal"
           >
-            <Button type="primary" >
-              Запусать и закрыть
-            </Button>
-            <Button className='Top'>
-              Запусать
-            </Button>
-            <Button className='Yew' >
-              Еще
-            </Button>
+            <Button type="primary">Запусать и закрыть</Button>
+            <Button className="Top">Запусать</Button>
+            <Button className="Yew">Еще</Button>
 
             <Form
               {...layout}
               name="nest-messages"
               onFinish={onFinishCreate}
-            // validateMessages={validateMessages}
+              // validateMessages={validateMessages}
             >
               <Form.Item
                 name={["document", "code"]}
@@ -141,11 +145,7 @@ const HeaderPartiya = () => {
               {/*>*/}
               {/*  <Input />*/}
               {/*</Form.Item>*/}
-              <Form.Item
-                  name={["document", "koeffitsient"]}
-                  label="Valyuta"
-              >
-                
+              <Form.Item name={["document", "koeffitsient"]} label="Valyuta">
                 <Select
                   // showSearch
 
@@ -153,12 +153,14 @@ const HeaderPartiya = () => {
                   placeholder=" "
                   optionFilterProp="children"
                   onChange={onChange}
-                  className='Select'
+                  className="Select"
                   onFocus={onFocus}
                   onBlur={onBlur}
                   onSearch={onSearch}
                   filterOption={(input, option) =>
-                    option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
+                    option.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
                   }
                 >
                   <Option value="jack">UZS</Option>
@@ -167,7 +169,6 @@ const HeaderPartiya = () => {
                 </Select>
               </Form.Item>
 
-            
               <Form.Item
                 name={["document", "sirye"]}
                 label=" Organizatsiya"
@@ -199,12 +200,17 @@ const HeaderPartiya = () => {
           </Modal>
         </Space>
       </Col>
-      <Col span={8} offset={12} className="search">
+      <Col
+        xs={{ offset: 7, span: 6 }}
+        sm={{ offset: 12, span: 8 }}
+        lg={{ offset: 14, span: 8 }}
+        className="search"
+      >
         <Space>
           <Search
             placeholder="input search text"
             onSearch={onSearch}
-            enterButton
+            allowClear
           />
           <Button type="primary">More actions</Button>
         </Space>

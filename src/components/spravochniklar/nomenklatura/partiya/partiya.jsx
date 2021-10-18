@@ -14,16 +14,17 @@ const Partiya = () => {
     { title: "PrixodData", dataIndex: "arrivalDate", key: "arrivalDate" },
     { title: "Document", dataIndex: "documentType", key: "documentType" },
     { title: "Kirim narxi", dataIndex: "price", key: "price" },
-    { title: "Sotib olish narxi", dataIndex: "cost", key: "cost" },
+    { title: "Sotib olish narxi", dataIndex: "cost", key: "cost", width: 150 },
     { title: "Valyuta", dataIndex: "currency", key: "currency" },
     { title: "Branch", dataIndex: "branch", key: "branch" },
-    { title: "Organizatsiya", dataIndex: "serialNumber", key: "serialNumber" },
+    { title: "Organizatsiya", dataIndex: "serialNumber", key: "serialNumber", width: 120 },
     {
       title: "Srokgodnosti",
       dataIndex: "expirationDate",
       key: "expirationDate",
+      width: 120
     },
-    { title: "O'lchov birligi", dataIndex: "unit", key: "unit" },
+    { title: "O'lchov birligi", dataIndex: "unit", key: "unit", width: 150 },
     {
       title: "Action",
       dataIndex: "",

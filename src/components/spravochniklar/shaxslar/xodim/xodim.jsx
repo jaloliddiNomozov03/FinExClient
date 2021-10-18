@@ -89,12 +89,12 @@ const Xodim = () => {
     });
   };
   const columns = [
-    { title: "Ismi", dataIndex: "name", key: "name", fixed: "left", width: '26%' },
-    { title: "Code", dataIndex: "code", key: "code", width: '7%'  },
-    { title: "Bulim", dataIndex: "section", key: "section"  },
-    { title: "Lavozim", dataIndex: "position", key: "position"  },
-    { title: "Manzil", dataIndex: "address", key: "address"  },
-    { title: "Tel raqam", dataIndex: "phoneNumber", key: "phoneNumber", width:"15%"  },
+    { title: "Ismi", dataIndex: "name", key: "name", width: 80 },
+    { title: "Code", dataIndex: "code", key: "code", width: 80  },
+    { title: "Bulim", dataIndex: "section", key: "section", width: 80  },
+    { title: "Lavozim", dataIndex: "position", key: "position", width: 100  },
+    { title: "Manzil", dataIndex: "address", key: "address" , width: 80 },
+    { title: "Tel raqam", dataIndex: "phoneNumber", key: "phoneNumber", width: 100   },
     {
       title: "Action",
       dataIndex: "",

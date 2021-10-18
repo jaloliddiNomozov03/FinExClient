@@ -118,7 +118,7 @@ const Nomenklatura = () => {
     { title: "Seriyka", dataIndex: "serialNumber", key: "serialNumber",
       render: (record) => <Checkbox type="checkbox" checked={record} />,},
     {
-      title: "MnogoEdinitsaIzmereniya", dataIndex: "isMoreUnits",width: 200, key: "isMoreUnits",
+      title: "MnogoEdinitsaIzmereniya", dataIndex: "isMoreUnits", width: 200, key: "isMoreUnits",
       render: (record) => <Checkbox type="checkbox" checked={record} />,
     },
     { title: "Koeffitsient", dataIndex: "coefficient", key: "coefficient" },
