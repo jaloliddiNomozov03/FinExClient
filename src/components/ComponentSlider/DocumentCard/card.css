@@ -14,8 +14,8 @@
     box-sizing: border-box;
 }
 .CardGrid{
-    height: 22%;
-    width: 17%;
+    width: 22%;
+    height: 30%;
     margin: auto;
     margin-left: 2.4%;
     margin-top: 2%;
@@ -30,14 +30,61 @@
     padding: auto;
 }
 .Title{
-    font-size: 18px;
+    white-space: nowrap;
+    /* font-size: 18px; */
 }
-.styleCardSwiperSlide{
-    position: relative;
+.Titlee{
+    font-size: 16px;
 }
-.div2{
-    width: 68%;
-    height:100%;
-    position: absolute;
-    left: 2%;
+
+@media (max-width:572px){
+    .CardGrid{
+        width: 47%;
+        height: 25%;
+    }
+    .Title{
+        font-size: 15px;
+    }
+    .Icon{
+        font-size: 180%;
+    }
 }
+@media (min-width:573px) and (max-width:767px ){
+    .CardGrid{
+        width: 30%;
+        height: 25%;
+    }
+    .Title{
+        font-size: 18px;
+    }
+    .Icon{
+        font-size: 220%;
+    }
+}
+@media (min-width:768px) and (max-width:1023px) {
+    .CardGrid{
+        width: 30%;
+        height: 25%;
+        text-align: center;
+    }
+    .Title{
+        font-size: 18px;
+        white-space: nowrap;
+    }
+    .Icon{
+        font-size: 300%;
+        white-space: nowrap;
+    }
+}
+@media (min-width:1023px) {
+    .Title{
+        font-size: 22px;
+        white-space: nowrap;
+    }
+    .Icon{
+        font-size: 270%;
+        white-space: nowrap;
+    }
+}
+
+
