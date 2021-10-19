@@ -105,9 +105,9 @@ const Kassalar = () => {
     });
   };
   const columns = [
-    { title: "Description", dataIndex: "name", key: "name", fixed: "left" },
+    { title: "Description", dataIndex: "name", key: "name", width: 110 },
     { title: "Code", dataIndex: "code", key: "code", width: 100 },
-    { title: "Filial", dataIndex: "branch", key: "branch", width: 200 },
+    { title: "Filial", dataIndex: "branch", key: "branch", width: 100 },
     {
       title: "Action",
       dataIndex: "",

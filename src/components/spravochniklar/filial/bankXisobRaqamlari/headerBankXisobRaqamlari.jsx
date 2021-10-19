@@ -1,6 +1,16 @@
 import React, { useState } from "react";
-import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, notification} from "antd";
-import {saveBankAccount} from "../../../../server/config/objects/BankAccountService";
+import {
+  Button,
+  Row,
+  Col,
+  Space,
+  Input,
+  Modal,
+  Form,
+  InputNumber,
+  notification,
+} from "antd";
+import { saveBankAccount } from "../../../../server/config/objects/BankAccountService";
 const { Search } = Input;
 const onSearch = (value) => console.log(value);
 const layout = {
@@ -37,18 +47,25 @@ const HeaderBankXisobRaqamlari = (props) => {
       stir: values.document.stir,
     };
     console.log(account);
-    if (account.accountNumber && account.address && account.bank && account.director&&account.mfi
-    && account.oked && account.stir){
-      saveBankAccount(account).then(value => {
+    if (
+      account.accountNumber &&
+      account.address &&
+      account.bank &&
+      account.director &&
+      account.mfi &&
+      account.oked &&
+      account.stir
+    ) {
+      saveBankAccount(account).then((value) => {
         console.log("Ishladi");
-        if (value && value.data.success){
+        if (value && value.data.success) {
           props.getBankAccounts();
-          notification['success']({
-            message:'Data success save!'
+          notification["success"]({
+            message: "Data success save!",
           });
-        }else {
-          notification['error']({
-            message:'Data don\'t save!'
+        } else {
+          notification["error"]({
+            message: "Data don't save!",
           });
         }
       });
@@ -57,7 +74,7 @@ const HeaderBankXisobRaqamlari = (props) => {
 
   return (
     <Row>
-      <Col span={4}>
+      <Col xs={{ span: 1 }} sm={{ span: 2 }} lg={{ span: 2 }}>
         <Space>
           <Button type="primary" onClick={showCreateModal}>
             Create
@@ -91,7 +108,7 @@ const HeaderBankXisobRaqamlari = (props) => {
                 label="Code"
                 rules={[
                   {
-                    type: "integer"
+                    type: "integer",
                   },
                 ]}
               >
@@ -103,7 +120,7 @@ const HeaderBankXisobRaqamlari = (props) => {
                 rules={[
                   {
                     type: "string",
-                    required: true
+                    required: true,
                   },
                 ]}
               >
@@ -119,28 +136,28 @@ const HeaderBankXisobRaqamlari = (props) => {
               <Form.Item
                 name={["document", "director"]}
                 label="Director"
-                rules={[{ type: "string", required: true  }]}
+                rules={[{ type: "string", required: true }]}
               >
                 <Input />
               </Form.Item>
               <Form.Item
                 name={["document", "mfi"]}
                 label="MFI"
-                rules={[{ type: "string", required: true  }]}
+                rules={[{ type: "string", required: true }]}
               >
                 <Input />
               </Form.Item>
               <Form.Item
                 name={["document", "oked"]}
                 label="OKED"
-                rules={[{ type: "string", required: true  }]}
+                rules={[{ type: "string", required: true }]}
               >
                 <Input />
               </Form.Item>
               <Form.Item
                 name={["document", "stir"]}
                 label="STIR"
-                rules={[{ type: "string", required: true  }]}
+                rules={[{ type: "string", required: true }]}
               >
                 <Input />
               </Form.Item>
@@ -152,14 +169,18 @@ const HeaderBankXisobRaqamlari = (props) => {
               </Form.Item>
             </Form>
           </Modal>
-           </Space>
+        </Space>
       </Col>
-      <Col span={8} offset={12}>
+      <Col
+        xs={{ offset: 7, span: 6 }}
+        sm={{ offset: 12, span: 8 }}
+        lg={{ offset: 14, span: 8 }}
+      >
         <Space>
           <Search
             placeholder="input search text"
             onSearch={onSearch}
-            enterButton
+            allowClear
           />
           <Button type="primary">More actions</Button>
         </Space>

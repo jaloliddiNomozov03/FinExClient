@@ -1,5 +1,15 @@
 import React, { useState } from "react";
-import { Button, Row, Col, Space, Input, Modal, Form, InputNumber, notification } from "antd";
+import {
+  Button,
+  Row,
+  Col,
+  Space,
+  Input,
+  Modal,
+  Form,
+  InputNumber,
+  notification,
+} from "antd";
 import { saveSection } from "../../../../server/config/objects/SectionService";
 const { Search } = Input;
 const onSearch = (value) => console.log(value);
@@ -48,7 +58,7 @@ const HeaderBulim = (props) => {
 
   return (
     <Row>
-      <Col span={4}>
+      <Col xs={{ span: 1 }} sm={{ span: 2 }} lg={{ span: 2 }}>
         <Space>
           <Button className="Create" type="primary" onClick={showCreateModal}>
             Create
@@ -60,23 +70,15 @@ const HeaderBulim = (props) => {
             onCancel={handleCreateCancel}
             className="Modal"
           >
-            <Row style={{ marginBottom: "3%" }} >
-              <Col span={10}>
-                <Button type='primary'>Запусать и закрыть</Button>
-              </Col>
-              <Col span={2}>
-                <Button>Запусать</Button>
-              </Col>
-              <Col span={3} offset={9}>
-                <Button type='primary'>Еще</Button>
-              </Col>
-            </Row>
+            <Button type="primary">Запусать и закрыть</Button>
+            <Button className="Top">Запусать</Button>
+            <Button className="Yew">Еще</Button>
+
             <Form
               {...layout}
               name="nest-messages"
               onFinish={onFinishCreate}
-              marginTop="2%"
-            // validateMessages={validateMessages}
+              // validateMessages={validateMessages}
             >
               <Form.Item
                 name={["document", "desc"]}
@@ -98,7 +100,7 @@ const HeaderBulim = (props) => {
                   },
                 ]}
               >
-                <InputNumber style={{ width: "100%" }} />
+                <InputNumber />
               </Form.Item>
               <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                 <Button type="primary" htmlType="submit">
@@ -109,12 +111,17 @@ const HeaderBulim = (props) => {
           </Modal>
         </Space>
       </Col>
-      <Col span={8} offset={12} className="search">
+      <Col
+        xs={{ offset: 7, span: 6 }}
+        sm={{ offset: 12, span: 8 }}
+        lg={{ offset: 14, span: 8 }}
+        className="search"
+      >
         <Space>
           <Search
             placeholder="input search text"
             onSearch={onSearch}
-            enterButton
+            allowClear
           />
           <Button type="primary">More actions</Button>
         </Space>

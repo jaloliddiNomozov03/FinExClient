@@ -41,7 +41,7 @@ const Valyutalar = () => {
   };
 
   const columns = [
-    { title: "Description", dataIndex: "name", key: "name", fixed: "left" },
+    { title: "Description", dataIndex: "name", key: "name", width: 110 },
     { title: "Rate", dataIndex: "rate", key: "rate", width: 100 },
     { title: "Code", dataIndex: "code", key: "code", width: 100 },
     {

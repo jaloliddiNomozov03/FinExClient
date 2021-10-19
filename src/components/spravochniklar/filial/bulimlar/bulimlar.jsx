@@ -105,7 +105,7 @@ const Bulimlar = () => {
     });
   };
   const columns = [
-    { title: "Description", dataIndex: "name", key: "name", fixed: "left" },
+    { title: "Description", dataIndex: "name", key: "name", width: 110},
     { title: "Code", dataIndex: "code", key: "code" },
     { title: "Filial", dataIndex: "branch", key: "branch" },
     {
@@ -124,7 +124,7 @@ const Bulimlar = () => {
       title={TitleHeader}
       columns={columns}
       dataSource={data}
-      scroll={{ y: 310 }}
+      scroll={{ x: 400 }}
       pagination={{
         total: total,
 
