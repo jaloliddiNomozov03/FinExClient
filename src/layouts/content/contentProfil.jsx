@@ -8,16 +8,17 @@ class ContentProfil extends React.Component {
 
     render() {
         return (
-            <div style={{ backgroundColor: 'whitesmoke', width: '95%', height: '100%' }} >
+            <div className="Asosiy" >
                 <Row >
-                    <Col span={10} offset={4} style={{ borderTop: '  2px solid blue',
-                     backgroundColor: 'white', padding: '1%', marginTop:'3%' }} >
+                    <Col  xs={{span:24}} sm={{span:14}} md={{span:12, offset:1}}  lg={{span:12, offset:1}} xl={{span:8,  offset:4}} xxl={{span:8, ofset:4}} 
+                         className="Wrapper"
+                    >
                         <Row>
                             <Col span={24}  >
                             </Col>
                         </Row>
                         <Form
-                            style={{ padding: '0' }}
+                            style={{ padding: '0',margin:'0' }}
                             name="basic"
                             labelCol={{
                                 span: 10,
@@ -103,26 +104,23 @@ class ContentProfil extends React.Component {
                                 <Input.Password style={{ backgroundColor: 'whitesmoke' }} placeholder='new password' />
                             </Form.Item>
                             <Row>
-                                <Col span={14} offset={10} >
+                                <Col  xs={{span:4}} sm={{span:10, offset:10}} >
                                     <Button type='primary'   >Submit</Button>
                                 </Col>
                             </Row>
                         </Form>
                     </Col>
-                    <Col span={6} style={{ borderTop: '  2px solid blue', backgroundColor: 'white',marginTop:'3%',padding:'1%'  }}   >
+                    <Col  xs={{span:24}} sm={{span:10}} md={{span:10}}  lg={{span:10}} xl={{span:8}} xxl={{span:8}}
+                        className="WrapperImg"  >
                         <Row >
                             <Col span={24}  >
                                 <h1> Rasm</h1>
                             </Col>
                         </Row>
-                        <Row className='Mt' >
-                            <Col span={24} >
-                                <div style={{
-                                    border: '1px solid whitesmoke',  height: '80px'
-                                    , width: '70%', backgroundColor: 'whitesmoke',margin:'auto'
-                                }} >
-                                    <Image
-                                        
+                        <Row>
+                            <Col xs={{span:15, }} sm={{span:24, offset:0}} md={{span:24, offset:0}} xl={{span:24, offset:0}} xxl={{span:16, offset:4}}>
+                                <div className="ImgDiv">
+                                    <Image  
                                         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
                                     />
                                 </div>
