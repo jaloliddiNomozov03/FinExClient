@@ -100,24 +100,24 @@ const Tushum = () => {
     //   fixed: "left",
     //   width: "26%",
     // },
-    { title: "Code", dataIndex: "code", key: "code", width: "7%" },
-    { title: "Otvetstvenniy", dataIndex: "responsibleName", key: "responsibleName" },
-    { title: "Date", dataIndex: "date", key: "date" },
+    { title: "Code", dataIndex: "code", key: "code", width: 120 },
+    { title: "Otvetstvenniy", dataIndex: "responsibleName", key: "responsibleName", width: 120, },
+    { title: "Date", dataIndex: "date", key: "date", width: 120, },
     {
       title: " DPsprisaniyaPoPartiya",
       dataIndex: "dpsAssignmentByParty",
       key: "dpsAssignmentByParty",
-      width: "15%",
+      width: 180,
       render: (record) => <Checkbox type="checkbox" checked={record} />,
     },
-    { title: "KostantaDP", dataIndex: "isConstantDP", key: "isConstantDP",
+    { title: "KostantaDP", dataIndex: "isConstantDP", key: "isConstantDP", width: 150,
       render: (record) => <Checkbox type="checkbox" checked={record} />,
     },
-    { title: "Izox", dataIndex: "comment", key: "comment" },
+    { title: "Izox", dataIndex: "comment", key: "comment", width: 120, },
     {
       title: "Action",
       dataIndex: "",
-      width: 90,
+      width: 100,
       fixed: "right",
       key: "x",
       render: (record) => <Button onClick={()=>deleteCashById(record)} type="primary"> Delete </Button>,
@@ -129,6 +129,7 @@ const Tushum = () => {
       className="table"
       columns={columns}
       dataSource={data}
+      scroll={{x: 300, y: 500}}
       title={TitleHeaderTushum}
       pagination={{
 

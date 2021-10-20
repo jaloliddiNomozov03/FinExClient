@@ -101,18 +101,17 @@ const Spisaniya = () => {
         })
     };
     const columns = [
-        {title: "N", dataIndex: "code", key: "code", width: "5%"},
-        {title: "Sotrudnik ", dataIndex: "responsibleName", key: "responsibleName"},
-        {title: "Filial", dataIndex: "branchName", key: "branchName"},
-        {title: "Izox", dataIndex: "comment", key: "comment"},
-        {title: "Kassa", dataIndex: "warehouseName", key: "warehouseName"},
-       {title: "Date", dataIndex: "date", key: "date", width: "10%"},
+        {title: "N", dataIndex: "code", key: "code", width: 100},
+        {title: "Sotrudnik ", dataIndex: "responsibleName", key: "responsibleName",width: 120,},
+        {title: "Filial", dataIndex: "branchName", key: "branchName", width: 120,},
+        {title: "Izox", dataIndex: "comment", key: "comment", width: 120,},
+        {title: "Kassa", dataIndex: "warehouseName", key: "warehouseName", width: 120,},
+       {title: "Date", dataIndex: "date", key: "date", width: 120},
         {
             title: "Action",
             dataIndex: "",
-            fixed: "right",
             key: "x",
-            width: "7%",
+            width: 100,
             render: (record) => <Button onClick={() => deleteById(record)} type="primary">Delete</Button>,
         },
     ];
@@ -122,7 +121,7 @@ const Spisaniya = () => {
         <Table
             className="Jadval"
             columns={columns}
-            scroll={{x: 1600, y: 400}}
+            scroll={{x: 300, y: 500}}
             dataSource={data}
             title={TitleHeader}
             pagination={{

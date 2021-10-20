@@ -1,9 +1,9 @@
-import {Table, Button, notification} from "antd";
+import { Table, Button, notification } from "antd";
 import HeaderMaxsulotKilent from "./headerMaxsulotKilent";
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 import {
   deleteGoodsToTheClient,
-  getGoodsToTheClientPage
+  getGoodsToTheClientPage,
 } from "../../../../server/config/document/ReturnOfGoodsToTheClient";
 
 const MaxsulotKilent = () => {
@@ -15,28 +15,27 @@ const MaxsulotKilent = () => {
     getList();
   }, []);
   const deleteById = (record) => {
-    deleteGoodsToTheClient(record.id).then(value => {
+    deleteGoodsToTheClient(record.id).then((value) => {
       if (value && value.data.success) {
         getList();
-        notification['success']({
-          message: 'Data success deleted!',
-          description: `${record.name} deleted!`
+        notification["success"]({
+          message: "Data success deleted!",
+          description: `${record.name} deleted!`,
         });
       } else if (record.id) {
-        notification['error']({
-          message: 'Data error!',
-          description: `${record.key} not found!`
-        })
+        notification["error"]({
+          message: "Data error!",
+          description: `${record.key} not found!`,
+        });
       } else {
-        notification['error']({
-          message: 'Data error!',
-          description: `Don't delete!`
-        })
+        notification["error"]({
+          message: "Data error!",
+          description: `Don't delete!`,
+        });
       }
-    })
+    });
   };
   let datas = {
-
     key: 1,
     date: "",
     code: "",
@@ -57,12 +56,12 @@ const MaxsulotKilent = () => {
     balanceDebt: "",
     rate: "",
     salesBonusPercentage: "",
-    repaymentDate:"",
-    comment: ""
+    repaymentDate: "",
+    comment: "",
   };
   let datasList = [];
   const getList = () => {
-    getGoodsToTheClientPage(currentPage, pageSize).then(value => {
+    getGoodsToTheClientPage(currentPage, pageSize).then((value) => {
       if (value && value.data && value.data.content) {
         setTotal(value.data.totalElements);
         setCurrentPage(value.data.pageable.pageNumber);
@@ -79,7 +78,8 @@ const MaxsulotKilent = () => {
           datas.currencyName = value.data.content[i].currencyName;
           datas.sumDocument = value.data.content[i].sumDocument;
           datas.totalDebt = value.data.content[i].totalDebt;
-          datas.salesBonusPercentage = value.data.content[i].salesBonusPercentage;
+          datas.salesBonusPercentage =
+            value.data.content[i].salesBonusPercentage;
           datas.repaymentDate = value.data.content[i].repaymentDate;
           datas.rate = value.data.content[i].rate;
           datas.account = value.data.content[i].account;
@@ -94,14 +94,14 @@ const MaxsulotKilent = () => {
         }
         setData(datasList);
       } else {
-        setData(null)
+        setData(null);
       }
-    })
+    });
   };
   const onChangePage = (page, pageSize) => {
     setPageSize(pageSize);
-    setCurrentPage((page - 1));
-    getGoodsToTheClientPage(page - 1, pageSize).then(value => {
+    setCurrentPage(page - 1);
+    getGoodsToTheClientPage(page - 1, pageSize).then((value) => {
       if (value && value.data) {
         setCurrentPage(value.data.pageable.pageNumber);
         datasList = [];
@@ -118,7 +118,8 @@ const MaxsulotKilent = () => {
           datas.currencyName = value.data.content[i].currencyName;
           datas.sumDocument = value.data.content[i].sumDocument;
           datas.totalDebt = value.data.content[i].totalDebt;
-          datas.salesBonusPercentage = value.data.content[i].salesBonusPercentage;
+          datas.salesBonusPercentage =
+            value.data.content[i].salesBonusPercentage;
           datas.repaymentDate = value.data.content[i].repaymentDate;
           datas.rate = value.data.content[i].rate;
           datas.account = value.data.content[i].account;
@@ -133,42 +134,96 @@ const MaxsulotKilent = () => {
         }
         setData(datasList);
       } else {
-        setData(null)
+        setData(null);
       }
-    })
+    });
   };
   const columns = [
-    {title: "Data", dataIndex: "date", key: "date"},
-    {title: "Nomer", dataIndex: "code", key: "code"},
-    {title: "Ombor", dataIndex: "warehouseName", key: "warehouseName"},
-    {title: "Organizatsiya", dataIndex: "branchName", key: "branchName"},
-    {title: "Otvetstvenniy", dataIndex: "responsibleName", key: "responsibleName"},
-    {title: "Uchyet", dataIndex: "account", key: "account"},
-    {title: "Kontragent", dataIndex: "priceTypeName", key: "priceTypeName"},
-    {title: "Kontragent", dataIndex: "counterpartyName", key: "counterpartyName"},
-    {title: "Tulov muddati", dataIndex: "repaymentDate", key: "repaymentDate"},
-    {title: "SummaDakument", dataIndex: "sumDocument", key: "sumDocument"},
-    {title: "ObshiyDolg", dataIndex: "balanceDebt", key: "balanceDebt"},
-    {title: "ProtsentBonusPoProdaji", dataIndex: "salesBonusPercentage", key: "salesBonusPercentage"},
-    {title: "Valyuta", dataIndex: "currencyName", key: "currencyName"},
-    {title: "Kurs", dataIndex: "rate", key: "rate"},
-    {title: "Izox", dataIndex: "comment", key: "comment"},
+    { title: "Data", dataIndex: "date", key: "date", width: 120 },
+    { title: "Nomer", dataIndex: "code", key: "code", width: 120 },
+    {
+      title: "Ombor",
+      dataIndex: "warehouseName",
+      key: "warehouseName",
+      width: 120,
+    },
+    {
+      title: "Organizatsiya",
+      dataIndex: "branchName",
+      key: "branchName",
+      width: 150,
+    },
+    {
+      title: "Otvetstvenniy",
+      dataIndex: "responsibleName",
+      key: "responsibleName",
+      width: 150,
+    },
+    { title: "Uchyet", dataIndex: "account", key: "account", width: 120 },
+    {
+      title: "Kontragent",
+      dataIndex: "priceTypeName",
+      key: "priceTypeName",
+      width: 180,
+    },
+    {
+      title: "Kontragent",
+      dataIndex: "counterpartyName",
+      key: "counterpartyName",
+      width: 150,
+    },
+    {
+      title: "Tulov muddati",
+      dataIndex: "repaymentDate",
+      key: "repaymentDate",
+      width: 180,
+    },
+    {
+      title: "SummaDakument",
+      dataIndex: "sumDocument",
+      key: "sumDocument",
+      width: 180,
+    },
+    {
+      title: "ObshiyDolg",
+      dataIndex: "balanceDebt",
+      key: "balanceDebt",
+      width: 150,
+    },
+    {
+      title: "ProtsentBonusPoProdaji",
+      dataIndex: "salesBonusPercentage",
+      key: "salesBonusPercentage",
+      width: 200,
+    },
+    {
+      title: "Valyuta",
+      dataIndex: "currencyName",
+      key: "currencyName",
+      width: 120,
+    },
+    { title: "Kurs", dataIndex: "rate", key: "rate", width: 120 },
+    { title: "Izox", dataIndex: "comment", key: "comment", width: 120 },
     {
       title: "Action",
       dataIndex: "",
       fixed: "right",
       key: "x",
-      width: "7%",
-      render: (record) => <Button onClick={() => deleteById(record)} type="primary">Delete</Button>,
+      width: 100,
+      render: (record) => (
+        <Button onClick={() => deleteById(record)} type="primary">
+          Delete
+        </Button>
+      ),
     },
   ];
-  const TitleHeader = () => <HeaderMaxsulotKilent getList={getList}/>;
+  const TitleHeader = () => <HeaderMaxsulotKilent getList={getList} />;
 
   return (
     <Table
       className="Jadval"
       columns={columns}
-      scroll={{ x: 2300, y: 400 }}
+      scroll={{ x: 300, y: 400 }}
       dataSource={data}
       title={TitleHeader}
     />

@@ -92,19 +92,19 @@ const Rasxod = () => {
         })
     };
     const columns = [
-        { title: "N", dataIndex: "code", key: "code", width: "5%" },
-        { title: "Sotrudnik ", dataIndex: "responsibleName", key: "responsibleName" },
-        { title: "Kassa", dataIndex: "cashBoxName", key: "cashBoxName" },
-        { title: "Filial", dataIndex: "branchName", key: "branchName" },
-        { title: "Bulim", dataIndex: "sectionsName", key: "sectionsName" },
-        { title: "Summa", dataIndex: "sum", key: "sum", width: "10%" },
-        { title: "Izox", dataIndex: "comment", key: "comment" },
+        { title: "N", dataIndex: "code", key: "code", width: 120 },
+        { title: "Sotrudnik ", dataIndex: "responsibleName", key: "responsibleName", width: 120, },
+        { title: "Kassa", dataIndex: "cashBoxName", key: "cashBoxName", width: 120, },
+        { title: "Filial", dataIndex: "branchName", key: "branchName", width: 120, },
+        { title: "Bulim", dataIndex: "sectionsName", key: "sectionsName", width: 120, },
+        { title: "Summa", dataIndex: "sum", key: "sum", width: 120 },
+        { title: "Izox", dataIndex: "comment", key: "comment", width: 120, },
         {
             title: "Action",
             dataIndex: "",
             fixed: "right",
             key: "x",
-            width: "7%",
+            width: 100,
             render: (record) => <Button onClick={()=>deleteCostById(record)} type="primary">Delete</Button>,
         },
     ];
@@ -115,6 +115,7 @@ const Rasxod = () => {
                 className="Jadval"
                 columns={columns}
                 dataSource={data}
+                scroll={{x: 300, y: 500}}
                 title={TitleHeader}
                 pagination={{
 

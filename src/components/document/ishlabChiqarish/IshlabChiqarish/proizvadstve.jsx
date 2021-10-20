@@ -135,29 +135,29 @@ const Proiz = () => {
   };
 
   const columns = [
-    { title: "Code", dataIndex: "code", key: "code",},
-    { title: "Date ", dataIndex: "date", key: "date" },
-    { title: "Status", dataIndex: "status", key: "status" },
-    { title: "Namenklatura", dataIndex: "nomenclatureName", key: "nomenclatureName" },
-    { title: "Soni", dataIndex: "count", key: "count" },
-    { title: "Ombor", dataIndex: "warehouseName", key: "warehouseName" },
+    { title: "Code", dataIndex: "code", key: "code", width: 120,},
+    { title: "Date ", dataIndex: "date", key: "date", width: 120, },
+    { title: "Status", dataIndex: "status", key: "status", width: 120, },
+    { title: "Namenklatura", dataIndex: "nomenclatureName", key: "nomenclatureName", width: 150, },
+    { title: "Soni", dataIndex: "count", key: "count", width: 120, },
+    { title: "Ombor", dataIndex: "warehouseName", key: "warehouseName", width: 120, },
     // { title: "Counterparty", dataIndex: "counterPartyName", key: "counterPartyName",},
-    { title: " ПриходЦена ", dataIndex: "enteringSum", key: "enteringSum" },
-    { title: " Currency ", dataIndex: "currencyName", key: "currencyName" },
-    { title: " Kurs ", dataIndex: "course", key: "course" },
-    { title: " Filial ", dataIndex: "branchName", key: "branchName" },
-    { title: " Otvetsvenniy ", dataIndex: "responsibleName", key: "responsibleName" },
-    { title: " sumCost ", dataIndex: "sumCost", key: "sumCost" },
-    { title: " sumProduct ", dataIndex: "sumProduct", key: "sumProduct" },
-    { title: " type ", dataIndex: "type", key: "type" },
-    { title: " unitName ", dataIndex: "unitName", key: "unitName" },
-    { title: " Comment ", dataIndex: "comment", key: "comment" },
+    { title: " Приход Цена ", dataIndex: "enteringSum", key: "enteringSum", width: 180, },
+    { title: " Currency ", dataIndex: "currencyName", key: "currencyName", width: 120, },
+    { title: " Kurs ", dataIndex: "course", key: "course", width: 120, },
+    { title: " Filial ", dataIndex: "branchName", key: "branchName", width: 120, },
+    { title: " Otvetsvenniy ", dataIndex: "responsibleName", key: "responsibleName", width: 150, },
+    { title: " sumCost ", dataIndex: "sumCost", key: "sumCost", width: 120, },
+    { title: " sumProduct ", dataIndex: "sumProduct", key: "sumProduct", width: 120, },
+    { title: " type ", dataIndex: "type", key: "type", width: 120, },
+    { title: " unitName ", dataIndex: "unitName", key: "unitName", width: 120, },
+    { title: " Comment ", dataIndex: "comment", key: "comment", width: 150, },
     {
       title: "Action",
       dataIndex: "",
       fixed: "right",
       key: "x",
-      width: "7%",
+      width: 100,
       render: (record) => <Button onClick={()=>deleteProductionById(record)} type="primary">Delete</Button>,
     },
   ];
@@ -167,7 +167,7 @@ const Proiz = () => {
     <Table
       className="Jadval"
       columns={columns}
-      scroll={{ x: 2600, y: 400 }}
+      scroll={{ x: 300, y: 500 }}
       dataSource={data}
       title={TitleHeaderProiz}
       pagination={{

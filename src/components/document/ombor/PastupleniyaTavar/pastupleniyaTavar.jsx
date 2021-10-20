@@ -1,75 +1,81 @@
-import {Table, Button, notification} from "antd";
+import { Table, Button, notification } from "antd";
 import HeaderPastypleniya from "./headerPastupleniya";
 import "./pastupleniya.css";
-import React, {useEffect, useState} from "react";
-import {deleteReceiptOfGoods, getReceiptOfGoodsPage} from "../../../../server/config/document/ReceiptOfGoodsService";
+import React, { useEffect, useState } from "react";
+import {
+  deleteReceiptOfGoods,
+  getReceiptOfGoodsPage,
+} from "../../../../server/config/document/ReceiptOfGoodsService";
 
 const Pastupleniya = () => {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
   const [total, setTotal] = useState(null);
   const [pageSize, setPageSize] = useState(10);
-  useEffect(()=>{
+  useEffect(() => {
     getReceiptOfGoods();
-  },[]);
-  const deleteReceiptOfGoodsById=(record)=>{
-    deleteReceiptOfGoods(record.id).then(value => {
-      if (value && value.data.success){
+  }, []);
+  const deleteReceiptOfGoodsById = (record) => {
+    deleteReceiptOfGoods(record.id).then((value) => {
+      if (value && value.data.success) {
         getReceiptOfGoods();
-        notification['success']({
-          message:'Data success deleted!',
-          description: `${record.code} deleted!`
+        notification["success"]({
+          message: "Data success deleted!",
+          description: `${record.code} deleted!`,
         });
-      }else if (record.id){
-        notification['error']({
-          message:'Data error!',
-          description: `${record.code} not found!`
-        })
-      }else {
-        notification['error']({
-          message:'Data error!',
-          description: `Don't delete!`
-        })
+      } else if (record.id) {
+        notification["error"]({
+          message: "Data error!",
+          description: `${record.code} not found!`,
+        });
+      } else {
+        notification["error"]({
+          message: "Data error!",
+          description: `Don't delete!`,
+        });
       }
-    })
+    });
   };
   let receiptOfGoods = {
-    "id": "",
-    "code": 0,
-    "date": "",
-    "responsibleName": "",
-    "accounting": "",
-    "additionalExpenses": 0,
-    "allSum": 0,
-    "branchName": "",
-    "comment": "",
-    "counterPartyName": "",
-    "course": 0,
-    "currencyName": "",
-    "maturityDate": "",
-    "repayment": "",
-    "sumDocument": 0,
-    "totalDebt": 0,
-    "type": "",
-    "warehouseName": ""
+    id: "",
+    code: 0,
+    date: "",
+    responsibleName: "",
+    accounting: "",
+    additionalExpenses: 0,
+    allSum: 0,
+    branchName: "",
+    comment: "",
+    counterPartyName: "",
+    course: 0,
+    currencyName: "",
+    maturityDate: "",
+    repayment: "",
+    sumDocument: 0,
+    totalDebt: 0,
+    type: "",
+    warehouseName: "",
   };
   let receiptOfGoodsList = [];
-  const getReceiptOfGoods=()=>{
-    getReceiptOfGoodsPage(currentPage, pageSize).then(value => {
-      if (value && value.data && value.data.content){
+  const getReceiptOfGoods = () => {
+    getReceiptOfGoodsPage(currentPage, pageSize).then((value) => {
+      if (value && value.data && value.data.content) {
         setTotal(value.data.totalElements);
         setCurrentPage(value.data.pageable.pageNumber);
         for (let i = 0; i < value.data.content.length; i++) {
           receiptOfGoods.id = value.data.content[i].id;
           receiptOfGoods.code = value.data.content[i].code;
           receiptOfGoods.date = value.data.content[i].date;
-          receiptOfGoods.responsibleName = value.data.content[i].responsibleName;
+          receiptOfGoods.responsibleName =
+            value.data.content[i].responsibleName;
           receiptOfGoods.accounting = value.data.content[i].accounting;
-          receiptOfGoods.additionalExpenses = value.data.content[i].additionalExpenses;
+          receiptOfGoods.additionalExpenses =
+            value.data.content[i].additionalExpenses;
           receiptOfGoods.allSum = value.data.content[i].allSum;
           receiptOfGoods.branchName = value.data.content[i].branchName;
           receiptOfGoods.currencyName = value.data.content[i].currencyName;
-          receiptOfGoods.counterPartyName = value.data.content[i].counterPartyName;
+          receiptOfGoods.counterPartyName =
+            value.data.content[i].counterPartyName;
           receiptOfGoods.warehouseName = value.data.content[i].warehouseName;
           receiptOfGoods.comment = value.data.content[i].comment;
           receiptOfGoods.course = value.data.content[i].course;
@@ -82,29 +88,32 @@ const Pastupleniya = () => {
           receiptOfGoods = {};
         }
         setData(receiptOfGoodsList);
-      }else {
-        setData(null)
+      } else {
+        setData(null);
       }
-    })
+    });
   };
-  const onChangePage=(page, pageSize)=>{
+  const onChangePage = (page, pageSize) => {
     setPageSize(pageSize);
-    setCurrentPage((page-1));
-    getReceiptOfGoodsPage(page-1, pageSize).then(value => {
-      if (value && value.data){
+    setCurrentPage(page - 1);
+    getReceiptOfGoodsPage(page - 1, pageSize).then((value) => {
+      if (value && value.data) {
         setCurrentPage(value.data.pageable.pageNumber);
         receiptOfGoodsList = [];
         for (let i = 0; i < value.data.content.length; i++) {
           receiptOfGoods.id = value.data.content[i].id;
           receiptOfGoods.code = value.data.content[i].code;
           receiptOfGoods.date = value.data.content[i].date;
-          receiptOfGoods.responsibleName = value.data.content[i].responsibleName;
+          receiptOfGoods.responsibleName =
+            value.data.content[i].responsibleName;
           receiptOfGoods.accounting = value.data.content[i].accounting;
-          receiptOfGoods.additionalExpenses = value.data.content[i].additionalExpenses;
+          receiptOfGoods.additionalExpenses =
+            value.data.content[i].additionalExpenses;
           receiptOfGoods.allSum = value.data.content[i].allSum;
           receiptOfGoods.branchName = value.data.content[i].branchName;
           receiptOfGoods.currencyName = value.data.content[i].currencyName;
-          receiptOfGoods.counterPartyName = value.data.content[i].counterPartyName;
+          receiptOfGoods.counterPartyName =
+            value.data.content[i].counterPartyName;
           receiptOfGoods.warehouseName = value.data.content[i].warehouseName;
           receiptOfGoods.comment = value.data.content[i].comment;
           receiptOfGoods.course = value.data.content[i].course;
@@ -117,70 +126,136 @@ const Pastupleniya = () => {
           receiptOfGoods = {};
         }
         setData(receiptOfGoodsList);
-      }else {
-        setData(null)
+      } else {
+        setData(null);
       }
-    })
+    });
   };
   const columns = [
-    { title: "Data", dataIndex: "code", key: "code"},
-    { title: "date ", dataIndex: "date", key: "date" },
-    { title: "Ombor", dataIndex: "warehouseName", key: "warehouseName" },
-    { title: "Организация", dataIndex: "branchName", key: "branchName" },
-    { title: "Ответственный", dataIndex: "responsibleName", key: "responsibleName" },
-    { title: "Kontragent", dataIndex: "counterPartyName", key: "counterPartyName" },
+    { title: "Data", dataIndex: "code", key: "code", width: 120 },
+    { title: "date ", dataIndex: "date", key: "date", width: 120 },
     {
-      title: " Summa Document ", dataIndex: "sumDocument", key: "sumDocument",
+      title: "Ombor",
+      dataIndex: "warehouseName",
+      key: "warehouseName",
+      width: 120,
     },
-    { title: " SummaDopRos ", dataIndex: "summadopros", key: "summadopros" },
-    { title: "Valyuta", dataIndex: "currencyName", key: "currencyName" },
-    { title: " Kurs ", dataIndex: "course", key: "course" },
-    { title: "Учет", dataIndex: "accounting", key: "accounting" },
     {
-      title: " UstanavitSenaNamenklatura ", dataIndex: "Ustanavitnamenklatura", key: "Ustanavitnamenklatura",
+      title: "Организация",
+      dataIndex: "branchName",
+      key: "branchName",
+      width: 150,
     },
-    { title: " TipUchetSpisaniyeTavar ", dataIndex: "tiptavar", key: "tiptavar" },
-    { title: " Tulov muddati ", dataIndex: "maturityDate", key: "maturityDate" },
-    { title: " KonstantaDP ", dataIndex: "konstantaDP", key: "konstantaDP" },
-    { title: " Type ", dataIndex: "type", key: "type" },
-    { title: " Repayment ", dataIndex: "repayment", key: "repayment" },
-    { title: " AdditionalExpenses ", dataIndex: "additionalExpenses", key: "additionalExpenses" },
-    { title: " Izox ", dataIndex: "comment", key: "comment" },
-    { title: " ОбщийДолг ", dataIndex: "allSum", key: "allSum" },
+    {
+      title: "Ответственный",
+      dataIndex: "responsibleName",
+      key: "responsibleName",
+      width: 150,
+    },
+    {
+      title: "Kontragent",
+      dataIndex: "counterPartyName",
+      key: "counterPartyName",
+      width: 120,
+    },
+    {
+      title: " Summa Document ",
+      dataIndex: "sumDocument",
+      key: "sumDocument",
+      width: 180,
+    },
+    {
+      title: " SummaDopRos ",
+      dataIndex: "summadopros",
+      key: "summadopros",
+      width: 150,
+    },
+    {
+      title: "Valyuta",
+      dataIndex: "currencyName",
+      key: "currencyName",
+      width: 120,
+    },
+    { title: " Kurs ", dataIndex: "course", key: "course", width: 120 },
+    { title: "Учет", dataIndex: "accounting", key: "accounting", width: 120 },
+    {
+      title: " Ustanavit Sena Namenklatura ",
+      dataIndex: "Ustanavitnamenklatura",
+      key: "Ustanavitnamenklatura",
+      width: 250,
+    },
+    {
+      title: " Tip Uchet Spisaniye Tavar ",
+      dataIndex: "tiptavar",
+      key: "tiptavar",
+      width: 200,
+    },
+    {
+      title: " Tulov muddati ",
+      dataIndex: "maturityDate",
+      key: "maturityDate",
+      width: 180,
+    },
+    {
+      title: " KonstantaDP ",
+      dataIndex: "konstantaDP",
+      key: "konstantaDP",
+      width: 150,
+    },
+    { title: " Type ", dataIndex: "type", key: "type", width: 120 },
+    {
+      title: " Repayment ",
+      dataIndex: "repayment",
+      key: "repayment",
+      width: 120,
+    },
+    {
+      title: " Additional Expenses ",
+      dataIndex: "additionalExpenses",
+      key: "additionalExpenses",
+      width: 180,
+    },
+    { title: " Izox ", dataIndex: "comment", key: "comment", width: 120 },
+    { title: " ОбщийДолг ", dataIndex: "allSum", key: "allSum", width: 150 },
 
     {
       title: "Action",
       dataIndex: "",
       fixed: "right",
       key: "x",
-      width: "7%",
+      width: 100,
 
-      render: (record) => <Button onClick={()=>deleteReceiptOfGoodsById(record)} type="primary">Delete</Button>,
+      render: (record) => (
+        <Button onClick={() => deleteReceiptOfGoodsById(record)} type="primary">
+          Delete
+        </Button>
+      ),
     },
   ];
-  const TitleHeader = () => <HeaderPastypleniya getReceiptOfGoods={getReceiptOfGoods}/>;
+  const TitleHeader = () => (
+    <HeaderPastypleniya getReceiptOfGoods={getReceiptOfGoods} />
+  );
   return (
     <Table
       className="Jadval"
       columns={columns}
-      scroll={{ x: 2500, y: 400 }}
+      scroll={{ x: 300, y: 500 }}
       dataSource={data}
       title={TitleHeader}
       pagination={{
-
         total: total,
 
-        pageSizeOptions: ['5', '10', '20', '50', '100'],
+        pageSizeOptions: ["5", "10", "20", "50", "100"],
 
-        showTotal: total => `Total ${total}`,
+        showTotal: (total) => `Total ${total}`,
 
         showSizeChanger: true,
 
-        onChange: ((page, pageSize)=>{
+        onChange: (page, pageSize) => {
           onChangePage(page, pageSize);
-        }),
-        onShowSizeChange: (pageSize)=>{
-          setPageSize({pageSize},()=>{
+        },
+        onShowSizeChange: (pageSize) => {
+          setPageSize({ pageSize }, () => {
             getReceiptOfGoods();
           });
         },

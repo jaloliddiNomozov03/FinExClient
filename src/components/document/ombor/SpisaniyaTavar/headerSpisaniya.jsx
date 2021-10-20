@@ -1,14 +1,26 @@
-import React, {useEffect, useState} from "react";
-import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, notification, DatePicker, Select} from "antd";
+import React, { useEffect, useState } from "react";
+import {
+  Button,
+  Row,
+  Col,
+  Space,
+  Input,
+  Modal,
+  Form,
+  InputNumber,
+  notification,
+  DatePicker,
+  Select,
+} from "antd";
 import { Table } from "antd";
 import "./spisaniya.css";
 import { dataa } from "./ModalTable";
 import { columnss } from "./ModalTable";
 import TextArea from "antd/lib/input/TextArea";
-import {saveWriteOfGoods} from "../../../../server/config/document/WriteOffOfGoods";
-import {getStaffList} from "../../../../server/config/objects/StaffService";
-import {getBranchesList} from "../../../../server/config/objects/BranchService";
-import {getWarehouseList} from "../../../../server/config/objects/WarehouseService";
+import { saveWriteOfGoods } from "../../../../server/config/document/WriteOffOfGoods";
+import { getStaffList } from "../../../../server/config/objects/StaffService";
+import { getBranchesList } from "../../../../server/config/objects/BranchService";
+import { getWarehouseList } from "../../../../server/config/objects/WarehouseService";
 
 const { Option } = Select;
 const { Search } = Input;
@@ -36,22 +48,20 @@ const HeaderSpisaniya = (props) => {
     setIsCreateModalVisible(false);
   };
 
-
   const [date, setDate] = useState("");
-  const [branch, setBranch]=useState([]);
-  const [staff, setStaff]=useState([]);
-  const [warehouse, setWarehouse]=useState([]);
+  const [branch, setBranch] = useState([]);
+  const [staff, setStaff] = useState([]);
+  const [warehouse, setWarehouse] = useState([]);
 
-  useEffect(()=>{
-
+  useEffect(() => {
     getStaff();
     getBranches();
     getWarehouse();
-  },[]);
+  }, []);
 
   const onFinishCreate = (values) => {
     console.log(values);
-    console.log(date)
+    console.log(date);
     let rasxod = {
       date: date,
       responsibleId: values.document.responsible,
@@ -59,51 +69,57 @@ const HeaderSpisaniya = (props) => {
       warehouseId: values.document.warehouse,
       comment: values.document.comment,
     };
-    if (rasxod.date && rasxod.responsibleId&&rasxod.branchId&&rasxod.comment&&rasxod.warehouseId){
-      saveWriteOfGoods(rasxod).then(value => {
-        if (value && value.data.success){
+    if (
+      rasxod.date &&
+      rasxod.responsibleId &&
+      rasxod.branchId &&
+      rasxod.comment &&
+      rasxod.warehouseId
+    ) {
+      saveWriteOfGoods(rasxod).then((value) => {
+        if (value && value.data.success) {
           props.getList();
-          notification['success']({
-            message:'Data success saved!',
+          notification["success"]({
+            message: "Data success saved!",
           });
-        }else {
-          notification['error']({
-            message:'Data not saved!',
+        } else {
+          notification["error"]({
+            message: "Data not saved!",
           });
         }
-      })
+      });
     }
   };
 
-  const getStaff = ()=>{
-    getStaffList().then(value => {
-      if (value && value.data){
+  const getStaff = () => {
+    getStaffList().then((value) => {
+      if (value && value.data) {
         setStaff(value.data);
       }
-    })
+    });
   };
-  const getBranches = ()=>{
-    getBranchesList().then(value => {
-      if (value && value.data){
+  const getBranches = () => {
+    getBranchesList().then((value) => {
+      if (value && value.data) {
         setBranch(value.data);
       }
-    })
+    });
   };
-  const getWarehouse = ()=>{
-    getWarehouseList().then(value => {
-      if (value && value.data){
+  const getWarehouse = () => {
+    getWarehouseList().then((value) => {
+      if (value && value.data) {
         setWarehouse(value.data);
       }
-    })
+    });
   };
 
   function onChange(value, dateString) {
-    console.log('Selected Time: ', dateString);
+    console.log("Selected Time: ", dateString);
     setDate(dateString);
-  } 
+  }
   return (
     <Row>
-      <Col span={4}>
+      <Col xs={{ span: 1 }} sm={{ span: 2 }} lg={{ span: 2 }}>
         <Space>
           <Button className="Create" type="primary" onClick={showCreateModal}>
             Create
@@ -123,28 +139,28 @@ const HeaderSpisaniya = (props) => {
             </div>
             <div>
               <Row>
-                <Col span={3} >
-                  <Button type='primary' >Запусать и закрыть</Button>
+                <Col span={3}>
+                  <Button type="primary">Запусать и закрыть</Button>
                 </Col>
                 <Col span={2}>
-                  <Button >Запусать</Button>
-                </Col >
-                <Col span={2}>
-                  <Button >Провести</Button>
+                  <Button>Запусать</Button>
                 </Col>
-                <Col span={3} offset={14} >
-                  <Button type='primary' >Еще</Button>
+                <Col span={2}>
+                  <Button>Провести</Button>
+                </Col>
+                <Col span={3} offset={14}>
+                  <Button type="primary">Еще</Button>
                 </Col>
               </Row>
             </div>
             <Form {...layout} name="nest-messages" onFinish={onFinishCreate}>
-              <div className='ModalDiv'>
+              <div className="ModalDiv">
                 <Row>
-                  <Col span={7} style={{ borderRight: '1px solid #333', padding: '1%' }} >
-                    <Form.Item
-                        name={["document", "time"]}
-                        label="Time"
-                    >
+                  <Col
+                    span={7}
+                    style={{ borderRight: "1px solid #333", padding: "1%" }}
+                  >
+                    <Form.Item name={["document", "time"]} label="Time">
                       <Space direction="vertical" size={12}>
                         <DatePicker showTime onChange={onChange} />
                       </Space>
@@ -155,95 +171,98 @@ const HeaderSpisaniya = (props) => {
                       label="Ombor:"
                       rules={[
                         {
-                          required: true
+                          required: true,
                         },
                       ]}
                     >
                       <Select
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          className='Select'
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                          }
-                      >
-                        {
-                          Array.isArray(warehouse)?warehouse.map((item)=>(
-                              <Option value={item.id}>{item.name}</Option>
-                          )):""
+                        style={{ width: 300 }}
+                        placeholder=" "
+                        optionFilterProp="children"
+                        className="Select"
+                        onSearch={onSearch}
+                        filterOption={(input, option) =>
+                          option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
                         }
+                      >
+                        {Array.isArray(warehouse)
+                          ? warehouse.map((item) => (
+                              <Option value={item.id}>{item.name}</Option>
+                            ))
+                          : ""}
                       </Select>
                     </Form.Item>
 
                     <Form.Item
-                        name={["document", "branch"]}
-                        label="Organizatsiya"
-                        rules={[
-                          {
-                            required: true,
-                          },
-                        ]}
+                      name={["document", "branch"]}
+                      label="Organizatsiya"
+                      rules={[
+                        {
+                          required: true,
+                        },
+                      ]}
                     >
                       <Select
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-
-                          className='Select'
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                          }
-                      >
-                        {
-                          Array.isArray(branch)?branch.map((item)=>(
-                              <Option value={item.id}>{item.name}</Option>
-                          )):""
+                        style={{ width: 300 }}
+                        placeholder=" "
+                        optionFilterProp="children"
+                        className="Select"
+                        onSearch={onSearch}
+                        filterOption={(input, option) =>
+                          option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
                         }
+                      >
+                        {Array.isArray(branch)
+                          ? branch.map((item) => (
+                              <Option value={item.id}>{item.name}</Option>
+                            ))
+                          : ""}
                       </Select>
                     </Form.Item>
 
-
                     <Form.Item
-                        name={["document", "responsible"]}
-                        label="Responsible"
-                        rules={[
-                          {
-                            required: true,
-                          },
-                        ]}
+                      name={["document", "responsible"]}
+                      label="Responsible"
+                      rules={[
+                        {
+                          required: true,
+                        },
+                      ]}
                     >
                       <Select
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-
-                          className='Select'
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                          }
-                      >
-                        {
-                          Array.isArray(staff)?staff.map((item)=>(
-                              <Option value={item.id}>{item.name}</Option>
-                          )):""
+                        style={{ width: 300 }}
+                        placeholder=" "
+                        optionFilterProp="children"
+                        className="Select"
+                        onSearch={onSearch}
+                        filterOption={(input, option) =>
+                          option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
                         }
+                      >
+                        {Array.isArray(staff)
+                          ? staff.map((item) => (
+                              <Option value={item.id}>{item.name}</Option>
+                            ))
+                          : ""}
                       </Select>
                     </Form.Item>
                     <Form.Item
-                        name={["document", "comment"]}
-                        label="Izox:"
-                        className="Textarea"
-                        rules={[
-                          {
-                            type: "string",
-                          },
-                        ]}
+                      name={["document", "comment"]}
+                      label="Izox:"
+                      className="Textarea"
+                      rules={[
+                        {
+                          type: "string",
+                        },
+                      ]}
                     >
-                      <TextArea  style={{height:'10vh', width:'100vh' }} />
+                      <TextArea style={{ height: "10vh", width: "100vh" }} />
                     </Form.Item>
 
                     <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
@@ -252,7 +271,7 @@ const HeaderSpisaniya = (props) => {
                       </Button>
                     </Form.Item>
                   </Col>
-                  <Col span={16} style={{ padding: '1%' }} >
+                  <Col span={16} style={{ padding: "1%" }}>
                     <Row>
                       <Button type="primary"> Добавить</Button>
 
@@ -273,9 +292,6 @@ const HeaderSpisaniya = (props) => {
                       scroll={{ x: 1000, y: 400 }}
                       dataSource={dataa}
                     />
-
-
-
                   </Col>
                 </Row>
               </div>
@@ -283,12 +299,17 @@ const HeaderSpisaniya = (props) => {
           </Modal>
         </Space>
       </Col>
-      <Col span={8} offset={12} className="search">
+      <Col
+        xs={{ offset: 7, span: 6 }}
+        sm={{ offset: 12, span: 8 }}
+        lg={{ offset: 14, span: 8 }}
+        className="search"
+      >
         <Space>
           <Search
             placeholder="input search text"
             onSearch={onSearch}
-            enterButton
+            allowClear
           />
           <Button type="primary">More actions</Button>
         </Space>
@@ -297,12 +318,6 @@ const HeaderSpisaniya = (props) => {
   );
 };
 export default HeaderSpisaniya;
-
-
-
-
-
-
 
 // <Row>
 //                       <Button type="primary"> Добавить</Button>
@@ -319,11 +334,9 @@ export default HeaderSpisaniya;
 //                       </Col>
 //                     </Row>
 //                     <Table
-//                      
+//
 //                     />
 //                   </Col>
-
-
 
 // <Form.Item
 //                     name={["document", "izox "]}
