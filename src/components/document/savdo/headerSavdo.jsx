@@ -1,14 +1,26 @@
-import React, {useEffect, useState} from "react";
-import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, Select, notification, DatePicker} from "antd";
+import React, { useEffect, useState } from "react";
+import {
+  Button,
+  Row,
+  Col,
+  Space,
+  Input,
+  Modal,
+  Form,
+  InputNumber,
+  Select,
+  notification,
+  DatePicker,
+} from "antd";
 import "./savdoDocument.css";
-import {saveWholasale} from "../../../server/config/document/Wholesale";
-import {getStaffList} from "../../../server/config/objects/StaffService";
-import {getBranchesList} from "../../../server/config/objects/BranchService";
-import {getWarehouseList} from "../../../server/config/objects/WarehouseService";
-import {getPricesList} from "../../../server/config/objects/PriceTypeService";
-import {getSectionsList} from "../../../server/config/objects/SectionsService";
-import {getCounterpartList} from "../../../server/config/objects/CounterpartyService";
-import {getExpenseTypeList} from "../../../server/config/objects/ExpenditureTypeService";
+import { saveWholasale } from "../../../server/config/document/Wholesale";
+import { getStaffList } from "../../../server/config/objects/StaffService";
+import { getBranchesList } from "../../../server/config/objects/BranchService";
+import { getWarehouseList } from "../../../server/config/objects/WarehouseService";
+import { getPricesList } from "../../../server/config/objects/PriceTypeService";
+import { getSectionsList } from "../../../server/config/objects/SectionsService";
+import { getCounterpartList } from "../../../server/config/objects/CounterpartyService";
+import { getExpenseTypeList } from "../../../server/config/objects/ExpenditureTypeService";
 
 const { Option } = Select;
 const { Search } = Input;
@@ -37,19 +49,17 @@ const HeaderSavdo = (props) => {
     setIsCreateModalVisible(false);
   };
 
-
   const [date, setDate] = useState("");
   const [maturity, setMaturity] = useState("");
-  const [branch, setBranch]=useState([]);
-  const [staff, setStaff]=useState([]);
-  const [warehouse, setWarehouse]=useState([]);
-  const [counterparty, setCounterparty]=useState([]);
-  const [priceType, setPriceType]=useState([]);
-  const [expenditureType, setExpenditureType]=useState([]);
-  const [sections, setSections]=useState([]);
+  const [branch, setBranch] = useState([]);
+  const [staff, setStaff] = useState([]);
+  const [warehouse, setWarehouse] = useState([]);
+  const [counterparty, setCounterparty] = useState([]);
+  const [priceType, setPriceType] = useState([]);
+  const [expenditureType, setExpenditureType] = useState([]);
+  const [sections, setSections] = useState([]);
 
-  useEffect(()=>{
-
+  useEffect(() => {
     getStaff();
     getBranches();
     getWarehouse();
@@ -57,98 +67,102 @@ const HeaderSavdo = (props) => {
     getPriceType();
     getExpenditureType();
     getCounterParty();
-  },[]);
+  }, []);
 
   const onFinishCreate = (values) => {
     console.log(values);
-    console.log(date)
+    console.log(date);
     let rasxod = {
-
       ...values.document,
       date: date,
       maturityDate: maturity,
-      sale: values.document.sale
+      sale: values.document.sale,
     };
     console.log(rasxod);
-    if (rasxod.date && rasxod.responsibleId&&rasxod.branchId&&rasxod.comment&&rasxod.warehouseId){
-      saveWholasale(rasxod).then(value => {
-        if (value && value.data.success){
+    if (
+      rasxod.date &&
+      rasxod.responsibleId &&
+      rasxod.branchId &&
+      rasxod.comment &&
+      rasxod.warehouseId
+    ) {
+      saveWholasale(rasxod).then((value) => {
+        if (value && value.data.success) {
           props.getList();
-          notification['success']({
-            message:'Data success saved!',
+          notification["success"]({
+            message: "Data success saved!",
           });
-        }else {
-          notification['error']({
-            message:'Data not saved!',
+        } else {
+          notification["error"]({
+            message: "Data not saved!",
           });
         }
-      })
+      });
     }
   };
 
-  const getStaff = ()=>{
-    getStaffList().then(value => {
-      if (value && value.data){
+  const getStaff = () => {
+    getStaffList().then((value) => {
+      if (value && value.data) {
         setStaff(value.data);
       }
-    })
+    });
   };
-  const getBranches = ()=>{
-    getBranchesList().then(value => {
-      if (value && value.data){
+  const getBranches = () => {
+    getBranchesList().then((value) => {
+      if (value && value.data) {
         setBranch(value.data);
       }
-    })
+    });
   };
-  const getWarehouse = ()=>{
-    getWarehouseList().then(value => {
-      if (value && value.data){
+  const getWarehouse = () => {
+    getWarehouseList().then((value) => {
+      if (value && value.data) {
         setWarehouse(value.data);
       }
-    })
+    });
   };
-  const getCounterParty = ()=>{
-    getCounterpartList().then(value => {
-      if (value && value.data){
+  const getCounterParty = () => {
+    getCounterpartList().then((value) => {
+      if (value && value.data) {
         setCounterparty(value.data);
       }
-    })
+    });
   };
-  const getPriceType = ()=>{
-    getPricesList().then(value => {
-      if (value && value.data){
+  const getPriceType = () => {
+    getPricesList().then((value) => {
+      if (value && value.data) {
         setPriceType(value.data);
       }
-    })
+    });
   };
-  const getExpenditureType = ()=>{
-    getExpenseTypeList().then(value => {
-      if (value && value.data){
+  const getExpenditureType = () => {
+    getExpenseTypeList().then((value) => {
+      if (value && value.data) {
         setExpenditureType(value.data);
       }
-    })
+    });
   };
-  const getSections = ()=>{
-    getSectionsList().then(value => {
-      if (value && value.data){
+  const getSections = () => {
+    getSectionsList().then((value) => {
+      if (value && value.data) {
         setSections(value.data);
       }
-    })
+    });
   };
 
   function onChange(value, dateString) {
-    console.log('Selected Time: ', dateString);
+    console.log("Selected Time: ", dateString);
     setDate(dateString);
   }
   function onChangeMaturity(value, dateString) {
-    console.log('Selected Time: ', dateString);
+    console.log("Selected Time: ", dateString);
     setMaturity(dateString);
   }
 
-
   return (
     <Row>
-      <Col span={4}>
+      <Col xs={{ span: 1 }} sm={{ span: 2 }} lg={{ span: 2 }}>
         <Space>
           <Button className="Create" type="primary" onClick={showCreateModal}>
             Create
@@ -172,17 +186,17 @@ const HeaderSavdo = (props) => {
             </div>
             <div>
               <Row>
-                <Col span={3} >
-                  <Button type='primary' >Запусать и закрыть</Button>
+                <Col span={3}>
+                  <Button type="primary">Запусать и закрыть</Button>
                 </Col>
                 <Col span={2}>
-                  <Button >Запусать</Button>
-                </Col >
-                <Col span={2}>
-                  <Button >Провести</Button>
+                  <Button>Запусать</Button>
                 </Col>
-                <Col span={3} offset={14} >
-                  <Button type='primary' >Еще</Button>
+                <Col span={2}>
+                  <Button>Провести</Button>
+                </Col>
+                <Col span={3} offset={14}>
+                  <Button type="primary">Еще</Button>
                 </Col>
               </Row>
             </div>
@@ -190,7 +204,7 @@ const HeaderSavdo = (props) => {
             <Form {...layout} name="nest-messages" onFinish={onFinishCreate}>
               <div className="ModalDiv">
                 <Row>
-                  <Col span={11} >
+                  <Col span={11}>
                     <Form.Item
                       name={["document", "data"]}
                       label="Data"
@@ -209,25 +223,27 @@ const HeaderSavdo = (props) => {
                       label="Ombor:"
                       rules={[
                         {
-                          required: true
+                          required: true,
                         },
                       ]}
                     >
                       <Select
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          className='Select'
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                          }
-                      >
-                        {
-                          Array.isArray(warehouse)?warehouse.map((item)=>(
-                              <Option value={item.id}>{item.name}</Option>
-                          )):""
+                        style={{ width: 300 }}
+                        placeholder=" "
+                        optionFilterProp="children"
+                        className="Select"
+                        onSearch={onSearch}
+                        filterOption={(input, option) =>
+                          option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
                         }
+                      >
+                        {Array.isArray(warehouse)
+                          ? warehouse.map((item) => (
+                              <Option value={item.id}>{item.name}</Option>
+                            ))
+                          : ""}
                       </Select>
                     </Form.Item>
                     <Form.Item
@@ -240,21 +256,22 @@ const HeaderSavdo = (props) => {
                       ]}
                     >
                       <Select
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-
-                          className='Select'
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                          }
-                      >
-                        {
-                          Array.isArray(branch)?branch.map((item)=>(
-                              <Option value={item.id}>{item.name}</Option>
-                          )):""
+                        style={{ width: 300 }}
+                        placeholder=" "
+                        optionFilterProp="children"
+                        className="Select"
+                        onSearch={onSearch}
+                        filterOption={(input, option) =>
+                          option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
                         }
+                      >
+                        {Array.isArray(branch)
+                          ? branch.map((item) => (
+                              <Option value={item.id}>{item.name}</Option>
+                            ))
+                          : ""}
                       </Select>
                     </Form.Item>
                     <Form.Item
@@ -267,21 +284,22 @@ const HeaderSavdo = (props) => {
                       ]}
                     >
                       <Select
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-
-                          className='Select'
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                          }
-                      >
-                        {
-                          Array.isArray(staff)?staff.map((item)=>(
-                              <Option value={item.id}>{item.name}</Option>
-                          )):""
+                        style={{ width: 300 }}
+                        placeholder=" "
+                        optionFilterProp="children"
+                        className="Select"
+                        onSearch={onSearch}
+                        filterOption={(input, option) =>
+                          option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
                         }
+                      >
+                        {Array.isArray(staff)
+                          ? staff.map((item) => (
+                              <Option value={item.id}>{item.name}</Option>
+                            ))
+                          : ""}
                       </Select>
                     </Form.Item>
                     <Form.Item
@@ -293,22 +311,23 @@ const HeaderSavdo = (props) => {
                         },
                       ]}
                     >
-
                       <Select
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          className='Select'
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                          }
-                      >
-                        {
-                          Array.isArray(sections)?sections.map((item)=>(
-                              <Option value={item.id}>{item.name}</Option>
-                          )):""
+                        style={{ width: 300 }}
+                        placeholder=" "
+                        optionFilterProp="children"
+                        className="Select"
+                        onSearch={onSearch}
+                        filterOption={(input, option) =>
+                          option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
                         }
+                      >
+                        {Array.isArray(sections)
+                          ? sections.map((item) => (
+                              <Option value={item.id}>{item.name}</Option>
+                            ))
+                          : ""}
                       </Select>
                     </Form.Item>
                     <Form.Item
@@ -323,7 +342,7 @@ const HeaderSavdo = (props) => {
                       <InputNumber />
                     </Form.Item>
                   </Col>
-                  <Col span={11} offset={1} >
+                  <Col span={11} offset={1}>
                     <Form.Item
                       name={["document", "counterpartyId"]}
                       label="Kontragent:"
@@ -333,22 +352,23 @@ const HeaderSavdo = (props) => {
                         },
                       ]}
                     >
-
                       <Select
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          className='Select'
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                          }
-                      >
-                        {
-                          Array.isArray(counterparty)?counterparty.map((item)=>(
-                              <Option value={item.id}>{item.name}</Option>
-                          )):""
+                        style={{ width: 300 }}
+                        placeholder=" "
+                        optionFilterProp="children"
+                        className="Select"
+                        onSearch={onSearch}
+                        filterOption={(input, option) =>
+                          option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
                         }
+                      >
+                        {Array.isArray(counterparty)
+                          ? counterparty.map((item) => (
+                              <Option value={item.id}>{item.name}</Option>
+                            ))
+                          : ""}
                       </Select>
                     </Form.Item>
                     <Form.Item
@@ -374,20 +394,22 @@ const HeaderSavdo = (props) => {
                       ]}
                     >
                       <Select
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          className='Select'
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                          }
-                      >
-                        {
-                          Array.isArray(["NOMENCLATURE","CURRENCY"])?["NOMENCLATURE","CURRENCY"].map((item)=>(
-                              <Option value={item}>{item}</Option>
-                          )):""
+                        style={{ width: 300 }}
+                        placeholder=" "
+                        optionFilterProp="children"
+                        className="Select"
+                        onSearch={onSearch}
+                        filterOption={(input, option) =>
+                          option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
                         }
+                      >
+                        {Array.isArray(["NOMENCLATURE", "CURRENCY"])
+                          ? ["NOMENCLATURE", "CURRENCY"].map((item) => (
+                              <Option value={item}>{item}</Option>
+                            ))
+                          : ""}
                       </Select>
                     </Form.Item>
 
@@ -411,22 +433,23 @@ const HeaderSavdo = (props) => {
                         },
                       ]}
                     >
-
                       <Select
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          className='Select'
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                          }
-                      >
-                        {
-                          Array.isArray(priceType)?priceType.map((item)=>(
-                              <Option value={item.id}>{item.name}</Option>
-                          )):""
+                        style={{ width: 300 }}
+                        placeholder=" "
+                        optionFilterProp="children"
+                        className="Select"
+                        onSearch={onSearch}
+                        filterOption={(input, option) =>
+                          option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
                         }
+                      >
+                        {Array.isArray(priceType)
+                          ? priceType.map((item) => (
+                              <Option value={item.id}>{item.name}</Option>
+                            ))
+                          : ""}
                       </Select>
                     </Form.Item>
 
@@ -440,27 +463,28 @@ const HeaderSavdo = (props) => {
                         },
                       ]}
                     >
-
                       <Select
-                          style={{ width: 300 }}
-                          placeholder=" "
-                          optionFilterProp="children"
-                          className='Select'
-                          onSearch={onSearch}
-                          filterOption={(input, option) =>
-                              option.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
-                          }
-                      >
-                        {
-                          Array.isArray(expenditureType)?expenditureType.map((item)=>(
-                              <Option value={item.id}>{item.name}</Option>
-                          )):""
+                        style={{ width: 300 }}
+                        placeholder=" "
+                        optionFilterProp="children"
+                        className="Select"
+                        onSearch={onSearch}
+                        filterOption={(input, option) =>
+                          option.children
+                            .toLowerCase()
+                            .indexOf(input.toLowerCase()) >= 0
                         }
+                      >
+                        {Array.isArray(expenditureType)
+                          ? expenditureType.map((item) => (
+                              <Option value={item.id}>{item.name}</Option>
+                            ))
+                          : ""}
                       </Select>
                     </Form.Item>
                   </Col>
-                  <Row  >
-                    <Col span={20} >
+                  <Row>
+                    <Col span={20}>
                       <Form.Item
                         name={["document", "comment"]}
                         label="Izox"
@@ -470,9 +494,11 @@ const HeaderSavdo = (props) => {
                           },
                         ]}
                       >
-                        <textarea style={{width:'100vh', height:'10vh'}} />
+                        <textarea style={{ width: "100vh", height: "10vh" }} />
                       </Form.Item>
-                      <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
+                      <Form.Item
+                        wrapperCol={{ ...layout.wrapperCol, offset: 8 }}
+                      >
                         <Button type="primary" htmlType="submit">
                           Submit
                         </Button>
@@ -485,12 +511,17 @@ const HeaderSavdo = (props) => {
           </Modal>
         </Space>
       </Col>
-      <Col span={8} offset={12} className="search">
+      <Col
+        xs={{ offset: 7, span: 6 }}
+        sm={{ offset: 12, span: 8 }}
+        lg={{ offset: 14, span: 8 }}
+        className="search"
+      >
         <Space>
           <Search
             placeholder="input search text"
             onSearch={onSearch}
-            enterButton
+            allowClear
           />
           <Button type="primary">More actions</Button>
         </Space>

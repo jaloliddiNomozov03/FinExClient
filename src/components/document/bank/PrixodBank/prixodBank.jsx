@@ -137,10 +137,11 @@ const PrixodBank = () => {
   const columns = [
     { title: "Data", dataIndex: "date", key: "date" },
     { title: "Code ", dataIndex: "code", key: "code" },
-    { title: "RetailAmount ", dataIndex: "retailAmount", key: "retailAmount" },
+    { title: "Retail Amount ", dataIndex: "retailAmount", key: "retailAmount" },
     {
       title: "Bank Xisob Raqamlari",
       dataIndex: "objectBankAccount",
+      width: 200,
       key: "objectBankAccount",
     },
     { title: "SumDP", dataIndex: "sumDP", key: "sumDP" },
@@ -157,26 +158,30 @@ const PrixodBank = () => {
       render: (record) => <Checkbox type="checkbox" checked={record} />,
     },
     {
-      title: "SumEnumeration",
+      title: "Sum Enumeration",
       dataIndex: "sumEnumeration",
+      width: 150,
       key: "sumEnumeration",
     },
     {
-      title: "SumCounterParty",
+      title: "Sum CounterParty",
       dataIndex: "sumCounterParty",
+      width: 150,
       key: "sumCounterParty",
     },
     {
-      title: "PercentEnumeration",
+      title: "Percent Enumeration",
       dataIndex: "percentEnumeration",
+      width: 200,
       key: "percentEnumeration",
     },
     // { title: "Kontragent", dataIndex: "kontragent", key: "kontragent",  },
     { title: "Firma", dataIndex: "objectCompany", key: "objectCompany" },
     { title: "Bulim", dataIndex: "sections", key: "sections" },
     {
-      title: "objectCounterParty",
+      title: "object Counter Party",
       dataIndex: "objectCounterParty",
+      width: 200,
       key: "objectCounterParty",
     },
     { title: "currency", dataIndex: "currency", key: "currency" },
@@ -187,9 +192,8 @@ const PrixodBank = () => {
     {
       title: "Action",
       dataIndex: "",
-      fixed: "right",
       key: "x",
-      // width: '7%',
+      width: 100,
       render: (record) => (
         <Button onClick={() => deleteBankArrivalById(record)}>Delete</Button>
       ),

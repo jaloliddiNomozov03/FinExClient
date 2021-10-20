@@ -1,9 +1,21 @@
 import React, { useState, useEffect } from "react";
-import {Button, Row, Col, Space, Input, Modal, Form, InputNumber, Select, DatePicker, notification} from "antd";
-import {getStaffList} from "../../../../server/config/objects/StaffService";
-import {getBranchesList} from "../../../../server/config/objects/BranchService";
-import {getWarehouseList} from "../../../../server/config/objects/WarehouseService";
-import {saveEnteringGoods} from "../../../../server/config/document/EnteringGoodsService";
+import {
+  Button,
+  Row,
+  Col,
+  Space,
+  Input,
+  Modal,
+  Form,
+  InputNumber,
+  Select,
+  DatePicker,
+  notification,
+} from "antd";
+import { getStaffList } from "../../../../server/config/objects/StaffService";
+import { getBranchesList } from "../../../../server/config/objects/BranchService";
+import { getWarehouseList } from "../../../../server/config/objects/WarehouseService";
+import { saveEnteringGoods } from "../../../../server/config/document/EnteringGoodsService";
 const { Search } = Input;
 const { Option } = Select;
 const onSearch = (value) => console.log(value);
@@ -22,11 +34,11 @@ const HeaderMaxsulot = (props) => {
   const [warehouse, setWarehouse] = useState([]);
   const [isCreateModalVisble, setIsCreateModalVisible] = useState(false);
 
-  useEffect(()=>{
+  useEffect(() => {
     getStaff();
     getBranch();
     getWarehouse();
-  },[]);
+  }, []);
   const getStaff = () => {
     getStaffList().then((value) => {
       if (value && value.data) {
@@ -68,25 +80,25 @@ const HeaderMaxsulot = (props) => {
       date: date,
       responsibleId: values.document.responsible,
       isConstanta: values.document.isConstanta
-          ? values.document.isConstanta.target.checked
-          : false,
+        ? values.document.isConstanta.target.checked
+        : false,
       branchId: values.document.branchId,
       warehouseId: values.document.warehouseId,
     };
-    if (enteringGoods.responsibleId && enteringGoods.date){
+    if (enteringGoods.responsibleId && enteringGoods.date) {
       console.log(enteringGoods);
-      saveEnteringGoods(enteringGoods).then(value => {
-        if (value && value.data.success){
+      saveEnteringGoods(enteringGoods).then((value) => {
+        if (value && value.data.success) {
           props.getEnteringGoods();
           notification["success"]({
             message: "Data success save!",
           });
-        }else {
+        } else {
           notification["error"]({
             message: "Data do not save!",
           });
         }
-      })
+      });
     }
   };
   function onChange(value, dateString) {
@@ -94,13 +106,12 @@ const HeaderMaxsulot = (props) => {
     setDate(dateString);
   }
 
-
   function onOk(value) {
     console.log("onOk: ", value);
   }
   return (
     <Row>
-      <Col span={4}>
+      <Col xs={{ span: 1 }} sm={{ span: 2 }} lg={{ span: 2 }}>
         <Space>
           <Button className="Create" type="primary" onClick={showCreateModal}>
             Create
@@ -114,17 +125,17 @@ const HeaderMaxsulot = (props) => {
           >
             <div>
               <Row>
-                <Col span={3} >
-                  <Button type='primary' >Запусать и закрыть</Button>
+                <Col span={3}>
+                  <Button type="primary">Запусать и закрыть</Button>
                 </Col>
                 <Col span={2}>
-                  <Button >Запусать</Button>
-                </Col >
-                <Col span={2}>
-                  <Button >Провести</Button>
+                  <Button>Запусать</Button>
                 </Col>
-                <Col span={3} offset={14} >
-                  <Button type='primary' >Еще</Button>
+                <Col span={2}>
+                  <Button>Провести</Button>
+                </Col>
+                <Col span={3} offset={14}>
+                  <Button type="primary">Еще</Button>
                 </Col>
               </Row>
             </div>
@@ -133,123 +144,116 @@ const HeaderMaxsulot = (props) => {
               {...layout}
               name="nest-messages"
               onFinish={onFinishCreate}
-            // validateMessages={validateMessages}
+              // validateMessages={validateMessages}
             >
               <Form.Item
-                  name={["document", "responsible"]}
-                  label="Staff"
-                  rules={[
-                    {
-                      required: true,
-                    },
-                  ]}
+                name={["document", "responsible"]}
+                label="Staff"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
               >
                 <Select
-                    // showSearch
+                  // showSearch
 
-                    style={{ width: 300 }}
-                    placeholder=" "
-                    optionFilterProp="children"
-                    // onChange={onChangeStaff}
-                    className="Select"
-                    onSearch={onSearch}
-                    filterOption={(input, option) =>
-                        option.children
-                            .toLowerCase()
-                            .indexOf(input.toLowerCase()) >= 0
-                    }
+                  style={{ width: 300 }}
+                  placeholder=" "
+                  optionFilterProp="children"
+                  // onChange={onChangeStaff}
+                  className="Select"
+                  onSearch={onSearch}
+                  filterOption={(input, option) =>
+                    option.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
+                  }
                 >
                   {Array.isArray(staff)
-                      ? staff.map((item) => (
-                          <Option value={item.id}>{item.name}</Option>
+                    ? staff.map((item) => (
+                        <Option value={item.id}>{item.name}</Option>
                       ))
-                      : ""}
+                    : ""}
                 </Select>
               </Form.Item>
               <Form.Item
-                  name={["document", "branchId"]}
-                  label="Filial"
-                  rules={[
-                    {
-                      required: true,
-                    },
-                  ]}
+                name={["document", "branchId"]}
+                label="Filial"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
               >
                 <Select
-                    // showSearch
+                  // showSearch
 
-                    style={{ width: 300 }}
-                    placeholder=" "
-                    optionFilterProp="children"
-                    // onChange={onChangeStaff}
-                    className="Select"
-                    onSearch={onSearch}
-                    filterOption={(input, option) =>
-                        option.children
-                            .toLowerCase()
-                            .indexOf(input.toLowerCase()) >= 0
-                    }
+                  style={{ width: 300 }}
+                  placeholder=" "
+                  optionFilterProp="children"
+                  // onChange={onChangeStaff}
+                  className="Select"
+                  onSearch={onSearch}
+                  filterOption={(input, option) =>
+                    option.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
+                  }
                 >
                   {Array.isArray(branch)
-                      ? branch.map((item) => (
-                          <Option value={item.id}>{item.name}</Option>
+                    ? branch.map((item) => (
+                        <Option value={item.id}>{item.name}</Option>
                       ))
-                      : ""}
+                    : ""}
                 </Select>
               </Form.Item>
               <Form.Item
-                  name={["document", "warehouseId"]}
-                  label="Staff"
-                  rules={[
-                    {
-                      required: true,
-                    },
-                  ]}
+                name={["document", "warehouseId"]}
+                label="Staff"
+                rules={[
+                  {
+                    required: true,
+                  },
+                ]}
               >
                 <Select
-                    // showSearch
+                  // showSearch
 
-                    style={{ width: 300 }}
-                    placeholder=" "
-                    optionFilterProp="children"
-                    // onChange={onChangeStaff}
-                    className="Select"
-                    onSearch={onSearch}
-                    filterOption={(input, option) =>
-                        option.children
-                            .toLowerCase()
-                            .indexOf(input.toLowerCase()) >= 0
-                    }
+                  style={{ width: 300 }}
+                  placeholder=" "
+                  optionFilterProp="children"
+                  // onChange={onChangeStaff}
+                  className="Select"
+                  onSearch={onSearch}
+                  filterOption={(input, option) =>
+                    option.children
+                      .toLowerCase()
+                      .indexOf(input.toLowerCase()) >= 0
+                  }
                 >
                   {Array.isArray(warehouse)
-                      ? warehouse.map((item) => (
-                          <Option value={item.id}>{item.name}</Option>
+                    ? warehouse.map((item) => (
+                        <Option value={item.id}>{item.name}</Option>
                       ))
-                      : ""}
+                    : ""}
                 </Select>
               </Form.Item>
               <Form.Item
-                  name={["document", "isConstanta"]}
-                  label="IsConstanta:"
-                  valuePropName="unchecked"
-                  // rules={[
-                  //     {
-                  //         type: "string",
-                  //     },
-                  // ]}
+                name={["document", "isConstanta"]}
+                label="IsConstanta:"
+                valuePropName="unchecked"
+                // rules={[
+                //     {
+                //         type: "string",
+                //     },
+                // ]}
               >
                 <Input type="checkbox" />
               </Form.Item>
-              <Form.Item
-                  name={["document", "date"]}
-                  label="Time"
-              >
+              <Form.Item name={["document", "date"]} label="Time">
                 <Space direction="vertical" size={12}>
-                  <DatePicker
-                      showTime
-                      onChange={onChange}
-                      onOk={onOk}
-                  />
+                  <DatePicker showTime onChange={onChange} onOk={onOk} />
                 </Space>
               </Form.Item>
               <Form.Item
@@ -272,12 +276,17 @@ const HeaderMaxsulot = (props) => {
           </Modal>
         </Space>
       </Col>
-      <Col span={8} offset={12} className="search">
+      <Col
+        xs={{ offset: 7, span: 6 }}
+        sm={{ offset: 12, span: 8 }}
+        lg={{ offset: 14, span: 8 }}
+        className="search"
+      >
         <Space>
           <Search
             placeholder="input search text"
             onSearch={onSearch}
-            enterButton
+            allowClear
           />
           <Button type="primary">More actions</Button>
         </Space>

@@ -1,7 +1,18 @@
 import React, { useState, useEffect } from "react";
 import {
-  Table, Button, Row, Col, Space, Input, Modal, Form,
-  Checkbox, Radio, Select, notification, DatePicker
+  Table,
+  Button,
+  Row,
+  Col,
+  Space,
+  Input,
+  Modal,
+  Form,
+  Checkbox,
+  Radio,
+  Select,
+  notification,
+  DatePicker,
 } from "antd";
 import "./prixodBank.css";
 import { dataa } from "./ModalTable";
@@ -212,7 +223,7 @@ const HeaderBank = (props) => {
   }
   return (
     <Row>
-      <Col span={4}>
+      <Col xs={{ span: 1 }} sm={{ span: 2 }} lg={{ span: 2 }}>
         <Space>
           <Button className="Create" type="primary" onClick={showCreateModal}>
             Create
@@ -237,7 +248,7 @@ const HeaderBank = (props) => {
             <div>
               <Row>
                 <Col span={3}>
-                  <Button type='primary'>Запусать и закрыть</Button>
+                  <Button type="primary">Запусать и закрыть</Button>
                 </Col>
                 <Col span={2}>
                   <Button>Запусать</Button>
@@ -246,7 +257,7 @@ const HeaderBank = (props) => {
                   <Button>Провести</Button>
                 </Col>
                 <Col span={3} offset={14}>
-                  <Button type='primary'>Еще</Button>
+                  <Button type="primary">Еще</Button>
                 </Col>
               </Row>
             </div>
@@ -255,12 +266,16 @@ const HeaderBank = (props) => {
                 {...layout}
                 name="nest-messages"
                 onFinish={onFinishCreate}
-              // validateMessages={validateMessages}
+                // validateMessages={validateMessages}
               >
                 <Row>
-                  <Col span={7} style={{ borderRight: "1px solid #555" }} offset={1}   >
+                  <Col
+                    span={7}
+                    style={{ borderRight: "1px solid #555" }}
+                    offset={1}
+                  >
                     <Row>
-                      <Col span={22}   >
+                      <Col span={22}>
                         <Form.Item
                           name={["document", "retailAmount"]}
                           wrapperCol={{ offset: 1 }}
@@ -318,8 +333,8 @@ const HeaderBank = (props) => {
                           >
                             {Array.isArray(bankAccount)
                               ? bankAccount.map((item) => (
-                                <Option value={item.id}>{item.bank}</Option>
-                              ))
+                                  <Option value={item.id}>{item.bank}</Option>
+                                ))
                               : ""}
                           </Select>
                         </Form.Item>
@@ -352,8 +367,8 @@ const HeaderBank = (props) => {
                           >
                             {Array.isArray(branch)
                               ? branch.map((item) => (
-                                <Option value={item.id}>{item.name}</Option>
-                              ))
+                                  <Option value={item.id}>{item.name}</Option>
+                                ))
                               : ""}
                           </Select>
                         </Form.Item>
@@ -383,8 +398,8 @@ const HeaderBank = (props) => {
                           >
                             {Array.isArray(staff)
                               ? staff.map((item) => (
-                                <Option value={item.id}>{item.name}</Option>
-                              ))
+                                  <Option value={item.id}>{item.name}</Option>
+                                ))
                               : ""}
                           </Select>
                         </Form.Item>
@@ -392,21 +407,27 @@ const HeaderBank = (props) => {
                         <Form.Item
                           wrapperCol={{ ...layout.wrapperCol, offset: 8 }}
                         >
-                          <Button type="primary" htmlType="submit" style={{ width: "90%" }}>
+                          <Button
+                            type="primary"
+                            htmlType="submit"
+                            style={{ width: "90%" }}
+                          >
                             Submit
                           </Button>
                         </Form.Item>
                       </Col>
                     </Row>
                   </Col>
-                  <Col span={7} offset={1} style={{ borderRight: "1px solid #555" }}  >
+                  <Col
+                    span={7}
+                    offset={1}
+                    style={{ borderRight: "1px solid #555" }}
+                  >
                     <Row>
                       <Col span={22}>
-
                         <Form.Item
                           name={["document", "sections"]}
                           label="Sections"
-
                           rules={[
                             {
                               required: true,
@@ -430,8 +451,8 @@ const HeaderBank = (props) => {
                           >
                             {Array.isArray(sections)
                               ? sections.map((item) => (
-                                <Option value={item.id}>{item.name}</Option>
-                              ))
+                                  <Option value={item.id}>{item.name}</Option>
+                                ))
                               : ""}
                           </Select>
                         </Form.Item>
@@ -450,7 +471,7 @@ const HeaderBank = (props) => {
                           <Input />
                         </Form.Item>
                         <Row>
-                          <Col span={24} >
+                          <Col span={24}>
                             <Form.Item
                               name={["document", "Kontragent"]}
                               label="Kontragent:"
@@ -461,7 +482,7 @@ const HeaderBank = (props) => {
                           </Col>
                         </Row>
                         <Row>
-                          <Col span={24}  >
+                          <Col span={24}>
                             <Form.Item
                               name={["document", "isCounterParty"]}
                               label="IsCounterParty:"
@@ -472,7 +493,7 @@ const HeaderBank = (props) => {
                           </Col>
                         </Row>
                         <Row>
-                          <Col span={24} >
+                          <Col span={24}>
                             <Form.Item
                               name={["document", "isConstanta"]}
                               label="IsConstanta:"
@@ -483,17 +504,20 @@ const HeaderBank = (props) => {
                           </Col>
                         </Row>
                         <Row>
-                          <Col span={10} offset={1} >
-                            <Radio> <p>KonstandaDP</p></Radio>
-                          </Col >
-                          <Col span={5} offset={4}  >
+                          <Col span={10} offset={1}>
+                            <Radio>
+                              {" "}
+                              <p>KonstandaDP</p>
+                            </Radio>
+                          </Col>
+                          <Col span={5} offset={4}>
                             <Radio>
                               <p>1</p>
                             </Radio>
                           </Col>
                         </Row>
-                        <Row  >
-                          <Col span={24} >
+                        <Row>
+                          <Col span={24}>
                             <Form.Item
                               name={["document", "comment"]}
                               label="Comment"
@@ -507,14 +531,12 @@ const HeaderBank = (props) => {
                             </Form.Item>
                           </Col>
                         </Row>
-
                       </Col>
                     </Row>
                   </Col>
-                  <Col span={7} >
+                  <Col span={7}>
                     <Row>
-                      <Col span={22} offset={2} >
-
+                      <Col span={22} offset={2}>
                         <Form.Item
                           name={["document", "sumCounterParty"]}
                           label="SumCounterParty:"
@@ -569,8 +591,8 @@ const HeaderBank = (props) => {
                           >
                             {Array.isArray(counterparty)
                               ? counterparty.map((item) => (
-                                <Option value={item.id}>{item.name}</Option>
-                              ))
+                                  <Option value={item.id}>{item.name}</Option>
+                                ))
                               : ""}
                           </Select>
                         </Form.Item>
@@ -602,8 +624,8 @@ const HeaderBank = (props) => {
                           >
                             {Array.isArray(company)
                               ? company.map((item) => (
-                                <Option value={item.id}>{item.name}</Option>
-                              ))
+                                  <Option value={item.id}>{item.name}</Option>
+                                ))
                               : ""}
                           </Select>
                         </Form.Item>
@@ -635,8 +657,8 @@ const HeaderBank = (props) => {
                           >
                             {Array.isArray(currency)
                               ? currency.map((item) => (
-                                <Option value={item.id}>{item.name}</Option>
-                              ))
+                                  <Option value={item.id}>{item.name}</Option>
+                                ))
                               : ""}
                           </Select>
                         </Form.Item>
@@ -664,12 +686,17 @@ const HeaderBank = (props) => {
           </Modal>
         </Space>
       </Col>
-      <Col span={8} offset={12} className="search">
+      <Col
+        xs={{ offset: 7, span: 6 }}
+        sm={{ offset: 12, span: 8 }}
+        lg={{ offset: 14, span: 8 }}
+        className="search"
+      >
         <Space>
           <Search
             placeholder="input search text"
             onSearch={onSearch}
-            enterButton
+            allowClear
           />
           <Button type="primary">More actions</Button>
         </Space>

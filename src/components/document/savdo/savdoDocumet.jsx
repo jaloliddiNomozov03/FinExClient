@@ -1,7 +1,10 @@
-import {Table, Button, notification} from "antd";
+import { Table, Button, notification } from "antd";
 import HeaderSavdo from "./headerSavdo";
-import {useEffect, useState} from "react";
-import {deleteWholasale, getWholasalePage} from "../../../server/config/document/Wholesale";
+import { useEffect, useState } from "react";
+import {
+  deleteWholasale,
+  getWholasalePage,
+} from "../../../server/config/document/Wholesale";
 import HeaderSpisaniya from "../ombor/SpisaniyaTavar/headerSpisaniya";
 
 let datas = [
@@ -40,30 +43,30 @@ const DocumentSavdo = () => {
     getList();
   }, []);
   const deleteById = (record) => {
-    deleteWholasale(record.id).then(value => {
+    deleteWholasale(record.id).then((value) => {
       if (value && value.data.success) {
         getList();
-        notification['success']({
-          message: 'Data success deleted!',
-          description: `${record.name} deleted!`
+        notification["success"]({
+          message: "Data success deleted!",
+          description: `${record.name} deleted!`,
         });
       } else if (record.id) {
-        notification['error']({
-          message: 'Data error!',
-          description: `${record.key} not found!`
-        })
+        notification["error"]({
+          message: "Data error!",
+          description: `${record.key} not found!`,
+        });
       } else {
-        notification['error']({
-          message: 'Data error!',
-          description: `Don't delete!`
-        })
+        notification["error"]({
+          message: "Data error!",
+          description: `Don't delete!`,
+        });
       }
-    })
+    });
   };
 
   let datasList = [];
   const getList = () => {
-    getWholasalePage(currentPage, pageSize).then(value => {
+    getWholasalePage(currentPage, pageSize).then((value) => {
       if (value && value.data && value.data.content) {
         setTotal(value.data.totalElements);
         setCurrentPage(value.data.pageable.pageNumber);
@@ -97,14 +100,14 @@ const DocumentSavdo = () => {
         }
         setData(datasList);
       } else {
-        setData(null)
+        setData(null);
       }
-    })
+    });
   };
   const onChangePage = (page, pageSize) => {
     setPageSize(pageSize);
-    setCurrentPage((page - 1));
-    getWholasalePage(page - 1, pageSize).then(value => {
+    setCurrentPage(page - 1);
+    getWholasalePage(page - 1, pageSize).then((value) => {
       if (value && value.data) {
         setCurrentPage(value.data.pageable.pageNumber);
         datasList = [];
@@ -138,67 +141,112 @@ const DocumentSavdo = () => {
         }
         setData(datasList);
       } else {
-        setData(null)
+        setData(null);
       }
-    })
+    });
   };
   const columns = [
-    { title: "Data", dataIndex: "date", key: "date" },
-    { title: "Nomer", dataIndex: "code", key: "code" },
-    { title: "Ombor", dataIndex: "warehouseName", key: "warehouseName" },
-    { title: "Kontragent", dataIndex: "counterpartyName", key: "counterpartyName" },
-    { title: "Organizatsiya", dataIndex: "branchName", key: "branchName" },
-    { title: "Otvetstvenniy", dataIndex: "responsibleName", key: "responsibleName" },
-    { title: "TolovTuri", dataIndex: "priceTypeName", key: "priceTypeName" },
-    { title: "Kurs", dataIndex: "course", key: "course" },
-    { title: "TipProdaji", dataIndex: "sale", key: "sale" },
-    { title: "Izox", dataIndex: "comment", key: "comment" },
-    { title: "HarajatTuri", dataIndex: "expenditureTypeName", key: "expenditureTypeName" },
+    { title: "Data", dataIndex: "date", key: "date", width: 120 },
+    { title: "Nomer", dataIndex: "code", key: "code", width: 120 },
+    {
+      title: "Ombor",
+      dataIndex: "warehouseName",
+      key: "warehouseName",
+      width: 120,
+    },
+    {
+      title: "Kontragent",
+      dataIndex: "counterpartyName",
+      key: "counterpartyName",
+      width: 120,
+    },
+    {
+      title: "Organizatsiya",
+      dataIndex: "branchName",
+      key: "branchName",
+      width: 150,
+    },
+    {
+      title: "Otvetstvenniy",
+      dataIndex: "responsibleName",
+      key: "responsibleName",
+      width: 150,
+    },
+    {
+      title: "Tolov Turi",
+      dataIndex: "priceTypeName",
+      key: "priceTypeName",
+      width: 150,
+    },
+    { title: "Kurs", dataIndex: "course", key: "course", width: 120 },
+    { title: "Tip Prodaji", dataIndex: "sale", key: "sale", width: 120 },
+    { title: "Izox", dataIndex: "comment", key: "comment", width: 120 },
+    {
+      title: "Harajat Turi",
+      dataIndex: "expenditureTypeName",
+      key: "expenditureTypeName",
+      width: 180,
+    },
     {
       title: "Podrazdeleniye",
       dataIndex: "sectionsName",
       key: "sectionsName",
+      width: 150,
     },
     // {
     //   title: "TipUchyetSpisaniyeTavar",
     //   dataIndex: "spisaniya",
     //   key: "spisaniya",
     // },
-    { title: "TulovMuddati", dataIndex: "maturityDate", key: "maturityDate" },
-    { title: "ProSenaBonusPoProdaji", dataIndex: "percentBonus", key: "percentBonus" },
+    {
+      title: "Tulov Muddati",
+      dataIndex: "maturityDate",
+      key: "maturityDate",
+      width: 180,
+    },
+    {
+      title: "ProSenaBonusPoProdaji",
+      dataIndex: "percentBonus",
+      key: "percentBonus",
+      width: 200,
+    },
     {
       title: "Action",
       dataIndex: "",
       fixed: "right",
       key: "x",
-      width: "7%",
-      render: (record) => <Button onClick={() => deleteById(record)} type="primary">Delete</Button>,
-    }
+      width: 100,
+      render: (record) => (
+        <Button onClick={() => deleteById(record)} type="primary">
+          Delete
+        </Button>
+      ),
+    },
   ];
 
-  const TitleHeader = () => <HeaderSavdo getList={getList}/>;
+  const TitleHeader = () => <HeaderSavdo getList={getList} />;
 
   return (
     <Table
       className="Jadval"
       columns={columns}
-      scroll={{ x: 2500, y: 400 }}
+      scroll={{ x: 300, y: 500 }}
       dataSource={data}
       title={TitleHeader}
       pagination={{
         total: total,
 
-        pageSizeOptions: ['5', '10', '20', '50', '100'],
+        pageSizeOptions: ["5", "10", "20", "50", "100"],
 
-        showTotal: total => `Total ${total}`,
+        showTotal: (total) => `Total ${total}`,
 
         showSizeChanger: true,
 
-        onChange: ((page, pageSize) => {
+        onChange: (page, pageSize) => {
           onChangePage(page, pageSize);
-        }),
+        },
         onShowSizeChange: (pageSize) => {
-          setPageSize({pageSize}, () => {
+          setPageSize({ pageSize }, () => {
             getList();
           });
         },

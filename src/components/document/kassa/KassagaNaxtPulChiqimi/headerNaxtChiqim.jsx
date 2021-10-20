@@ -1,8 +1,19 @@
 import React, { useState, useEffect } from "react";
-import {Button, Row, Col, Space, Input, Modal, Form, Select, DatePicker, notification} from "antd";
+import {
+  Button,
+  Row,
+  Col,
+  Space,
+  Input,
+  Modal,
+  Form,
+  Select,
+  DatePicker,
+  notification,
+} from "antd";
 import "./NaxtPulChiqimi.css";
-import {getStaffList} from "../../../../server/config/objects/StaffService";
-import {saveCashRegisterExpense} from "../../../../server/config/document/CashRegisterExpenseService";
+import { getStaffList } from "../../../../server/config/objects/StaffService";
+import { saveCashRegisterExpense } from "../../../../server/config/document/CashRegisterExpenseService";
 const { Search } = Input;
 const { Option } = Select;
 const onSearch = (value) => console.log(value);
@@ -23,9 +34,9 @@ const HeaderChiqim = (props) => {
   const showCreateModal = () => {
     setIsCreateModalVisible(true);
   };
-  useEffect(()=>{
+  useEffect(() => {
     getStaff();
-  },[]);
+  }, []);
   const handleCreateOk = () => {
     setIsCreateModalVisible(false);
   };
@@ -44,21 +55,21 @@ const HeaderChiqim = (props) => {
     let cashRegisterExpense = {
       comment: values.document.comment,
       date: date,
-      responsibleId: staffId
+      responsibleId: staffId,
     };
-    if (cashRegisterExpense.responsibleId && cashRegisterExpense.date){
-      saveCashRegisterExpense(cashRegisterExpense).then(value => {
-        if (value && value.data.success){
+    if (cashRegisterExpense.responsibleId && cashRegisterExpense.date) {
+      saveCashRegisterExpense(cashRegisterExpense).then((value) => {
+        if (value && value.data.success) {
           props.getCashRegisterExpenses();
           notification["success"]({
             message: "Data success save!",
           });
-        }else {
+        } else {
           notification["error"]({
             message: "Data do not save!",
           });
         }
-      })
+      });
     }
   };
   function onChangeStaff(value) {
@@ -69,13 +80,12 @@ const HeaderChiqim = (props) => {
     setDate(dateString);
   }
 
-
   function onOk(value) {
     console.log("onOk: ", value);
   }
   return (
     <Row>
-      <Col span={4}>
+      <Col xs={{ span: 1 }} sm={{ span: 2 }} lg={{ span: 2 }}>
         <Space>
           <Button className="Create" type="primary" onClick={showCreateModal}>
             Create
@@ -119,46 +129,39 @@ const HeaderChiqim = (props) => {
                 // validateMessages={validateMessages}
               >
                 <Form.Item
-                    name={["document", "responsible"]}
-                    label="Staff"
-                    rules={[
-                      {
-                        required: true,
-                      },
-                    ]}
+                  name={["document", "responsible"]}
+                  label="Staff"
+                  rules={[
+                    {
+                      required: true,
+                    },
+                  ]}
                 >
                   <Select
-                      // showSearch
+                    // showSearch
 
-                      style={{ width: 300 }}
-                      placeholder=" "
-                      optionFilterProp="children"
-                      onChange={onChangeStaff}
-                      className="Select"
-                      onSearch={onSearch}
-                      filterOption={(input, option) =>
-                          option.children
-                              .toLowerCase()
-                              .indexOf(input.toLowerCase()) >= 0
-                      }
+                    style={{ width: 300 }}
+                    placeholder=" "
+                    optionFilterProp="children"
+                    onChange={onChangeStaff}
+                    className="Select"
+                    onSearch={onSearch}
+                    filterOption={(input, option) =>
+                      option.children
+                        .toLowerCase()
+                        .indexOf(input.toLowerCase()) >= 0
+                    }
                   >
                     {Array.isArray(staff)
-                        ? staff.map((item) => (
-                            <Option value={item.id}>{item.name}</Option>
+                      ? staff.map((item) => (
+                          <Option value={item.id}>{item.name}</Option>
                         ))
-                        : ""}
+                      : ""}
                   </Select>
                 </Form.Item>
-                <Form.Item
-                    name={["document", "date"]}
-                    label="Time"
-                >
+                <Form.Item name={["document", "date"]} label="Time">
                   <Space direction="vertical" size={12}>
-                    <DatePicker
-                        showTime
-                        onChange={onChange}
-                        onOk={onOk}
-                    />
+                    <DatePicker showTime onChange={onChange} onOk={onOk} />
                   </Space>
                 </Form.Item>
                 <Form.Item
@@ -172,9 +175,7 @@ const HeaderChiqim = (props) => {
                 >
                   <textarea />
                 </Form.Item>
-                <Form.Item
-                    wrapperCol={{ ...layout.wrapperCol, offset: 8 }}
-                >
+                <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
                   <Button type="primary" htmlType="submit">
                     Submit
                   </Button>
@@ -184,12 +185,17 @@ const HeaderChiqim = (props) => {
           </Modal>
         </Space>
       </Col>
-      <Col span={8} offset={12} className="search">
+      <Col
+        xs={{ offset: 7, span: 6 }}
+        sm={{ offset: 12, span: 8 }}
+        lg={{ offset: 14, span: 8 }}
+        className="search"
+      >
         <Space>
           <Search
             placeholder="input search text"
             onSearch={onSearch}
-            enterButton
+            allowClear
           />
           <Button type="primary">More actions</Button>
         </Space>

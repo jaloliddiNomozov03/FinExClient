@@ -81,7 +81,7 @@ const HeaderTushum = (props) => {
 
   return (
     <Row>
-      <Col span={4}>
+      <Col xs={{ span: 1 }} sm={{ span: 2 }} lg={{ span: 2 }}>
         <Space>
           <Button className="Create" type="primary" onClick={showCreateModal}>
             Create
@@ -191,12 +191,14 @@ const HeaderTushum = (props) => {
           </Modal>
         </Space>
       </Col>
-      <Col span={8} offset={12} className="search">
+      <Col xs={{ offset: 7, span: 6 }}
+        sm={{ offset: 12, span: 8 }}
+        lg={{ offset: 14, span: 8}} className="search">
         <Space>
           <Search
             placeholder="input search text"
             onSearch={onSearch}
-            enterButton
+            allowClear
           />
           <Button type="primary">More actions</Button>
         </Space>

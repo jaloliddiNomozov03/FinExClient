@@ -102,21 +102,21 @@ const Inter = () => {
     })
   };
   const columns = [
-    { title: "Code", dataIndex: "code", key: "code", width: "15vh" },
-    { title: "Date ", dataIndex: "date", key: "date" },
-    { title: "Ombor", dataIndex: "warehouseName", key: "warehouseName" },
-    { title: "Организация", dataIndex: "branchName", key: "branchName" },
-    { title: "Ответственный", dataIndex: "staffName", key: "staffName" },
-    { title: "Учет", dataIndex: "allSum", key: "allSum" },
-    { title: "Даромад суммаси", dataIndex: "enteringSum", key: "enteringSum" },
-    { title: " Расход ", dataIndex: "costs", key: "costs" },
-    { title: " Valyuta ", dataIndex: "currencyName", key: "currencyName" },
+    { title: "Code", dataIndex: "code", key: "code", width: 120 },
+    { title: "Date ", dataIndex: "date", key: "date", width: 120, },
+    { title: "Ombor", dataIndex: "warehouseName", key: "warehouseName", width: 120, },
+    { title: "Организация", dataIndex: "branchName", key: "branchName", width: 150, },
+    { title: "Ответственный", dataIndex: "staffName", key: "staffName", width: 150, },
+    { title: "Учет", dataIndex: "allSum", key: "allSum", width: 120, },
+    { title: "Даромад суммаси", dataIndex: "enteringSum", key: "enteringSum", width: 180, },
+    { title: " Расход ", dataIndex: "costs", key: "costs", width: 120, },
+    { title: " Valyuta ", dataIndex: "currencyName", key: "currencyName", width: 120, },
     {
       title: "Action",
       dataIndex: "",
       fixed: "right",
       key: "x",
-      width: "7%",
+      width: 100,
 
       render: (record) => <Button onClick={()=>deleteInventoryById(record)} type="primary">Delete</Button>,
     },
@@ -126,7 +126,7 @@ const Inter = () => {
     <Table
       className="Jadval"
       columns={columns}
-      scroll={{ x: 1600, y: 400 }}
+      scroll={{ x: 300, y: 500 }}
       dataSource={data}
       title={TitleHeader}
       pagination={{

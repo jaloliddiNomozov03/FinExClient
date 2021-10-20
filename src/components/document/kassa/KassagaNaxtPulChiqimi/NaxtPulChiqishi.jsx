@@ -89,13 +89,13 @@ const Chiqim = () => {
   };
   const columns = [
     {
-      title: "Code", dataIndex: "code", key: "code", fixed: "left",width: "10%",
+      title: "Code", dataIndex: "code", key: "code", width: 120,
     },
-    { title: "Date", dataIndex: "date", key: "date", width: "20%" },
-    { title: "Otvetstvenniy", dataIndex: "responsibleName", key: "responsibleName", width: "25%" },
-    { title: "Izox", dataIndex: "comment", key: "comment", width: "35%" },
+    { title: "Date", dataIndex: "date", key: "date", width: 120 },
+    { title: "Otvetstvenniy", dataIndex: "responsibleName", key: "responsibleName", width: 150 },
+    { title: "Izox", dataIndex: "comment", key: "comment", width: 120 },
     {
-      title: "Action", dataIndex: "", width: "10", fixed: "right", key: "x",
+      title: "Action", dataIndex: "", width: 100, fixed: "right", key: "x",
       render: (record) => <Button type="primary" onClick={()=>deleteCashRExpenseById(record)}> Delete </Button>,
     },
   ];
@@ -105,6 +105,7 @@ const Chiqim = () => {
       className="table"
       columns={columns}
       dataSource={data}
+      scroll={{x: 300, y: 500}}
       title={TitleHeaderChiqim}
       pagination={{
 

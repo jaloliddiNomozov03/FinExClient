@@ -102,21 +102,22 @@ const Raschet = () => {
         })
     };
     const columns = [
-        {title: "Nomer ", dataIndex: "code", key: "code"},
-        {title: "Otvetstvenniy", dataIndex: "responsibleName", key: "responsibleName"},
-        {title: "Organizatsiya", dataIndex: "branchName", key: "branchName"},
+        {title: "Nomer ", dataIndex: "code", key: "code", width: 120,},
+        {title: "Otvetstvenniy", dataIndex: "responsibleName", key: "responsibleName", width: 120,},
+        {title: "Organizatsiya", dataIndex: "branchName", key: "branchName", width: 120,},
         {
             title: "Podrazdeleniya",
             dataIndex: "sectionsName",
             key: "sectionsName",
+            width: 150,
         },
-        {title: "Izox", dataIndex: "comment", key: "comment"},
+        {title: "Izox", dataIndex: "comment", key: "comment", width: 120,},
         {
             title: "Action",
             dataIndex: "",
             fixed: "right",
             key: "x",
-            width: "7%",
+            width: 100,
             render: (record) => <Button onClick={() => deleteById(record)} type="primary">Delete</Button>,
         }
     ];
@@ -127,6 +128,7 @@ const Raschet = () => {
             className="Jadval"
             columns={columns}
             dataSource={data}
+            scroll={{x: 300, y: 500}}
             title={TitleHeader}
             pagination={{
 
