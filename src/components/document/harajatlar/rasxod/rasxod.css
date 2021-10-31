@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.Modal{
+    width: 1200px;
+    box-sizing: border-box;
+    margin: auto;
+}
+.linktop{
+    display: flex;
+}
+.linktop a{
+    padding-left:12px ;
+    margin: 15px 5px;
+}
+
+.ModalDiv{
+    border: 2px solid #555;
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 1%;
+    padding-top: 2%;
+    margin-top: 1%;
+    height: 60vh;
+    overflow-y: scroll;
+}
+.Mt{
+    margin-top: 4%;
+}

@@ -1,0 +1,24 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+.from{
+    margin-top: 3%;
+    border: 1px solid #555;
+    padding: 3%;
+}
+.Textarea{
+    width: 95%;
+    height: 50px;
+}
+.Yeshyo{
+    margin-left: 55%;
+}
+.ModalTop{
+    display: flex;
+   
+}
+.ModalTop p{
+    padding-left: 15px;
+}

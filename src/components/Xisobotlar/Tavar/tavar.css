@@ -1,0 +1,15 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    text-align: center;
+}
+.Button{
+    margin-top: 4%;
+}
+.Content{
+    margin-left: 2%;
+    width: 100%;
+}
+
+
